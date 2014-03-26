@@ -22,9 +22,7 @@ namespace TinCan.json
         JObject toJObject(TCAPIVersion version);
         JObject toJObject();
 
-        string toJSON(TCAPIVersion version, bool pretty);
-        string toJSON(TCAPIVersion version);
-        string toJSON(bool pretty);
-        string toJSON();
+        string toJSON(TCAPIVersion version, bool pretty = false);
+        string toJSON(bool pretty = false);
     }
 }
