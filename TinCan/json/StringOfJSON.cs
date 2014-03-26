@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TinCan.json
 {
-    class StringOfJSON
+    public class StringOfJSON
     {
         private string source;
 
