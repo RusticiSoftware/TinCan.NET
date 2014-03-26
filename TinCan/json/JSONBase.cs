@@ -27,7 +27,7 @@ namespace TinCan.json
             return toJObject(TCAPIVersion.latest());
         }
 
-        public string toJSON(TCAPIVersion version, bool pretty)
+        public string toJSON(TCAPIVersion version, bool pretty = false)
         {
             Formatting formatting = Formatting.None;
             if (pretty)
@@ -38,19 +38,9 @@ namespace TinCan.json
             return JsonConvert.SerializeObject(toJObject(version), formatting);
         }
 
-        public string toJSON(TCAPIVersion version)
-        {
-            return toJSON(version, false);
-        }
-
-        public string toJSON(bool pretty)
+        public string toJSON(bool pretty = false)
         {
             return toJSON(TCAPIVersion.latest(), pretty);
-        }
-
-        public string toJSON()
-        {
-            return toJSON(TCAPIVersion.latest(), false);
         }
     }
 }
