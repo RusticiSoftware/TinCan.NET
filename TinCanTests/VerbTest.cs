@@ -19,6 +19,7 @@ namespace TinCanTests
     using NUnit.Framework;
     using Newtonsoft.Json.Linq;
     using TinCan;
+    using TinCan.json;
 
     [TestFixture]
     class VerbTest
@@ -40,11 +41,23 @@ namespace TinCanTests
             String id = "http://adlnet.gov/expapi/verbs/experienced";
 
             JObject cfg = new JObject();
-            cfg.Add("id", new Uri(id));
+            cfg.Add("id", id);
 
             Verb obj = new Verb(cfg);
             Assert.IsInstanceOf<Verb>(obj);
             Assert.That(obj.toJSON(), Is.EqualTo("{\"id\":\"" + id + "\"}"));
+        }
+
+        [Test]
+        public void TestStringOfJSONCtr()
+        {
+            String id = "http://adlnet.gov/expapi/verbs/experienced";
+            String json = "{\"id\":\"" + id + "\"}";
+            StringOfJSON strOfJson = new StringOfJSON(json);
+
+            Verb obj = new Verb(strOfJson);
+            Assert.IsInstanceOf<Verb>(obj);
+            Assert.That(obj.toJSON(), Is.EqualTo(json));
         }
     }
 }

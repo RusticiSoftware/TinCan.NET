@@ -14,51 +14,43 @@
     limitations under the License.
 */
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using TinCan.json;
 
 namespace TinCan
 {
-    public class Verb : JSONBase
+    public class Extensions : JSONBase
     {
-        public Uri id { get; set; }
-        public LanguageMap display { get; set; }
+        private Dictionary<Uri, JToken> map;
 
-        public Verb() {}
-
-        public Verb(StringOfJSON json): this(json.toJObject()) {}
-
-        public Verb(JObject jobj)
+        public Extensions()
         {
-            if (jobj["id"] != null)
+            map = new Dictionary<Uri, JToken>();
+        }
+
+        public Extensions(JObject jobj) : this()
+        {
+            foreach (var item in jobj)
             {
-                id = new Uri(jobj.Value<String>("id"));
+                map.Add(new Uri(item.Key), item.Value); 
             }
         }
 
-        public Verb(Uri uri)
+        public override JObject toJObject(TCAPIVersion version)
         {
-            id = uri;
-        }
-
-        public Verb(string str)
-        {
-            id = new Uri (str);
-        }
-
-        public override JObject toJObject(TCAPIVersion version) {
             JObject result = new JObject();
-            if (id != null)
+            foreach (KeyValuePair<Uri, JToken> entry in map)
             {
-                result.Add("id", id.ToString());
-            }
-
-            if (display != null && ! display.isEmpty())
-            {
-                result.Add("display", display.toJObject(version));
+                result.Add(entry.Key.ToString(), entry.Value);
             }
 
             return result;
+        }
+
+        public bool isEmpty()
+        {
+            return map.Count > 0 ? false : true;
         }
     }
 }

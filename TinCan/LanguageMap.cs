@@ -22,16 +22,16 @@ namespace TinCan
 {
     public class LanguageMap : JSONBase
     {
-        private Dictionary<String, String> _map;
+        private Dictionary<String, String> map;
 
         public LanguageMap() {
-            _map = new Dictionary<string,string>();
+            map = new Dictionary<string,string>();
         }
 
         public override JObject toJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
-            foreach (KeyValuePair<String, String> entry in this._map)
+            foreach (KeyValuePair<String, String> entry in this.map)
             {
                 result.Add(entry.Key, entry.Value);
             }
@@ -41,7 +41,7 @@ namespace TinCan
 
         public bool isEmpty()
         {
-            return _map.Count > 0 ? true : false;
+            return map.Count > 0 ? false : true;
         }
     }
 }
