@@ -41,10 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="LRS.cs" />
+    <Compile Include="LRSResponse\Base.cs" />
+    <Compile Include="LRSResponse\About.cs" />
+    <Compile Include="RemoteLRS.cs" />
     <Compile Include="json\JSONBase.cs" />
     <Compile Include="json\JSON.cs" />
     <Compile Include="json\StringOfJSON.cs" />
     <Compile Include="LanguageMap.cs" />
+    <Compile Include="StatementTarget.cs" />
     <Compile Include="Verb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCAPIVersion.cs" />
