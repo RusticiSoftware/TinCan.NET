@@ -40,10 +40,22 @@ namespace TinCanTests
             var lrs = new RemoteLRS();
             lrs.version = TCAPIVersion.latest();
             lrs.endpoint = new Uri("http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox/");
-            lrs.auth = "";
 
             TinCan.LRSResponse.About lrsRes = lrs.About();
+            Assert.IsTrue(lrsRes.success);
             Console.WriteLine(lrsRes.content.toJSON(true));
+        }
+
+        [Test]
+        public void TestAboutFailure()
+        {
+            var lrs = new RemoteLRS();
+            lrs.version = TCAPIVersion.latest();
+            lrs.endpoint = new Uri("http://cloud.scorm.com/tc/HYPTQLAI9/sandbox/");
+
+            TinCan.LRSResponse.About lrsRes = lrs.About();
+            Assert.IsFalse(lrsRes.success);
+            Console.WriteLine(lrsRes.httpException);
         }
     }
 }
