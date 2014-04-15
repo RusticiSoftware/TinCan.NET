@@ -286,6 +286,29 @@ namespace TinCan
             return r;
         }
 
+        private TinCan.LRSResponse.Statement GetStatement(Dictionary<String, String> queryParams)
+        {
+            var r = new LRSResponse.Statement();
+
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = "statements";
+            req.queryParams = queryParams;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+            r.content = new Statement(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+
+            return r;
+        }
+
         public TinCan.LRSResponse.About About()
         {
             var r = new LRSResponse.About();
@@ -305,6 +328,79 @@ namespace TinCan
             r.content = new About(System.Text.Encoding.UTF8.GetString(res.content));
 
             return r;
+        }
+
+        public TinCan.LRSResponse.Statement SaveStatement(Statement statement)
+        {
+            var r = new LRSResponse.Statement();
+            var req = new MyHTTPRequest();
+            req.queryParams = new Dictionary<String, String>();
+            req.resource = "statements";
+
+            if (statement.id != null)
+            {
+                req.method = "PUT";
+                req.queryParams.Add("statementId", statement.id.ToString());
+            }
+            else
+            {
+                req.method = "POST";
+            }
+
+            req.contentType = "application/json";
+            req.content = System.Text.Encoding.UTF8.GetBytes(statement.toJSON(version));
+
+            var res = MakeSyncRequest(req);
+            if (statement.id == null)
+            {
+                if (res.status != HttpStatusCode.OK)
+                {
+                    // TODO: capture the failure reason
+                    r.success = false;
+                    return r;
+                }
+
+                // TODO: need to update the referenced object with the new id
+            }
+            else {
+                if (res.status != HttpStatusCode.NoContent)
+                {
+                    // TODO: capture the failure reason
+                    r.success = false;
+                    return r;
+                }
+            }
+
+            r.success = true;
+            r.content = statement;
+
+            return r;
+        }
+        public TinCan.LRSResponse.StatementsResult SaveStatements(List<Statement> statements)
+        {
+            throw new NotImplementedException("RemoteLRS.SaveStatements");
+        }
+        public TinCan.LRSResponse.Statement RetrieveStatement(Guid id)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("statementId", id.ToString());
+
+            return GetStatement(queryParams);
+        }
+        public TinCan.LRSResponse.Statement RetrieveVoidedStatement(Guid id)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("voidedStatementId", id.ToString());
+
+            return GetStatement(queryParams);
+        }
+        public TinCan.LRSResponse.StatementsResult QueryStatements()
+        {
+            throw new NotImplementedException("RemoteLRS.QueryStatements");
+        }
+        public TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result)
+        {
+            throw new NotImplementedException("RemoteLRS.MoreStatements");
         }
 
         // TODO: since param

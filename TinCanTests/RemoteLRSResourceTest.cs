@@ -61,6 +61,26 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestSaveStatement()
+        {
+            var statement = new TinCan.Statement();
+            statement.actor = agent;
+            statement.verb = new TinCan.Verb("http://adlnet.gov/expapi/verbs/experienced");
+            statement.target = activity;
+
+            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            Assert.IsTrue(lrsRes.success);
+        }
+
+        [Test]
+        public void TestRetrieveStatement()
+        {
+            TinCan.LRSResponse.Statement lrsRes = lrs.RetrieveStatement(new Guid("20ae0c9e-4658-4e0a-9320-381b7c49bb09"));
+            Assert.IsTrue(lrsRes.success);
+            Console.WriteLine("TestRetrieveStatement - statement: " + lrsRes.content.toJSON(lrs.version));
+        }
+
+        [Test]
         public void TestRetrieveStateIds()
         {
             TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveStateIds(activity, agent);

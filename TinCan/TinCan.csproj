@@ -46,6 +46,9 @@
     <Compile Include="Agent.cs" />
     <Compile Include="AgentAccount.cs" />
     <Compile Include="Activity.cs" />
+    <Compile Include="LRSResponse\Statement.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="StatementsResult.cs" />
     <Compile Include="Document\AgentProfile.cs" />
     <Compile Include="Document\Base.cs" />
     <Compile Include="Document\ActivityProfile.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="LRSResponse\About.cs" />
     <Compile Include="LRSResponse\AgentProfile.cs" />
     <Compile Include="LRSResponse\ActivityProfile.cs" />
+    <Compile Include="LRSResponse\StatementsResult.cs" />
     <Compile Include="LRSResponse\ProfileKeys.cs" />
     <Compile Include="LRSResponse\State.cs" />
     <Compile Include="RemoteLRS.cs" />

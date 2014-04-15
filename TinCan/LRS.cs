@@ -14,12 +14,20 @@
     limitations under the License.
 */
 using System;
+using System.Collections.Generic;
 
 namespace TinCan
 {
     interface LRS
     {
         TinCan.LRSResponse.About About();
+
+        TinCan.LRSResponse.Statement SaveStatement(Statement statement);
+        TinCan.LRSResponse.StatementsResult SaveStatements(List<Statement> statements);
+        TinCan.LRSResponse.Statement RetrieveStatement(Guid id);
+        TinCan.LRSResponse.Statement RetrieveVoidedStatement(Guid id);
+        TinCan.LRSResponse.StatementsResult QueryStatements();
+        TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result);
 
         TinCan.LRSResponse.ProfileKeys RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
         TinCan.LRSResponse.State RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
