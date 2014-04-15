@@ -13,11 +13,28 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using System;
 
 namespace TinCan
 {
     interface LRS
     {
         TinCan.LRSResponse.About About();
+
+        TinCan.LRSResponse.ProfileKeys RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
+        TinCan.LRSResponse.State RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
+        TinCan.LRSResponse.Base SaveState(Document.State profile);
+        TinCan.LRSResponse.Base DeleteState(Document.State profile);
+        TinCan.LRSResponse.Base ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null);
+
+        TinCan.LRSResponse.ProfileKeys RetrieveActivityProfileIds(Activity activity);
+        TinCan.LRSResponse.ActivityProfile RetrieveActivityProfile(String id, Activity activity);
+        TinCan.LRSResponse.Base SaveActivityProfile(Document.ActivityProfile profile);
+        TinCan.LRSResponse.Base DeleteActivityProfile(Document.ActivityProfile profile);
+
+        TinCan.LRSResponse.ProfileKeys RetrieveAgentProfileIds(Agent agent);
+        TinCan.LRSResponse.AgentProfile RetrieveAgentProfile(String id, Agent agent);
+        TinCan.LRSResponse.Base SaveAgentProfile(Document.AgentProfile profile);
+        TinCan.LRSResponse.Base DeleteAgentProfile(Document.AgentProfile profile);
     }
 }

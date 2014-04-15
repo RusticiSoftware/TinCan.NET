@@ -20,13 +20,13 @@ namespace TinCan
 {
     public sealed class TCAPIVersion
     {
-        public static readonly TCAPIVersion V102 = new TCAPIVersion("1.0.2");
+        //public static readonly TCAPIVersion V102 = new TCAPIVersion("1.0.2");
         public static readonly TCAPIVersion V101 = new TCAPIVersion("1.0.1");
         public static readonly TCAPIVersion V100 = new TCAPIVersion("1.0.0");
 
         public static TCAPIVersion latest()
         {
-            return V102;
+            return V101;
         }
 
         private static Dictionary<String, TCAPIVersion> supported;
@@ -38,7 +38,7 @@ namespace TinCan
             }
 
             supported = new Dictionary<String, TCAPIVersion>();
-            supported.Add("1.0.2", V102);
+            //supported.Add("1.0.2", V102);
             supported.Add("1.0.1", V101);
             supported.Add("1.0.0", V100);
 

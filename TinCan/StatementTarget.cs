@@ -13,10 +13,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using TinCan.json;
 
 namespace TinCan
 {
-    public abstract class StatementTarget
+    public abstract class StatementTarget : JSONBase
     {
         private string objectType;
 

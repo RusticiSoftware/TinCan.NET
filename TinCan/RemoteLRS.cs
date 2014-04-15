@@ -17,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace TinCan
 {
@@ -29,65 +31,457 @@ namespace TinCan
         public String auth { get; set; }
         public Dictionary<String, String> extended { get; set; }
 
-        private HttpWebRequest GetRequest(String method, String resource, Dictionary<String, String> headers, Dictionary<String, String> query_params)
+        private class MyHTTPRequest
+        {
+            public String method { get; set; }
+            public String resource { get; set; }
+            public Dictionary<String, String> queryParams { get; set; }
+            public Dictionary<String, String> headers { get; set; }
+            public String contentType { get; set; }
+            public byte[] content { get; set; }
+        }
+
+        private class MyHTTPResponse
+        {
+            public HttpStatusCode status { get; set; }
+            public String contentType { get; set; }
+            public byte[] content { get; set; }
+            public DateTime lastModified { get; set; }
+            public String etag { get; set; }
+        }
+
+        private MyHTTPResponse MakeSyncRequest(MyHTTPRequest req)
         {
             // TODO: handle full path resources
-            // TODO: handle query string params passed in
-            var url = endpoint.ToString() + resource;
+            var url = endpoint.ToString() + req.resource;
+            if (req.queryParams != null)
+            {
+                String qs = "";
+                foreach (KeyValuePair<String, String> entry in req.queryParams)
+                {
+                    if (qs != "")
+                    {
+                        qs += "&";
+                    }
+                    qs += HttpUtility.UrlEncode(entry.Key) + "=" + HttpUtility.UrlEncode(entry.Value);
+                }
+                if (qs != "")
+                {
+                    url += "?" + qs;
+                }
+            }
 
-            var req = (HttpWebRequest) WebRequest.Create(url);
-            req.Method = method;
-            req.Headers.Add("X-Experience-API-Version", version.ToString());
+            // TODO: handle special properties we recognize, such as content type, modified since, etc.
+            Console.WriteLine("RemoteLRS.MakeSyncRequest - url: " + url);
+            var webReq = (HttpWebRequest) WebRequest.Create(url);
+            webReq.Method = req.method;
+
+            webReq.Headers.Add("X-Experience-API-Version", version.ToString());
             if (auth != null)
             {
-                req.Headers.Add("Authorization", auth);
+                webReq.Headers.Add("Authorization", auth);
             }
-            // TODO: handle additional headers passed in
+            if (req.headers != null)
+            {
+                foreach (KeyValuePair<String, String> entry in req.headers)
+                {
+                    webReq.Headers.Add(entry.Key, entry.Value);
+                }
+            }
 
-            return req;
-        }
-        private HttpWebRequest GetRequest(String method, String resource, Dictionary<String, String> headers)
-        {
-            return this.GetRequest(method, resource, headers, null);
-        }
-        private HttpWebRequest GetRequest(String method, String resource)
-        {
-            return this.GetRequest(method, resource, null, null);
+            if (req.contentType != null)
+            {
+                webReq.ContentType = req.contentType;
+            }
+            else
+            {
+                webReq.ContentType = "application/octet-stream";
+            }
+
+            if (req.content != null)
+            {
+                webReq.ContentLength = req.content.Length;
+                using (var stream = webReq.GetRequestStream())
+                {
+                    stream.Write(req.content, 0, req.content.Length);
+                }
+            }
+
+            var resp = new MyHTTPResponse();
+
+            HttpWebResponse webResp;
+
+            try
+            {
+                webResp = (HttpWebResponse)webReq.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                webResp = (HttpWebResponse)ex.Response;
+                // TODO: need to grab something from the exception, but what?
+            }
+
+            resp.status = webResp.StatusCode;
+            Console.WriteLine("RemoteLRS.MakeSyncRequest - status: " + webResp.StatusCode);
+            resp.contentType = webResp.ContentType;
+            Console.WriteLine("RemoteLRS.MakeSyncRequest - content type: " + webResp.ContentType);
+            resp.etag = webResp.Headers.Get("Etag");
+            resp.lastModified = webResp.LastModified;
+            Console.WriteLine("RemoteLRS.MakeSyncRequest - content length: " + webResp.ContentLength);
+
+            using (var stream = webResp.GetResponseStream())
+            {
+                resp.content = ReadFully(stream, (int)webResp.ContentLength);
+            }
+            Console.WriteLine("RemoteLRS.MakeSyncRequest - content: " + System.Text.Encoding.UTF8.GetString(resp.content));
+
+            return resp;
         }
 
-        protected void Done(WebResponse resp)
+        /// <summary>
+        /// See http://www.yoda.arachsys.com/csharp/readbinary.html no license found
+        /// 
+        /// Reads data from a stream until the end is reached. The
+        /// data is returned as a byte array. An IOException is
+        /// thrown if any of the underlying IO calls fail.
+        /// </summary>
+        /// <param name="stream">The stream to read data from</param>
+        /// <param name="initialLength">The initial buffer length</param>
+        private static byte[] ReadFully(Stream stream, int initialLength)
         {
-            resp.Close();
+            // If we've been passed an unhelpful initial length, just
+            // use 32K.
+            if (initialLength < 1)
+            {
+                initialLength = 32768;
+            }
+
+            byte[] buffer = new byte[initialLength];
+            int read = 0;
+
+            int chunk;
+            while ((chunk = stream.Read(buffer, read, buffer.Length - read)) > 0)
+            {
+                read += chunk;
+
+                // If we've reached the end of our buffer, check to see if there's
+                // any more information
+                if (read == buffer.Length)
+                {
+                    int nextByte = stream.ReadByte();
+
+                    // End of stream? If so, we're done
+                    if (nextByte == -1)
+                    {
+                        return buffer;
+                    }
+
+                    // Nope. Resize the buffer, put in the byte we've just
+                    // read, and continue
+                    byte[] newBuffer = new byte[buffer.Length * 2];
+                    Array.Copy(buffer, newBuffer, buffer.Length);
+                    newBuffer[read] = (byte)nextByte;
+                    buffer = newBuffer;
+                    read++;
+                }
+            }
+            // Buffer is now too big. Shrink it.
+            byte[] ret = new byte[read];
+            Array.Copy(buffer, ret, read);
+            return ret;
+        }
+
+        private TinCan.LRSResponse.ProfileKeys GetProfileKeys(String resource, Dictionary<String, String> queryParams)
+        {
+            var r = new LRSResponse.ProfileKeys();
+
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = resource;
+            req.queryParams = queryParams;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+
+            var keys = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+            if (keys.Count > 0) {
+                r.content = new List<String>();
+                foreach (JToken key in keys) {
+                    r.content.Add((String)key);
+                }
+            }
+
+            return r;
+        }
+
+        private MyHTTPResponse GetDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
+        {
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = resource;
+            req.queryParams = queryParams;
+
+            var res = MakeSyncRequest(req);
+            if (res.status == HttpStatusCode.OK)
+            {
+                document.content = res.content;
+                document.contentType = res.contentType;
+                document.timestamp = res.lastModified;
+                document.etag = res.etag;
+            }
+
+            return res;
+        }
+
+        private TinCan.LRSResponse.Base SaveDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
+        {
+            var r = new LRSResponse.Base();
+
+            var req = new MyHTTPRequest();
+            req.method = "PUT";
+            req.resource = resource;
+            req.queryParams = queryParams;
+            req.contentType = document.contentType;
+            req.content = document.content;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.NoContent)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+
+            return r;
+        }
+
+        private TinCan.LRSResponse.Base DeleteDocument(String resource, Dictionary<String, String> queryParams)
+        {
+            var r = new LRSResponse.Base();
+
+            var req = new MyHTTPRequest();
+            req.method = "DELETE";
+            req.resource = resource;
+            req.queryParams = queryParams;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.NoContent)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+
+            return r;
         }
 
         public TinCan.LRSResponse.About About()
         {
             var r = new LRSResponse.About();
 
-            try
-            {
-                var webReq = this.GetRequest("GET", "about");
-                var webResp = (HttpWebResponse)webReq.GetResponse();
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = "about";
 
-                r.httpResponse = webResp;
-
-                if (webResp.StatusCode == HttpStatusCode.OK)
-                {
-                    r.success = true;
-
-                    var responseStr = new StreamReader(webResp.GetResponseStream()).ReadToEnd();
-                    r.content = new About(responseStr);
-                }
-                this.Done(webResp);
-            }
-            catch (WebException ex)
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
             {
                 r.success = false;
-                r.httpException = ex;
-                r.httpResponse = (HttpWebResponse)ex.Response;
+                return r;
+            }
+
+            r.success = true;
+            r.content = new About(System.Text.Encoding.UTF8.GetString(res.content));
+
+            return r;
+        }
+
+        // TODO: since param
+        public TinCan.LRSResponse.ProfileKeys RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("activityId", activity.id.ToString());
+            queryParams.Add("agent", agent.toJSON(version));
+            if (registration != null)
+            {
+                queryParams.Add("registration", registration.ToString());
+            }
+
+            return GetProfileKeys("activities/state", queryParams);
+        }
+        public TinCan.LRSResponse.State RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null)
+        {
+            var r = new LRSResponse.State();
+
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("stateId", id);
+            queryParams.Add("activityId", activity.id.ToString());
+            queryParams.Add("agent", agent.toJSON(version));
+
+            var state = new Document.State();
+            state.id = id;
+            state.activity = activity;
+            state.agent = agent;
+
+            var resp = GetDocument("activities/state", queryParams, state);
+            if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
+            {
+                // TODO: capture message from resp.content?
+                r.success = false;
+            }
+            else
+            {
+                r.success = true;
             }
 
             return r;
+        }
+        public TinCan.LRSResponse.Base SaveState(Document.State state)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("stateId", state.id);
+            queryParams.Add("activityId", state.activity.id.ToString());
+            queryParams.Add("agent", state.agent.toJSON(version));
+
+            return SaveDocument("activities/state", queryParams, state);
+        }
+        public TinCan.LRSResponse.Base DeleteState(Document.State state)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("stateId", state.id);
+            queryParams.Add("activityId", state.activity.id.ToString());
+            queryParams.Add("agent", state.agent.toJSON(version));
+            if (state.registration != null)
+            {
+                queryParams.Add("registration", state.registration.ToString());
+            }
+
+            return DeleteDocument("activities/state", queryParams);
+        }
+        public TinCan.LRSResponse.Base ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("activityId", activity.id.ToString());
+            queryParams.Add("agent", agent.toJSON(version));
+            if (registration != null)
+            {
+                queryParams.Add("registration", registration.ToString());
+            }
+
+            return DeleteDocument("activities/state", queryParams);
+        }
+
+        // TODO: since param
+        public TinCan.LRSResponse.ProfileKeys RetrieveActivityProfileIds(Activity activity)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("activityId", activity.id.ToString());
+
+            return GetProfileKeys("activities/profile", queryParams);
+        }
+        public TinCan.LRSResponse.ActivityProfile RetrieveActivityProfile(String id, Activity activity)
+        {
+            var r = new LRSResponse.ActivityProfile();
+
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", id);
+            queryParams.Add("activityId", activity.id.ToString());
+
+            var profile = new Document.ActivityProfile();
+            profile.id = id;
+            profile.activity = activity;
+
+            var resp = GetDocument("activities/profile", queryParams, profile);
+            if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
+            {
+                // TODO: capture message from resp.content?
+                r.success = false;
+            }
+            else
+            {
+                r.success = true;
+            }
+
+            return r;
+        }
+        public TinCan.LRSResponse.Base SaveActivityProfile(Document.ActivityProfile profile)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", profile.id);
+            queryParams.Add("activityId", profile.activity.id.ToString());
+
+            return SaveDocument("activities/profile", queryParams, profile);
+        }
+        public TinCan.LRSResponse.Base DeleteActivityProfile(Document.ActivityProfile profile)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", profile.id);
+            queryParams.Add("activityId", profile.activity.id.ToString());
+            // TODO: need to pass Etag?
+
+            return DeleteDocument("activities/profile", queryParams);
+        }
+
+        // TODO: since param
+        public TinCan.LRSResponse.ProfileKeys RetrieveAgentProfileIds(Agent agent)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("agent", agent.toJSON(version));
+
+            return GetProfileKeys("agents/profile", queryParams);
+        }
+        public TinCan.LRSResponse.AgentProfile RetrieveAgentProfile(String id, Agent agent)
+        {
+            var r = new LRSResponse.AgentProfile();
+
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", id);
+            queryParams.Add("agent", agent.toJSON(version));
+
+            var profile = new Document.AgentProfile();
+            profile.id = id;
+            profile.agent = agent;
+
+            var resp = GetDocument("agents/profile", queryParams, profile);
+            if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
+            {
+                // TODO: capture message from resp.content?
+                r.success = false;
+            }
+            else
+            {
+                r.success = true;
+            }
+
+            return r;
+        }
+        public TinCan.LRSResponse.Base SaveAgentProfile(Document.AgentProfile profile)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", profile.id);
+            queryParams.Add("agent", profile.agent.toJSON(version));
+
+            return SaveDocument("agents/profile", queryParams, profile);
+        }
+        public TinCan.LRSResponse.Base DeleteAgentProfile(Document.AgentProfile profile)
+        {
+            var queryParams = new Dictionary<String, String>();
+            queryParams.Add("profileId", profile.id);
+            queryParams.Add("agent", profile.agent.toJSON(version));
+            // TODO: need to pass Etag?
+
+            return DeleteDocument("agents/profile", queryParams);
         }
     }
 }
