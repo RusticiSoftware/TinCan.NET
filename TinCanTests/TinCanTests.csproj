@@ -61,6 +61,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentTest.cs" />
+    <Compile Include="RemoteLRSResourceTest.cs" />
     <Compile Include="RemoteLRSTest.cs" />
     <Compile Include="LanguageMapTest.cs" />
     <Compile Include="VerbTest.cs" />

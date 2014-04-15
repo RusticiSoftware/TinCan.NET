@@ -14,22 +14,12 @@
     limitations under the License.
 */
 using System;
-using System.Net;
+using System.Collections.Generic;
 
 namespace TinCan.LRSResponse
 {
-    //
-    // this isn't abstract because some responses for an LRS won't have content
-    // so in those cases we can get by just returning this base response
-    //
-    public class Base
+    public class ProfileKeys : Base
     {
-        public bool success { get; set; }
-        //public HttpWebResponse httpResponse { get; set; }
-        //public Exception httpException { get; set; }
-
-        // TODO: can we do a generic content property here?
-        // see: http://stackoverflow.com/questions/2587236/generic-property-in-c-sharp
-        // would need to wrap the various possible content types: Document, StatementsResult, About, ?
+        public List<String> content { set; get; }
     }
 }

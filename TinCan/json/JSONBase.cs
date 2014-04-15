@@ -20,6 +20,7 @@ namespace TinCan.json
 {
     public abstract class JSONBase : JSON
     {
+        // TODO: rename methods to ToJObject and ToJSON
         public abstract JObject toJObject(TCAPIVersion version);
 
         public JObject toJObject()

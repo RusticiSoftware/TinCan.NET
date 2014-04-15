@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -42,10 +43,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.cs" />
+    <Compile Include="Agent.cs" />
+    <Compile Include="AgentAccount.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="Document\AgentProfile.cs" />
+    <Compile Include="Document\Base.cs" />
+    <Compile Include="Document\ActivityProfile.cs" />
+    <Compile Include="Document\State.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="LRS.cs" />
     <Compile Include="LRSResponse\Base.cs" />
     <Compile Include="LRSResponse\About.cs" />
+    <Compile Include="LRSResponse\AgentProfile.cs" />
+    <Compile Include="LRSResponse\ActivityProfile.cs" />
+    <Compile Include="LRSResponse\ProfileKeys.cs" />
+    <Compile Include="LRSResponse\State.cs" />
     <Compile Include="RemoteLRS.cs" />
     <Compile Include="json\JSONBase.cs" />
     <Compile Include="json\JSON.cs" />
