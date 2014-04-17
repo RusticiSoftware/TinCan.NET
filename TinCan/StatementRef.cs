@@ -19,32 +19,30 @@ using TinCan.json;
 
 namespace TinCan
 {
-    public class Activity : JSONBase, StatementTarget
+    public class StatementRef : JSONBase, StatementTarget
     {
-        public static readonly String OBJECT_TYPE = "Activity";
+        public static readonly String OBJECT_TYPE = "StatementRef";
         public String ObjectType { get { return OBJECT_TYPE; } }
 
-        public Uri id { get; set; }
-        public ActivityDefinition definition { get; set; }
+        public Nullable<Guid> id { get; set; }
 
-        public Activity() { }
+        public StatementRef() {}
+        public StatementRef(Guid id)
+        {
+            this.id = id;
+        }
 
-        public Activity(StringOfJSON json) : this(json.toJObject()) { }
+        public StatementRef(StringOfJSON json): this(json.toJObject()) {}
 
-        public Activity(JObject jobj)
+        public StatementRef(JObject jobj)
         {
             if (jobj["id"] != null)
             {
-                id = new Uri(jobj.Value<String>("id"));
-            }
-            if (jobj["definition"] != null)
-            {
-                definition = (ActivityDefinition)jobj.Value<JObject>("definition");
+                id = new Guid(jobj.Value<String>("id"));
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
-        {
+        public override JObject toJObject(TCAPIVersion version) {
             JObject result = new JObject();
             result.Add("objectType", ObjectType);
 
@@ -52,17 +50,13 @@ namespace TinCan
             {
                 result.Add("id", id.ToString());
             }
-            if (definition != null)
-            {
-                result.Add("definition", definition.toJObject(version));
-            }
 
             return result;
         }
 
-        public static explicit operator Activity(JObject jobj)
+        public static explicit operator StatementRef(JObject jobj)
         {
-            return new Activity(jobj);
+            return new StatementRef(jobj);
         }
     }
 }

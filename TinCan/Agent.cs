@@ -19,10 +19,10 @@ using TinCan.json;
 
 namespace TinCan
 {
-    public class Agent : StatementTarget
+    public class Agent : JSONBase, StatementTarget
     {
         public static readonly String OBJECT_TYPE = "Agent";
-        public override String ObjectType { get { return OBJECT_TYPE; } }
+        public virtual String ObjectType { get { return OBJECT_TYPE; } }
 
         public String name { get; set; }
         public String mbox { get; set; }

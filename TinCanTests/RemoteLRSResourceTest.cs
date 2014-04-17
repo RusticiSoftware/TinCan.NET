@@ -16,6 +16,7 @@
 namespace TinCanTests
 {
     using System;
+    using System.Collections.Generic;
     using NUnit.Framework;
     using Newtonsoft.Json.Linq;
     using TinCan;
@@ -28,6 +29,12 @@ namespace TinCanTests
         Agent agent;
         Verb verb;
         Activity activity;
+        Activity parent;
+        Context context;
+        Result result;
+        Score score;
+        StatementRef statementRef;
+        SubStatement subStatement;
 
         [SetUp]
         public void Init()
@@ -41,19 +48,53 @@ namespace TinCanTests
             agent = new Agent();
             agent.mbox = "mailto:tincancsharp@tincanapi.com";
 
-            activity = new Activity();
-            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
-            activity.definition = new ActivityDefinition();
-            activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite");
-            //activity.definition.moreInfo = new Uri("http://rusticisoftware.github.io/TinCanCSharp/");
-            activity.definition.name = new LanguageMap();
-            activity.definition.name.Add("en-US", "Tin Can C# Tests");
-            activity.definition.description = new LanguageMap();
-            activity.definition.description.Add("en-US", "Unit test suite for the Tin Can C# library.");
-
             verb = new Verb("http://adlnet.gov/expapi/verbs/experienced");
             verb.display = new LanguageMap();
             verb.display.Add("en-US", "experienced");
+
+            activity = new Activity();
+            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0");
+            activity.definition = new ActivityDefinition();
+            activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test");
+            activity.definition.name = new LanguageMap();
+            activity.definition.name.Add("en-US", "Tin Can C# Tests: Unit 0");
+            activity.definition.description = new LanguageMap();
+            activity.definition.description.Add("en-US", "Unit test 0 in the test suite for the Tin Can C# library.");
+
+            parent = new Activity();
+            parent.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
+            parent.definition = new ActivityDefinition();
+            parent.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite");
+            //parent.definition.moreInfo = new Uri("http://rusticisoftware.github.io/TinCanCSharp/");
+            parent.definition.name = new LanguageMap();
+            parent.definition.name.Add("en-US", "Tin Can C# Tests");
+            parent.definition.description = new LanguageMap();
+            parent.definition.description.Add("en-US", "Unit test suite for the Tin Can C# library.");
+
+            statementRef = new StatementRef(Guid.NewGuid());
+
+            context = new Context();
+            context.registration = Guid.NewGuid();
+            context.statement = statementRef;
+            context.contextActivities = new ContextActivities();
+            context.contextActivities.parent = new List<Activity>();
+            context.contextActivities.parent.Add(parent);
+
+            score = new Score();
+            score.raw = 97;
+            score.scaled = 0.97;
+            score.max = 100;
+            score.min = 0;
+
+            result = new Result();
+            result.score = score;
+            result.success = true;
+            result.completion = true;
+
+            subStatement = new SubStatement();
+            subStatement.actor = agent;
+            subStatement.verb = verb;
+            subStatement.target = parent;
         }
 
         [Test]
@@ -101,6 +142,36 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestSaveStatementStatementRef()
+        {
+            var statement = new Statement();
+            statement.id = Guid.NewGuid();
+            statement.actor = agent;
+            statement.verb = verb;
+            statement.target = statementRef;
+
+            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            Assert.IsTrue(lrsRes.success);
+            Assert.AreEqual(statement, lrsRes.content);
+        }
+
+        [Test]
+        public void TestSaveStatementSubStatement()
+        {
+            var statement = new Statement();
+            statement.id = Guid.NewGuid();
+            statement.actor = agent;
+            statement.verb = verb;
+            statement.target = subStatement;
+
+            Console.WriteLine(statement.toJSON(true));
+
+            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            Assert.IsTrue(lrsRes.success);
+            Assert.AreEqual(statement, lrsRes.content);
+        }
+
+        [Test]
         public void TestRetrieveStatement()
         {
             var statement = new TinCan.Statement();
@@ -108,6 +179,8 @@ namespace TinCanTests
             statement.actor = agent;
             statement.verb = verb;
             statement.target = activity;
+            statement.context = context;
+            statement.result = result;
 
             TinCan.LRSResponse.Statement saveRes = lrs.SaveStatement(statement);
             if (saveRes.success)

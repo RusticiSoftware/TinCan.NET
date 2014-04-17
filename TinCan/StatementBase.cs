@@ -24,6 +24,8 @@ namespace TinCan
         public Agent actor { get; set; }
         public Verb verb { get; set; }
         public StatementTarget target { get; set; }
+        public Result result { get; set; }
+        public Context context { get; set; }
 
         public StatementBase() { }
         public StatementBase(StringOfJSON json) : this(json.toJObject()) { }
@@ -67,6 +69,14 @@ namespace TinCan
                     target = (Activity)jobj.Value<JObject>("object");
                 }
             }
+            if (jobj["result"] != null)
+            {
+                result = (Result)jobj.Value<JObject>("result");
+            }
+            if (jobj["context"] != null)
+            {
+                context = (Context)jobj.Value<JObject>("context");
+            }
         }
 
         public override JObject toJObject(TCAPIVersion version)
@@ -86,6 +96,14 @@ namespace TinCan
             if (target != null)
             {
                 result.Add("object", target.toJObject(version));
+            }
+            if (this.result != null)
+            {
+                result.Add("result", this.result.toJObject(version));
+            }
+            if (this.context != null)
+            {
+                result.Add("context", context.toJObject(version));
             }
 
             return result;

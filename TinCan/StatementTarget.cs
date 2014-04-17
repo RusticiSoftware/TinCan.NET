@@ -14,18 +14,17 @@
     limitations under the License.
 */
 using System;
-using TinCan.json;
+using Newtonsoft.Json.Linq;
 
 namespace TinCan
 {
-    public abstract class StatementTarget : JSONBase
+    public interface StatementTarget
     {
-        private String OBJECT_TYPE;
+        JObject toJObject(TCAPIVersion version);
 
-        public virtual String ObjectType
+        String ObjectType
         {
-            get { return OBJECT_TYPE; }
-            //private set { OBJECT_TYPE = value; }
+            get;
         }
     }
 }
