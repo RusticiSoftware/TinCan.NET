@@ -337,14 +337,14 @@ namespace TinCan
             req.queryParams = new Dictionary<String, String>();
             req.resource = "statements";
 
-            if (statement.id != null)
+            if (statement.id == null)
             {
-                req.method = "PUT";
-                req.queryParams.Add("statementId", statement.id.ToString());
+                req.method = "POST";
             }
             else
             {
-                req.method = "POST";
+                req.method = "PUT";
+                req.queryParams.Add("statementId", statement.id.ToString());
             }
 
             req.contentType = "application/json";
@@ -360,7 +360,8 @@ namespace TinCan
                     return r;
                 }
 
-                // TODO: need to update the referenced object with the new id
+                var ids = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+                statement.id = new Guid((String)ids[0]);
             }
             else {
                 if (res.status != HttpStatusCode.NoContent)

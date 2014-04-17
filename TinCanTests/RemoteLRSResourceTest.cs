@@ -26,6 +26,7 @@ namespace TinCanTests
     {
         RemoteLRS lrs;
         Agent agent;
+        Verb verb;
         Activity activity;
 
         [SetUp]
@@ -41,7 +42,18 @@ namespace TinCanTests
             agent.mbox = "mailto:tincancsharp@tincanapi.com";
 
             activity = new Activity();
-            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Activity");
+            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
+            activity.definition = new ActivityDefinition();
+            activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite");
+            //activity.definition.moreInfo = new Uri("http://rusticisoftware.github.io/TinCanCSharp/");
+            activity.definition.name = new LanguageMap();
+            activity.definition.name.Add("en-US", "Tin Can C# Tests");
+            activity.definition.description = new LanguageMap();
+            activity.definition.description.Add("en-US", "Unit test suite for the Tin Can C# library.");
+
+            verb = new Verb("http://adlnet.gov/expapi/verbs/experienced");
+            verb.display = new LanguageMap();
+            verb.display.Add("en-US", "experienced");
         }
 
         [Test]
@@ -63,21 +75,51 @@ namespace TinCanTests
         [Test]
         public void TestSaveStatement()
         {
-            var statement = new TinCan.Statement();
+            var statement = new Statement();
             statement.actor = agent;
-            statement.verb = new TinCan.Verb("http://adlnet.gov/expapi/verbs/experienced");
+            statement.verb = verb;
             statement.target = activity;
 
             TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
+            Assert.AreEqual(statement, lrsRes.content);
+            Assert.IsNotNull(lrsRes.content.id);
+        }
+
+        [Test]
+        public void TestSaveStatementWithID()
+        {
+            var statement = new Statement();
+            statement.id = Guid.NewGuid();
+            statement.actor = agent;
+            statement.verb = verb;
+            statement.target = activity;
+
+            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            Assert.IsTrue(lrsRes.success);
+            Assert.AreEqual(statement, lrsRes.content);
         }
 
         [Test]
         public void TestRetrieveStatement()
         {
-            TinCan.LRSResponse.Statement lrsRes = lrs.RetrieveStatement(new Guid("20ae0c9e-4658-4e0a-9320-381b7c49bb09"));
-            Assert.IsTrue(lrsRes.success);
-            Console.WriteLine("TestRetrieveStatement - statement: " + lrsRes.content.toJSON(lrs.version));
+            var statement = new TinCan.Statement();
+            statement.id = Guid.NewGuid();
+            statement.actor = agent;
+            statement.verb = verb;
+            statement.target = activity;
+
+            TinCan.LRSResponse.Statement saveRes = lrs.SaveStatement(statement);
+            if (saveRes.success)
+            {
+                TinCan.LRSResponse.Statement retRes = lrs.RetrieveStatement(saveRes.content.id.Value);
+                Assert.IsTrue(retRes.success);
+                Console.WriteLine("TestRetrieveStatement - statement: " + retRes.content.toJSON(true));
+            }
+            else
+            {
+                // TODO: skipped?
+            }
         }
 
         [Test]

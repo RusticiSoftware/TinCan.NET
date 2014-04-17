@@ -46,8 +46,11 @@
     <Compile Include="Agent.cs" />
     <Compile Include="AgentAccount.cs" />
     <Compile Include="Activity.cs" />
-    <Compile Include="LRSResponse\Statement.cs" />
+    <Compile Include="ActivityDefinition.cs" />
     <Compile Include="Statement.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="LRSResponse\Statement.cs" />
+    <Compile Include="StatementBase.cs" />
     <Compile Include="StatementsResult.cs" />
     <Compile Include="Document\AgentProfile.cs" />
     <Compile Include="Document\Base.cs" />

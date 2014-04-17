@@ -21,10 +21,11 @@ namespace TinCan
 {
     public class Activity : StatementTarget
     {
-        private String objectType = "Activity";
+        public static readonly String OBJECT_TYPE = "Activity";
+        public override String ObjectType { get { return OBJECT_TYPE; } }
 
         public Uri id { get; set; }
-        //public ActivityDefinition definition { get; set; }
+        public ActivityDefinition definition { get; set; }
 
         public Activity() { }
 
@@ -36,19 +37,32 @@ namespace TinCan
             {
                 id = new Uri(jobj.Value<String>("id"));
             }
+            if (jobj["definition"] != null)
+            {
+                definition = (ActivityDefinition)jobj.Value<JObject>("definition");
+            }
         }
 
         public override JObject toJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
-            result.Add("objectType", objectType);
+            result.Add("objectType", ObjectType);
 
             if (id != null)
             {
                 result.Add("id", id.ToString());
             }
+            if (definition != null)
+            {
+                result.Add("definition", definition.toJObject(version));
+            }
 
             return result;
+        }
+
+        public static explicit operator Activity(JObject jobj)
+        {
+            return new Activity(jobj);
         }
     }
 }

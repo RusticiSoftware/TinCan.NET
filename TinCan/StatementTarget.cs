@@ -13,18 +13,19 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using System;
 using TinCan.json;
 
 namespace TinCan
 {
     public abstract class StatementTarget : JSONBase
     {
-        private string objectType;
+        private String OBJECT_TYPE;
 
-        public virtual string ObjectType
+        public virtual String ObjectType
         {
-            get { return objectType; }
-            private set { objectType = value; }
+            get { return OBJECT_TYPE; }
+            //private set { OBJECT_TYPE = value; }
         }
     }
 }

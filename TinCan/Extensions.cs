@@ -52,5 +52,10 @@ namespace TinCan
         {
             return map.Count > 0 ? false : true;
         }
+
+        public static explicit operator Extensions(JObject jobj)
+        {
+            return new Extensions(jobj);
+        }
     }
 }

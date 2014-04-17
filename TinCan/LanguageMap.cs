@@ -27,6 +27,18 @@ namespace TinCan
         public LanguageMap() {
             map = new Dictionary<string,string>();
         }
+        public LanguageMap(Dictionary<String, String> map)
+        {
+            this.map = map;
+        }
+
+        public LanguageMap(StringOfJSON json) : this(json.toJObject()) { }
+        public LanguageMap(JObject jobj) : this()
+        {
+            foreach (KeyValuePair<String,JToken> entry in jobj) {
+                map.Add(entry.Key, (String)entry.Value);
+            }
+        }
 
         public override JObject toJObject(TCAPIVersion version)
         {
@@ -42,6 +54,16 @@ namespace TinCan
         public bool isEmpty()
         {
             return map.Count > 0 ? false : true;
+        }
+
+        public void Add(String lang, String value)
+        {
+            this.map.Add(lang, value);
+        }
+
+        public static explicit operator LanguageMap(JObject jobj)
+        {
+            return new LanguageMap(jobj);
         }
     }
 }

@@ -14,52 +14,33 @@
     limitations under the License.
 */
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using TinCan.json;
 
 namespace TinCan
 {
-    public class Statement : JSONBase
+    public class Statement : StatementBase
     {
         public Nullable<Guid> id { get; set; }
-        public Agent actor { get; set; }
-        public Verb verb { get; set; }
-        public StatementTarget target { get; set; }
 
-        public Statement() { }
-
+        public Statement() : base() { }
         public Statement(StringOfJSON json) : this(json.toJObject()) { }
 
-        public Statement(JObject jobj)
-        {
-            if (jobj["actor"] != null)
+        public Statement(JObject jobj) : base(jobj) {
+            if (jobj["id"] != null)
             {
-                actor = jobj.Value<Agent>("actor");
+                id = new Guid(jobj.Value<String>("id"));
             }
         }
 
         public override JObject toJObject(TCAPIVersion version)
         {
-            JObject result = new JObject();
+            JObject result = base.toJObject(version);
 
             if (id != null)
             {
                 result.Add("id", id.ToString());
-            }
-
-            if (actor != null)
-            {
-                result.Add("actor", actor.toJObject(version));
-            }
-
-            if (verb != null)
-            {
-                result.Add("verb", verb.toJObject(version));
-            }
-
-            if (target != null)
-            {
-                result.Add("object", target.toJObject(version));
             }
 
             return result;

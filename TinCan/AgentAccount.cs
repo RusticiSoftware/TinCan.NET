@@ -61,5 +61,10 @@ namespace TinCan
 
             return result;
         }
+
+        public static explicit operator AgentAccount(JObject jobj)
+        {
+            return new AgentAccount(jobj);
+        }
     }
 }

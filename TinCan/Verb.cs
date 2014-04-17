@@ -34,6 +34,10 @@ namespace TinCan
             {
                 id = new Uri(jobj.Value<String>("id"));
             }
+            if (jobj["display"] != null)
+            {
+                display = (LanguageMap)jobj.Value<JObject>("display");
+            }
         }
 
         public Verb(Uri uri)
@@ -59,6 +63,11 @@ namespace TinCan
             }
 
             return result;
+        }
+
+        public static explicit operator Verb(JObject jobj)
+        {
+            return new Verb(jobj);
         }
     }
 }

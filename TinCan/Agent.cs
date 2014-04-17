@@ -21,7 +21,8 @@ namespace TinCan
 {
     public class Agent : StatementTarget
     {
-        private String objectType = "Agent";
+        public static readonly String OBJECT_TYPE = "Agent";
+        public override String ObjectType { get { return OBJECT_TYPE; } }
 
         public String name { get; set; }
         public String mbox { get; set; }
@@ -35,23 +36,62 @@ namespace TinCan
 
         public Agent(JObject jobj)
         {
+            if (jobj["name"] != null)
+            {
+                name = jobj.Value<String>("name");
+            }
+
             if (jobj["mbox"] != null)
             {
                 mbox = jobj.Value<String>("mbox");
+            }
+            if (jobj["mbox_sha1sum"] != null)
+            {
+                mbox_sha1sum = jobj.Value<String>("mbox_sha1sum");
+            }
+            if (jobj["openid"] != null)
+            {
+                openid = jobj.Value<String>("openid");
+            }
+            if (jobj["account"] != null)
+            {
+                account = (AgentAccount)jobj.Value<JObject>("account");
             }
         }
 
         public override JObject toJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
-            result.Add("objectType", objectType);
+            result.Add("objectType", ObjectType);
 
-            if (mbox != null)
+            if (name != null)
+            {
+                result.Add("name", name);
+            }
+
+            if (account != null)
+            {
+                result.Add("account", account.toJObject(version));
+            }
+            else if (mbox != null)
             {
                 result.Add("mbox", mbox);
             }
+            else if (mbox_sha1sum != null)
+            {
+                result.Add("mbox_sha1sum", mbox_sha1sum);
+            }
+            else if (openid != null)
+            {
+                result.Add("openid", openid);
+            }
 
             return result;
+        }
+
+        public static explicit operator Agent(JObject jobj)
+        {
+            return new Agent(jobj);
         }
     }
 }
