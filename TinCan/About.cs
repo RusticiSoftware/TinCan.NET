@@ -33,9 +33,9 @@ namespace TinCan
             if (jobj["version"] != null)
             {
                 version = new List<TCAPIVersion>();
-                foreach (var item in jobj.Value<JArray>("version"))
+                foreach (String item in jobj.Value<JArray>("version"))
                 {
-                    version.Add(TCAPIVersion.FromString((String)item));
+                    version.Add((TCAPIVersion)item);
                 }
             }
             if (jobj["extensions"] != null)

@@ -21,11 +21,14 @@ namespace TinCan
 {
     public abstract class StatementBase : JSONBase
     {
+        private const String ISODateTimeFormat = "o";
+
         public Agent actor { get; set; }
         public Verb verb { get; set; }
         public StatementTarget target { get; set; }
         public Result result { get; set; }
         public Context context { get; set; }
+        public Nullable<DateTime> timestamp { get; set; }
 
         public StatementBase() { }
         public StatementBase(StringOfJSON json) : this(json.toJObject()) { }
@@ -77,6 +80,10 @@ namespace TinCan
             {
                 context = (Context)jobj.Value<JObject>("context");
             }
+            if (jobj["timestamp"] != null)
+            {
+                timestamp = jobj.Value<DateTime>("timestamp");
+            }
         }
 
         public override JObject toJObject(TCAPIVersion version)
@@ -104,6 +111,10 @@ namespace TinCan
             if (this.context != null)
             {
                 result.Add("context", context.toJObject(version));
+            }
+            if (timestamp != null)
+            {
+                result.Add("timestamp", timestamp.Value.ToString(ISODateTimeFormat));
             }
 
             return result;

@@ -14,6 +14,7 @@
     limitations under the License.
 */
 using System;
+using System.Xml;
 using Newtonsoft.Json.Linq;
 using TinCan.json;
 
@@ -24,7 +25,7 @@ namespace TinCan
         public Nullable<Boolean> completion { get; set; }
         public Nullable<Boolean> success { get; set; }
         public String response { get; set; }
-        //public DateTime duration { get; set; }
+        public TimeSpan duration { get; set; }
         public Score score { get; set; }
         public Extensions extensions { get; set; }
 
@@ -45,6 +46,10 @@ namespace TinCan
             if (jobj["response"] != null)
             {
                 response = jobj.Value<String>("response");
+            }
+            if (jobj["duration"] != null)
+            {
+                duration = XmlConvert.ToTimeSpan(jobj.Value<String>("duration"));
             }
             if (jobj["score"] != null)
             {
@@ -70,6 +75,10 @@ namespace TinCan
             if (response != null)
             {
                 result.Add("response", response);
+            }
+            if (duration != null)
+            {
+                result.Add("duration", XmlConvert.ToString(duration));
             }
             if (score != null)
             {

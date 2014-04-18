@@ -17,6 +17,7 @@ namespace TinCanTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Xml;
     using NUnit.Framework;
     using Newtonsoft.Json.Linq;
     using TinCan;
@@ -90,6 +91,7 @@ namespace TinCanTests
             result.score = score;
             result.success = true;
             result.completion = true;
+            result.duration = new TimeSpan(1, 2, 16, 43);
 
             subStatement = new SubStatement();
             subStatement.actor = agent;
@@ -131,7 +133,7 @@ namespace TinCanTests
         public void TestSaveStatementWithID()
         {
             var statement = new Statement();
-            statement.id = Guid.NewGuid();
+            statement.Stamp();
             statement.actor = agent;
             statement.verb = verb;
             statement.target = activity;
@@ -145,7 +147,7 @@ namespace TinCanTests
         public void TestSaveStatementStatementRef()
         {
             var statement = new Statement();
-            statement.id = Guid.NewGuid();
+            statement.Stamp();
             statement.actor = agent;
             statement.verb = verb;
             statement.target = statementRef;
@@ -159,7 +161,7 @@ namespace TinCanTests
         public void TestSaveStatementSubStatement()
         {
             var statement = new Statement();
-            statement.id = Guid.NewGuid();
+            statement.Stamp();
             statement.actor = agent;
             statement.verb = verb;
             statement.target = subStatement;
@@ -175,7 +177,7 @@ namespace TinCanTests
         public void TestRetrieveStatement()
         {
             var statement = new TinCan.Statement();
-            statement.id = Guid.NewGuid();
+            statement.Stamp();
             statement.actor = agent;
             statement.verb = verb;
             statement.target = activity;

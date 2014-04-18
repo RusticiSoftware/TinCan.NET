@@ -45,7 +45,7 @@ namespace TinCan
             return supported;
         }
 
-        public static TCAPIVersion FromString(String vStr)
+        public static explicit operator TCAPIVersion(String vStr)
         {
             var s = GetSupported();
             if (!s.ContainsKey(vStr))

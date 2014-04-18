@@ -14,7 +14,6 @@
     limitations under the License.
 */
 using System;
-using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using TinCan.json;
 
@@ -22,7 +21,13 @@ namespace TinCan
 {
     public class Statement : StatementBase
     {
+        private const String ISODateTimeFormat = "o";
+
         public Nullable<Guid> id { get; set; }
+        public Nullable<DateTime> stored { get; set; }
+        public Agent authority { get; set; }
+        public TCAPIVersion version { get; set; }
+        //public List<Attachment> attachments { get; set; }
 
         public Statement() : base() { }
         public Statement(StringOfJSON json) : this(json.toJObject()) { }
@@ -31,6 +36,18 @@ namespace TinCan
             if (jobj["id"] != null)
             {
                 id = new Guid(jobj.Value<String>("id"));
+            }
+            if (jobj["stored"] != null)
+            {
+                stored = jobj.Value<DateTime>("stored");
+            }
+            if (jobj["authority"] != null)
+            {
+                authority = (Agent)jobj.Value<JObject>("authority");
+            }
+            if (jobj["version"] != null)
+            {
+                version = (TCAPIVersion)jobj.Value<String>("version");
             }
         }
 
@@ -42,8 +59,32 @@ namespace TinCan
             {
                 result.Add("id", id.ToString());
             }
+            if (stored != null)
+            {
+                result.Add("stored", stored.Value.ToString(ISODateTimeFormat));
+            }
+            if (authority != null)
+            {
+                result.Add("authority", authority.toJObject(version));
+            }
+            if (version != null)
+            {
+                result.Add("version", version.ToString());
+            }
 
             return result;
+        }
+
+        public void Stamp()
+        {
+            if (id == null)
+            {
+                id = Guid.NewGuid();
+            }
+            if (timestamp == null)
+            {
+                timestamp = DateTime.UtcNow;
+            }
         }
     }
 }
