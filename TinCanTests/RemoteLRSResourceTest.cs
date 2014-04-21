@@ -174,6 +174,29 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestSaveStatements()
+        {
+            var statement1 = new Statement();
+            statement1.actor = agent;
+            statement1.verb = verb;
+            statement1.target = parent;
+
+            var statement2 = new Statement();
+            statement2.actor = agent;
+            statement2.verb = verb;
+            statement2.target = activity;
+            statement2.context = context;
+
+            var statements = new List<Statement>();
+            statements.Add(statement1);
+            statements.Add(statement2);
+
+            TinCan.LRSResponse.StatementsResult lrsRes = lrs.SaveStatements(statements);
+            Assert.IsTrue(lrsRes.success);
+            // TODO: check statements match and ids not null
+        }
+
+        [Test]
         public void TestRetrieveStatement()
         {
             var statement = new TinCan.Statement();

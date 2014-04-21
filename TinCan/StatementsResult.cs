@@ -25,8 +25,13 @@ namespace TinCan
         public List<Statement> statements { get; set; }
         public String more { get; set; }
 
+        public StatementsResult() {}
         public StatementsResult(String str) : this(new StringOfJSON(str)) {}
         public StatementsResult(StringOfJSON json) : this(json.toJObject()) {}
+        public StatementsResult(List<Statement> statements)
+        {
+            this.statements = statements;
+        }
 
         public StatementsResult(JObject jobj)
         {

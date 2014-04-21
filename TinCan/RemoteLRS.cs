@@ -379,7 +379,38 @@ namespace TinCan
         }
         public TinCan.LRSResponse.StatementsResult SaveStatements(List<Statement> statements)
         {
-            throw new NotImplementedException("RemoteLRS.SaveStatements");
+            var r = new LRSResponse.StatementsResult();
+
+            var req = new MyHTTPRequest();
+            req.resource = "statements";
+            req.method = "POST";
+            req.contentType = "application/json";
+
+            var jarray = new JArray();
+            foreach (Statement st in statements)
+            {
+                jarray.Add(st.toJObject(version));
+            }
+            req.content = System.Text.Encoding.UTF8.GetBytes(jarray.ToString());
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            var ids = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+            for (int i = 0; i < ids.Count; i++)
+            {
+                statements[i].id = new Guid((String)ids[i]);
+            }
+
+            r.success = true;
+            r.content = new StatementsResult(statements);
+
+            return r;
         }
         public TinCan.LRSResponse.Statement RetrieveStatement(Guid id)
         {
