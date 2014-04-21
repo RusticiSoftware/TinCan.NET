@@ -26,7 +26,7 @@ namespace TinCan
         TinCan.LRSResponse.StatementsResult SaveStatements(List<Statement> statements);
         TinCan.LRSResponse.Statement RetrieveStatement(Guid id);
         TinCan.LRSResponse.Statement RetrieveVoidedStatement(Guid id);
-        TinCan.LRSResponse.StatementsResult QueryStatements();
+        TinCan.LRSResponse.StatementsResult QueryStatements(StatementsQuery query);
         TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result);
 
         TinCan.LRSResponse.ProfileKeys RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);

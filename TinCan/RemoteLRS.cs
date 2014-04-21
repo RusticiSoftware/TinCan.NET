@@ -426,9 +426,27 @@ namespace TinCan
 
             return GetStatement(queryParams);
         }
-        public TinCan.LRSResponse.StatementsResult QueryStatements()
+        public TinCan.LRSResponse.StatementsResult QueryStatements(StatementsQuery query)
         {
-            throw new NotImplementedException("RemoteLRS.QueryStatements");
+            var r = new LRSResponse.StatementsResult();
+
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = "statements";
+            req.queryParams = query.ToParameterMap(version);
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+            r.content = new StatementsResult(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+
+            return r;
         }
         public TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result)
         {

@@ -49,6 +49,8 @@
     <Compile Include="ActivityDefinition.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="ContextActivities.cs" />
+    <Compile Include="StatementsQueryResultFormat.cs" />
+    <Compile Include="StatementsQuery.cs" />
     <Compile Include="SubStatement.cs" />
     <Compile Include="StatementRef.cs" />
     <Compile Include="Result.cs" />

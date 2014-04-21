@@ -221,6 +221,23 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestQueryStatements()
+        {
+            var query = new TinCan.StatementsQuery();
+            query.agent = agent;
+            query.verbId = verb.id;
+            query.activityId = parent.id;
+            query.relatedActivities = true;
+            query.relatedAgents = true;
+            query.format = StatementsQueryResultFormat.IDS;
+            query.limit = 10;
+
+            TinCan.LRSResponse.StatementsResult lrsRes = lrs.QueryStatements(query);
+            Assert.IsTrue(lrsRes.success);
+            Console.WriteLine("TestQueryStatements - statement count: " + lrsRes.content.statements.Count);
+        }
+
+        [Test]
         public void TestRetrieveStateIds()
         {
             TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveStateIds(activity, agent);
