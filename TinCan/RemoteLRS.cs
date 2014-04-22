@@ -52,8 +52,16 @@ namespace TinCan
 
         private MyHTTPResponse MakeSyncRequest(MyHTTPRequest req)
         {
-            // TODO: handle full path resources
-            var url = endpoint.ToString() + req.resource;
+            String url;
+            if (req.resource.StartsWith("http", StringComparison.InvariantCultureIgnoreCase))
+            {
+                url = req.resource;
+            }
+            else
+            {
+                url = endpoint.ToString() + req.resource;
+            }
+
             if (req.queryParams != null)
             {
                 String qs = "";
@@ -450,7 +458,24 @@ namespace TinCan
         }
         public TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result)
         {
-            throw new NotImplementedException("RemoteLRS.MoreStatements");
+            var r = new LRSResponse.StatementsResult();
+
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = endpoint.GetLeftPart(UriPartial.Authority) + result.more;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                // TODO: capture the failure reason
+                r.success = false;
+                return r;
+            }
+
+            r.success = true;
+            r.content = new StatementsResult(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+
+            return r;
         }
 
         // TODO: since param

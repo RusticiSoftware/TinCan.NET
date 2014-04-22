@@ -238,6 +238,26 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestMoreStatements()
+        {
+            var query = new TinCan.StatementsQuery();
+            query.format = StatementsQueryResultFormat.IDS;
+            query.limit = 2;
+
+            TinCan.LRSResponse.StatementsResult queryRes = lrs.QueryStatements(query);
+            if (queryRes.success && queryRes.content.more != null)
+            {
+                TinCan.LRSResponse.StatementsResult moreRes = lrs.MoreStatements(queryRes.content);
+                Assert.IsTrue(moreRes.success);
+                Console.WriteLine("TestMoreStatements - statement count: " + moreRes.content.statements.Count);
+            }
+            else
+            {
+                // TODO: skipped?
+            }
+        }
+
+        [Test]
         public void TestRetrieveStateIds()
         {
             TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveStateIds(activity, agent);
