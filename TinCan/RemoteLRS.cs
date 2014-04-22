@@ -80,7 +80,6 @@ namespace TinCan
             }
 
             // TODO: handle special properties we recognize, such as content type, modified since, etc.
-            Console.WriteLine("RemoteLRS.MakeSyncRequest - url: " + url);
             var webReq = (HttpWebRequest) WebRequest.Create(url);
             webReq.Method = req.method;
 
@@ -130,18 +129,14 @@ namespace TinCan
             }
 
             resp.status = webResp.StatusCode;
-            Console.WriteLine("RemoteLRS.MakeSyncRequest - status: " + webResp.StatusCode);
             resp.contentType = webResp.ContentType;
-            Console.WriteLine("RemoteLRS.MakeSyncRequest - content type: " + webResp.ContentType);
             resp.etag = webResp.Headers.Get("Etag");
             resp.lastModified = webResp.LastModified;
-            Console.WriteLine("RemoteLRS.MakeSyncRequest - content length: " + webResp.ContentLength);
 
             using (var stream = webResp.GetResponseStream())
             {
                 resp.content = ReadFully(stream, (int)webResp.ContentLength);
             }
-            Console.WriteLine("RemoteLRS.MakeSyncRequest - content: " + System.Text.Encoding.UTF8.GetString(resp.content));
 
             return resp;
         }
