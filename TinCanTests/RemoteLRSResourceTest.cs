@@ -42,9 +42,9 @@ namespace TinCanTests
         {
             Console.WriteLine("Running " + TestContext.CurrentContext.Test.FullName);
             lrs = new RemoteLRS(
-                "http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox",
-                "_tJiERENtN2PlnaG-b0",
-                "Vs731c7qXM_wRUsZFu0"
+                "",
+                "",
+                ""
             );
 
             agent = new Agent();
