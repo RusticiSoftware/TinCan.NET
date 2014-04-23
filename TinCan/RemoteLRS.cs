@@ -168,7 +168,7 @@ namespace TinCan
                 else
                 {
                     resp = new MyHTTPResponse();
-                    resp.content = System.Text.Encoding.UTF8.GetBytes("Web exception without '.Response'");
+                    resp.content = Encoding.UTF8.GetBytes("Web exception without '.Response'");
                 }
                 resp.ex = ex;
             }
@@ -268,7 +268,7 @@ namespace TinCan
 
             r.success = true;
 
-            var keys = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+            var keys = JArray.Parse(Encoding.UTF8.GetString(res.content));
             if (keys.Count > 0) {
                 r.content = new List<String>();
                 foreach (JToken key in keys) {
@@ -346,7 +346,7 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new Statement(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+            r.content = new Statement(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
@@ -369,7 +369,7 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new About(System.Text.Encoding.UTF8.GetString(res.content));
+            r.content = new About(Encoding.UTF8.GetString(res.content));
 
             return r;
         }
@@ -392,7 +392,7 @@ namespace TinCan
             }
 
             req.contentType = "application/json";
-            req.content = System.Text.Encoding.UTF8.GetBytes(statement.toJSON(version));
+            req.content = Encoding.UTF8.GetBytes(statement.toJSON(version));
 
             var res = MakeSyncRequest(req);
             if (statement.id == null)
@@ -405,7 +405,7 @@ namespace TinCan
                     return r;
                 }
 
-                var ids = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+                var ids = JArray.Parse(Encoding.UTF8.GetString(res.content));
                 statement.id = new Guid((String)ids[0]);
             }
             else {
@@ -437,7 +437,7 @@ namespace TinCan
             {
                 jarray.Add(st.toJObject(version));
             }
-            req.content = System.Text.Encoding.UTF8.GetBytes(jarray.ToString());
+            req.content = Encoding.UTF8.GetBytes(jarray.ToString());
 
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)
@@ -448,7 +448,7 @@ namespace TinCan
                 return r;
             }
 
-            var ids = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+            var ids = JArray.Parse(Encoding.UTF8.GetString(res.content));
             for (int i = 0; i < ids.Count; i++)
             {
                 statements[i].id = new Guid((String)ids[i]);
@@ -492,7 +492,7 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new StatementsResult(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+            r.content = new StatementsResult(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
@@ -518,7 +518,7 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new StatementsResult(new json.StringOfJSON(System.Text.Encoding.UTF8.GetString(res.content)));
+            r.content = new StatementsResult(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
