@@ -48,6 +48,21 @@ namespace TinCan
             public byte[] content { get; set; }
             public DateTime lastModified { get; set; }
             public String etag { get; set; }
+            public Exception ex { get; set; }
+
+            public MyHTTPResponse() { }
+            public MyHTTPResponse(HttpWebResponse webResp)
+            {
+                status = webResp.StatusCode;
+                contentType = webResp.ContentType;
+                etag = webResp.Headers.Get("Etag");
+                lastModified = webResp.LastModified;
+
+                using (var stream = webResp.GetResponseStream())
+                {
+                    content = ReadFully(stream, (int)webResp.ContentLength);
+                }
+            }
         }
 
         private MyHTTPResponse MakeSyncRequest(MyHTTPRequest req)
@@ -80,7 +95,7 @@ namespace TinCan
             }
 
             // TODO: handle special properties we recognize, such as content type, modified since, etc.
-            var webReq = (HttpWebRequest) WebRequest.Create(url);
+            var webReq = (HttpWebRequest)WebRequest.Create(url);
             webReq.Method = req.method;
 
             webReq.Headers.Add("X-Experience-API-Version", version.ToString());
@@ -114,28 +129,30 @@ namespace TinCan
                 }
             }
 
-            var resp = new MyHTTPResponse();
-
-            HttpWebResponse webResp;
+            MyHTTPResponse resp;
 
             try
             {
-                webResp = (HttpWebResponse)webReq.GetResponse();
+                using (var webResp = (HttpWebResponse)webReq.GetResponse())
+                {
+                    resp = new MyHTTPResponse(webResp);
+                }
             }
             catch (WebException ex)
             {
-                webResp = (HttpWebResponse)ex.Response;
-                // TODO: need to grab something from the exception, but what?
-            }
-
-            resp.status = webResp.StatusCode;
-            resp.contentType = webResp.ContentType;
-            resp.etag = webResp.Headers.Get("Etag");
-            resp.lastModified = webResp.LastModified;
-
-            using (var stream = webResp.GetResponseStream())
-            {
-                resp.content = ReadFully(stream, (int)webResp.ContentLength);
+                if (ex.Response != null)
+                {
+                    using (var webResp = (HttpWebResponse)ex.Response)
+                    {
+                        resp = new MyHTTPResponse(webResp);
+                    }
+                }
+                else
+                {
+                    resp = new MyHTTPResponse();
+                    resp.content = System.Text.Encoding.UTF8.GetBytes("Web exception without '.Response'");
+                }
+                resp.ex = ex;
             }
 
             return resp;
@@ -194,36 +211,6 @@ namespace TinCan
             return ret;
         }
 
-        private TinCan.LRSResponse.ProfileKeys GetProfileKeys(String resource, Dictionary<String, String> queryParams)
-        {
-            var r = new LRSResponse.ProfileKeys();
-
-            var req = new MyHTTPRequest();
-            req.method = "GET";
-            req.resource = resource;
-            req.queryParams = queryParams;
-
-            var res = MakeSyncRequest(req);
-            if (res.status != HttpStatusCode.OK)
-            {
-                // TODO: capture the failure reason
-                r.success = false;
-                return r;
-            }
-
-            r.success = true;
-
-            var keys = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
-            if (keys.Count > 0) {
-                r.content = new List<String>();
-                foreach (JToken key in keys) {
-                    r.content.Add((String)key);
-                }
-            }
-
-            return r;
-        }
-
         private MyHTTPResponse GetDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
         {
             var req = new MyHTTPRequest();
@@ -243,6 +230,37 @@ namespace TinCan
             return res;
         }
 
+        private TinCan.LRSResponse.ProfileKeys GetProfileKeys(String resource, Dictionary<String, String> queryParams)
+        {
+            var r = new LRSResponse.ProfileKeys();
+
+            var req = new MyHTTPRequest();
+            req.method = "GET";
+            req.resource = resource;
+            req.queryParams = queryParams;
+
+            var res = MakeSyncRequest(req);
+            if (res.status != HttpStatusCode.OK)
+            {
+                r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
+                return r;
+            }
+
+            r.success = true;
+
+            var keys = JArray.Parse(System.Text.Encoding.UTF8.GetString(res.content));
+            if (keys.Count > 0) {
+                r.content = new List<String>();
+                foreach (JToken key in keys) {
+                    r.content.Add((String)key);
+                }
+            }
+
+            return r;
+        }
+
         private TinCan.LRSResponse.Base SaveDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
         {
             var r = new LRSResponse.Base();
@@ -257,8 +275,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.NoContent)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -279,8 +298,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.NoContent)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -301,8 +321,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -324,6 +345,8 @@ namespace TinCan
             if (res.status != HttpStatusCode.OK)
             {
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -358,8 +381,9 @@ namespace TinCan
             {
                 if (res.status != HttpStatusCode.OK)
                 {
-                    // TODO: capture the failure reason
                     r.success = false;
+                    r.httpException = res.ex;
+                    r.SetErrMsgFromBytes(res.content);
                     return r;
                 }
 
@@ -369,8 +393,9 @@ namespace TinCan
             else {
                 if (res.status != HttpStatusCode.NoContent)
                 {
-                    // TODO: capture the failure reason
                     r.success = false;
+                    r.httpException = res.ex;
+                    r.SetErrMsgFromBytes(res.content);
                     return r;
                 }
             }
@@ -399,8 +424,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -441,8 +467,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -462,8 +489,9 @@ namespace TinCan
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)
             {
-                // TODO: capture the failure reason
                 r.success = false;
+                r.httpException = res.ex;
+                r.SetErrMsgFromBytes(res.content);
                 return r;
             }
 
@@ -503,13 +531,12 @@ namespace TinCan
             var resp = GetDocument("activities/state", queryParams, state);
             if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
             {
-                // TODO: capture message from resp.content?
                 r.success = false;
+                r.httpException = resp.ex;
+                r.SetErrMsgFromBytes(resp.content);
+                return r;
             }
-            else
-            {
-                r.success = true;
-            }
+            r.success = true;
 
             return r;
         }
@@ -571,13 +598,12 @@ namespace TinCan
             var resp = GetDocument("activities/profile", queryParams, profile);
             if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
             {
-                // TODO: capture message from resp.content?
                 r.success = false;
+                r.httpException = resp.ex;
+                r.SetErrMsgFromBytes(resp.content);
+                return r;
             }
-            else
-            {
-                r.success = true;
-            }
+            r.success = true;
 
             return r;
         }
@@ -622,13 +648,12 @@ namespace TinCan
             var resp = GetDocument("agents/profile", queryParams, profile);
             if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
             {
-                // TODO: capture message from resp.content?
                 r.success = false;
+                r.httpException = resp.ex;
+                r.SetErrMsgFromBytes(resp.content);
+                return r;
             }
-            else
-            {
-                r.success = true;
-            }
+            r.success = true;
 
             return r;
         }

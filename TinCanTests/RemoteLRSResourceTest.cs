@@ -113,6 +113,7 @@ namespace TinCanTests
 
             TinCan.LRSResponse.About lrsRes = lrs.About();
             Assert.IsFalse(lrsRes.success);
+            Console.WriteLine("TestAboutFailure - errMsg: " + lrsRes.errMsg);
         }
 
         [Test]

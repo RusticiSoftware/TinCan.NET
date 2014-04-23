@@ -13,6 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using System;
 
 namespace TinCan.LRSResponse
 {
@@ -23,11 +24,12 @@ namespace TinCan.LRSResponse
     public class Base
     {
         public bool success { get; set; }
-        //public HttpWebResponse httpResponse { get; set; }
-        //public Exception httpException { get; set; }
+        public Exception httpException { get; set; }
+        public String errMsg { get; set; }
 
-        // TODO: can we do a generic content property here?
-        // see: http://stackoverflow.com/questions/2587236/generic-property-in-c-sharp
-        // would need to wrap the various possible content types: Document, StatementsResult, About, ?
+        public void SetErrMsgFromBytes(byte[] content)
+        {
+            errMsg = System.Text.Encoding.UTF8.GetString(content);
+        }
     }
 }
