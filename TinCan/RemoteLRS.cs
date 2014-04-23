@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Web;
 using Newtonsoft.Json.Linq;
 
@@ -26,9 +27,23 @@ namespace TinCan
     {
         public Uri endpoint { get; set; }
         public TCAPIVersion version { get; set; }
-        // TODO: set auth with username/password
         public String auth { get; set; }
         public Dictionary<String, String> extended { get; set; }
+
+        public void SetAuth(String username, String password)
+        {
+            auth = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
+        }
+
+        public RemoteLRS() { }
+        public RemoteLRS(Uri endpoint, TCAPIVersion version, String username, String password)
+        {
+            this.endpoint = endpoint;
+            this.version = version;
+            this.SetAuth(username, password);
+        }
+        public RemoteLRS(String endpoint, TCAPIVersion version, String username, String password) : this(new Uri(endpoint), version, username, password) { }
+        public RemoteLRS(String endpoint, String username, String password) : this(endpoint, TCAPIVersion.latest(), username, password) { }
 
         private class MyHTTPRequest
         {

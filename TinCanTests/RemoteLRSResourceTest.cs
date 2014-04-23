@@ -41,10 +41,11 @@ namespace TinCanTests
         public void Init()
         {
             Console.WriteLine("Running " + TestContext.CurrentContext.Test.FullName);
-            lrs = new RemoteLRS();
-            lrs.version = TCAPIVersion.latest();
-            lrs.endpoint = new Uri("http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox");
-            lrs.auth = "Basic X3RKaUVSRU50TjJQbG5hRy1iMDpWczczMWM3cVhNX3dSVXNaRnUw";
+            lrs = new RemoteLRS(
+                "http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox",
+                "_tJiERENtN2PlnaG-b0",
+                "Vs731c7qXM_wRUsZFu0"
+            );
 
             agent = new Agent();
             agent.mbox = "mailto:tincancsharp@tincanapi.com";
