@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Library for implementing Tin Can API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Rustici Software")]
-[assembly: AssemblyProduct("TinCan")]
+[assembly: AssemblyProduct("TinCan.NET")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
