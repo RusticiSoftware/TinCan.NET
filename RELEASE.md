@@ -7,7 +7,7 @@ Then set the Build Configuration to "Release" and build the solution. (Verify `b
 With `nuget.exe` installed and in your path do:
 
     cd TinCan
-    nuget pack TinCan.csproj -Prop Configuration=Release
+    nuget pack TinCan.csproj -sym -Prop Configuration=Release
     nuget push TinCan.(version).nupkg
 
 Commit the updated assembly information file and push to master. Upload the generated `TinCan.(version).nupkg` as a GitHub tag release.
