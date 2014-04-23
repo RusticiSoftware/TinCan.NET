@@ -24,7 +24,6 @@ namespace TinCan
 {
     public class RemoteLRS : LRS
     {
-        // TODO: add trailing slash
         public Uri endpoint { get; set; }
         public TCAPIVersion version { get; set; }
         // TODO: set auth with username/password
@@ -74,7 +73,11 @@ namespace TinCan
             }
             else
             {
-                url = endpoint.ToString() + req.resource;
+                url = endpoint.ToString();
+                if (! url.EndsWith("/") && ! req.resource.StartsWith("/")) {
+                    url += "/";
+                }
+                url += req.resource;
             }
 
             if (req.queryParams != null)
@@ -484,7 +487,11 @@ namespace TinCan
 
             var req = new MyHTTPRequest();
             req.method = "GET";
-            req.resource = endpoint.GetLeftPart(UriPartial.Authority) + result.more;
+            req.resource = endpoint.GetLeftPart(UriPartial.Authority);
+            if (! req.resource.EndsWith("/")) {
+                req.resource += "/";
+            }
+            req.resource += result.more;
 
             var res = MakeSyncRequest(req);
             if (res.status != HttpStatusCode.OK)

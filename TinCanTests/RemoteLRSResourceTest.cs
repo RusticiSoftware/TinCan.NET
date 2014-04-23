@@ -43,7 +43,7 @@ namespace TinCanTests
             Console.WriteLine("Running " + TestContext.CurrentContext.Test.FullName);
             lrs = new RemoteLRS();
             lrs.version = TCAPIVersion.latest();
-            lrs.endpoint = new Uri("http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox/");
+            lrs.endpoint = new Uri("http://cloud.scorm.com/tc/3HYPTQLAI9/sandbox");
             lrs.auth = "Basic X3RKaUVSRU50TjJQbG5hRy1iMDpWczczMWM3cVhNX3dSVXNaRnUw";
 
             agent = new Agent();
