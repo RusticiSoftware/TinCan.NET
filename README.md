@@ -9,3 +9,7 @@ For more information about the Tin Can API visit:
 http://tincanapi.com/
 
 Requires .NET 3.5 or later.
+
+### Installation
+
+Available via NuGet.
