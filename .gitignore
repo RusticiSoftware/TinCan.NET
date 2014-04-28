@@ -110,6 +110,9 @@ UpgradeLog*.XML
 #Ignore generated nupkg files
 *.nupkg
 
+#Ignore generated documentation files
+Doc/Help/
+
 .DS_Store
 *.swp
 tmp/

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="dc851e6b-b0f8-43e4-9c96-42f33a792d93" visible="True" isDefault="true" title="TinCan.NET API Documentation">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="fb79821f-fa92-4942-9981-6c184b817059" visible="True" isExpanded="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history" />
+    </HelpKeywords>
+    <Topic id="98884de4-4d4a-4365-9f35-e34042e52a60" visible="True" isSelected="true" title="Version 0.0.1.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 1.0.0.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+</Topics>
