@@ -18,7 +18,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TinCan.Json
 {
-    interface IJsonModel
+    public interface IJsonModel
     {
         JObject ToJObject(TCAPIVersion version);
         JObject ToJObject();

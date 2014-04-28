@@ -20,7 +20,7 @@ using TinCan.LRSResponses;
 
 namespace TinCan
 {
-    interface ILRS
+    public interface ILRS
     {
         AboutLRSResponse About();
 
