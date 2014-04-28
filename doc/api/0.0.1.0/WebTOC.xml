@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="TinCan.NET API Documentation" Url="html/dc851e6b-b0f8-43e4-9c96-42f33a792d93.htm" />
+  <HelpTOCNode Id="d4d47ab2-7577-4c42-a870-c185ce695921" Title="Version History" Url="html/fb79821f-fa92-4942-9981-6c184b817059.htm">
+    <HelpTOCNode Title="Version 0.0.1.0" Url="html/98884de4-4d4a-4365-9f35-e34042e52a60.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="6f30badd-8ecd-41a3-bd97-96d944212521" Title="TinCan" Url="html/238f3332-e271-8cbe-9675-e3a017d49055.htm">
+    <HelpTOCNode Id="1c2eed38-d918-45e9-ade9-e1378e63a75f" Title="About Class" Url="html/9794c16c-aac0-1aa6-cda7-5a5942eab3c0.htm">
+      <HelpTOCNode Title="About Members" Url="html/026fbe5d-4665-892f-5c4d-0c987f374fbc.htm" />
+      <HelpTOCNode Id="1e4d3cbe-1efa-4849-bd23-2cac52aec190" Title="About Constructor " Url="html/e765449f-6163-e650-0c9e-3f2a751dd921.htm">
+        <HelpTOCNode Title="About Constructor (JObject)" Url="html/ef111f0b-60ae-9e5f-371c-6cb15a5c079d.htm" />
+        <HelpTOCNode Title="About Constructor (String)" Url="html/efea650f-ba9e-555a-6ebe-baf2613fb25d.htm" />
+        <HelpTOCNode Title="About Constructor (StringOfJSON)" Url="html/dc53ad8a-1132-a30a-e037-82bc2da8baaf.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="80f2645f-9fa6-4867-a921-1c75bd1a38b1" Title="About Methods" Url="html/73681382-8585-ce40-20cb-2ea5e6fb06f5.htm">
+        <HelpTOCNode Id="2b5639a5-312a-42c3-8399-f18d5ffd109b" Title="ToJObject Method " Url="html/33cb5f4f-d861-44c4-3940-7284d2eec4c9.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/4b8adf4a-37e7-f5ef-773c-c48cd3f42b01.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="99399195-1429-4810-bf60-eac170ebe807" Title="About Properties" Url="html/e0c5da43-d1fa-be2d-c7de-4aab53ef8d1f.htm">
+        <HelpTOCNode Title="extensions Property " Url="html/52827811-4666-cd23-9bcc-99549f8e6384.htm" />
+        <HelpTOCNode Title="version Property " Url="html/ebaeb585-f07a-1628-3cfe-e2b2676f61a3.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="26acf156-5d1d-4a78-aeb5-888709416234" Title="Activity Class" Url="html/063fde0a-be5c-f389-ced4-bf471e9ab590.htm">
+      <HelpTOCNode Title="Activity Members" Url="html/1ea63af8-e2ba-650d-af37-9288a2e403c3.htm" />
+      <HelpTOCNode Id="278f131e-552e-4098-acd6-a521bd8211dd" Title="Activity Constructor " Url="html/655f2770-cd25-1b05-51c2-0b3c5bcc7c55.htm">
+        <HelpTOCNode Title="Activity Constructor " Url="html/a5549356-8f51-745a-cfd3-e4f161992126.htm" />
+        <HelpTOCNode Title="Activity Constructor (JObject)" Url="html/3e37f70e-9fcf-0c83-26ef-04522873be4e.htm" />
+        <HelpTOCNode Title="Activity Constructor (StringOfJSON)" Url="html/e214a83b-e5c2-2f0e-f290-41dc944739dc.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4ee070fe-8e85-4533-b7ab-af7ac2e79e12" Title="Activity Fields" Url="html/aa8ed3e6-6e8f-437a-3124-917efd078b54.htm">
+        <HelpTOCNode Title="OBJECT_TYPE Field" Url="html/5ba02b69-0adf-101a-8e5c-074431166947.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e72878b4-3ceb-47ec-bf15-b2a3f20d872d" Title="Activity Methods" Url="html/3fae3e06-2609-bed8-fb01-3793b9c4b0b4.htm">
+        <HelpTOCNode Id="afcf2497-ed81-4934-a5fa-ad8e534f59ec" Title="ToJObject Method " Url="html/9a69b7ed-68c1-df74-4f28-f27496e51970.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/3924d15c-92a4-b870-434b-a3a77fff260c.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="a856aef1-797f-4a31-ac45-17b9a697c7f0" Title="Activity Type Conversions" Url="html/4867faea-0f77-7cbf-ac5a-c0469f493115.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Activity)" Url="html/376694b2-09b7-bf95-1f31-9c7d7373c3ea.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4608463f-0263-4951-9673-babd677c3466" Title="Activity Properties" Url="html/fdd2369a-2bdb-2ddf-fb45-82b70e129105.htm">
+        <HelpTOCNode Title="definition Property " Url="html/30789f3a-c3ab-4637-3dcc-07aaf7881cb5.htm" />
+        <HelpTOCNode Title="id Property " Url="html/6966a58a-fbf2-050a-098e-644fa9094795.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/157529ab-742c-9243-edfd-eae1225eb605.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="77864938-0d85-4b8e-9859-19eb94ed88ef" Title="ActivityDefinition Class" Url="html/b6b3dd9e-74a0-3944-dc83-0c43d25519bb.htm">
+      <HelpTOCNode Title="ActivityDefinition Members" Url="html/2cd571a0-d3aa-dc44-4c90-360f0784c663.htm" />
+      <HelpTOCNode Id="70236ee0-f004-4069-b598-b8f89c17cd9c" Title="ActivityDefinition Constructor " Url="html/61ad9438-d763-9e39-811f-20e5c4d6731d.htm">
+        <HelpTOCNode Title="ActivityDefinition Constructor " Url="html/60a19508-9985-99c2-724a-fbd276b64012.htm" />
+        <HelpTOCNode Title="ActivityDefinition Constructor (JObject)" Url="html/efb5c022-75fc-659d-38d1-f977e69d5fc7.htm" />
+        <HelpTOCNode Title="ActivityDefinition Constructor (StringOfJSON)" Url="html/f04d5b6b-9cd3-f97e-2ef2-ccceebe91ecc.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9af52ed6-e2a3-4472-af94-12a157a1315f" Title="ActivityDefinition Methods" Url="html/797c8424-74c9-1a78-f265-561d810f8144.htm">
+        <HelpTOCNode Id="66b1bdfe-3200-4d4e-8e17-5f4e76ee9e36" Title="ToJObject Method " Url="html/ecfeeb53-9aec-36f7-0d4b-1bf5e98d7de3.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/e28d9335-314b-308c-414a-3ec33dcb30b8.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="65e678c9-e3d7-4477-89f6-44523d81aaac" Title="ActivityDefinition Type Conversions" Url="html/f52d14a7-abee-dd5b-3b27-a1f6f528f953.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to ActivityDefinition)" Url="html/356f5d7b-15c0-47c5-c27f-91ec297ca77d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="52ba4e77-1e93-4bee-bf40-a7c9dd139b0b" Title="ActivityDefinition Properties" Url="html/5cbbf17e-0b19-ccbe-a483-ce848e61d5d6.htm">
+        <HelpTOCNode Title="description Property " Url="html/184ae281-c782-f4c3-526c-f20e5f238f47.htm" />
+        <HelpTOCNode Title="extensions Property " Url="html/bf237696-fea0-f54b-9385-d95619b80081.htm" />
+        <HelpTOCNode Title="moreInfo Property " Url="html/2903d754-9c85-b3f0-533a-279dbe6169cb.htm" />
+        <HelpTOCNode Title="name Property " Url="html/d05a9307-b34c-86f0-06c7-8df0387558b6.htm" />
+        <HelpTOCNode Title="type Property " Url="html/1845d638-d5c8-69c6-dec5-21c4bf88bd21.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f83f90cd-c2df-4def-9e0a-633c2dd340f7" Title="Agent Class" Url="html/69c3d1aa-6c56-4d5d-b9e1-ee3871b98302.htm">
+      <HelpTOCNode Title="Agent Members" Url="html/2990a18c-7b03-1366-f191-4aac2caa0699.htm" />
+      <HelpTOCNode Id="9c530819-bb19-4766-a17d-30b94fd48b95" Title="Agent Constructor " Url="html/57b453b4-7b81-36f4-1c73-77e2850c7057.htm">
+        <HelpTOCNode Title="Agent Constructor " Url="html/d1789c41-98b3-93af-4f61-3d05137a8307.htm" />
+        <HelpTOCNode Title="Agent Constructor (JObject)" Url="html/c26af938-01cd-d68a-775d-53efc19b24e4.htm" />
+        <HelpTOCNode Title="Agent Constructor (StringOfJSON)" Url="html/84fe84e0-f0ac-441c-231c-2b9565c006c2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9bd0870b-8bac-4259-a5cc-b8fa6cd59de1" Title="Agent Fields" Url="html/1f98faa0-3c4c-f3d5-5506-6906a82e55ae.htm">
+        <HelpTOCNode Title="OBJECT_TYPE Field" Url="html/58a11f3b-7de9-3768-f620-75e9bd77c9db.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="feabea29-26c9-4d76-81b2-2d634d2d4b05" Title="Agent Methods" Url="html/b3a57197-b833-82e9-796e-24a41c3fca18.htm">
+        <HelpTOCNode Id="ac05d655-b891-4315-8b15-e550ea0a9cf4" Title="ToJObject Method " Url="html/709ede3a-4dcf-9a77-ea37-d723e16b8e26.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/dd418983-3427-768c-f41e-5f05fa762166.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="3000f4d6-d633-4477-8b93-962bcad9f130" Title="Agent Type Conversions" Url="html/167c06a3-157c-03df-5ac2-2a7a85bf777f.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Agent)" Url="html/fdbb771d-f5b6-219f-4f47-6b6cf89b7927.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="750e7f54-9418-4a7f-8ca8-8e38d712db2d" Title="Agent Properties" Url="html/413d6520-3892-cc32-98ed-ebea31afda49.htm">
+        <HelpTOCNode Title="account Property " Url="html/05cba93f-db22-6105-952f-07010b05774e.htm" />
+        <HelpTOCNode Title="mbox Property " Url="html/3b4f9cf9-6655-680a-c658-a011a8448cd8.htm" />
+        <HelpTOCNode Title="mbox_sha1sum Property " Url="html/0a6aa865-d258-4968-17a1-9d37c153fa9e.htm" />
+        <HelpTOCNode Title="name Property " Url="html/e31c2a5d-54b2-1771-911c-9b0a7a68778d.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/27fd8cf5-667b-e7e3-9a53-890264636e27.htm" />
+        <HelpTOCNode Title="openid Property " Url="html/cf8724e9-746a-2926-8c2f-2b855363affa.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ebbf8105-760c-4a2b-bec0-eeb63e1a3a60" Title="AgentAccount Class" Url="html/4be1f0c7-5469-81b1-f8d4-76bce63f0bcd.htm">
+      <HelpTOCNode Title="AgentAccount Members" Url="html/efbe06d1-0157-ea7c-c821-628ed1d7676c.htm" />
+      <HelpTOCNode Id="e6beea58-aa06-4129-af24-f66450ae7193" Title="AgentAccount Constructor " Url="html/50139bf5-97fb-0475-55d0-f5312178699d.htm">
+        <HelpTOCNode Title="AgentAccount Constructor " Url="html/a96f611d-6783-7f0e-9f26-1812bb4c8af5.htm" />
+        <HelpTOCNode Title="AgentAccount Constructor (JObject)" Url="html/4f4ab28e-ee37-6118-eeb4-89a047bf801a.htm" />
+        <HelpTOCNode Title="AgentAccount Constructor (StringOfJSON)" Url="html/e414e0ec-7984-552a-31a3-730b67103ed3.htm" />
+        <HelpTOCNode Title="AgentAccount Constructor (Uri, String)" Url="html/579425e9-8557-7155-991f-6346165cea1c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cb7b5dda-b343-4138-99ec-9d33682e268d" Title="AgentAccount Methods" Url="html/ff7c0cfb-cd8a-e551-eae2-0d971edf2feb.htm">
+        <HelpTOCNode Id="22adce48-3da1-41a9-bf1a-76d6dd1acd85" Title="ToJObject Method " Url="html/5961f498-368e-e080-41d5-e6a1185ded23.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/60e858e6-9eee-6a31-595b-afeb4470b62a.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="089c1b48-cd6c-4450-bc0f-7e4603a2a755" Title="AgentAccount Type Conversions" Url="html/29e8e7c8-61ed-65c5-ad49-8faa50c399ff.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to AgentAccount)" Url="html/04df8d24-3f6c-36d9-207c-ed765c89d96a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6e9939bb-07f8-43e1-a376-b732bd348aac" Title="AgentAccount Properties" Url="html/68e99c27-813e-c639-0f55-5ff3d5d73c69.htm">
+        <HelpTOCNode Title="homePage Property " Url="html/94b7e213-ffbb-d448-f8d9-ad8dd4a11d64.htm" />
+        <HelpTOCNode Title="name Property " Url="html/14a9f472-adb3-5c18-cab2-c1769026f157.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f7b70ae4-c299-4629-b05e-f455bcdaacae" Title="Context Class" Url="html/b92f08bd-3ee8-f11d-5598-b3707d82c145.htm">
+      <HelpTOCNode Title="Context Members" Url="html/68971930-0522-6654-de26-8412c8955366.htm" />
+      <HelpTOCNode Id="3fde2db3-14c2-4b47-a961-de08764d7005" Title="Context Constructor " Url="html/415dba86-cea1-2e23-1f52-77a2c9a15e18.htm">
+        <HelpTOCNode Title="Context Constructor " Url="html/3f8eb8fe-fad2-ac60-e923-ec94142e04b2.htm" />
+        <HelpTOCNode Title="Context Constructor (JObject)" Url="html/528d6202-1dfd-3263-9663-0c5cb0666a8d.htm" />
+        <HelpTOCNode Title="Context Constructor (StringOfJSON)" Url="html/4691d25e-ca96-a2ee-331d-e29a98d161a3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="69760ba4-8b01-4da9-a4a3-de1cbaaa4bda" Title="Context Methods" Url="html/09895363-cee3-d67d-42ef-ea4833f5502f.htm">
+        <HelpTOCNode Id="2601ac08-20ec-42ff-b2e0-3c8e989242d7" Title="ToJObject Method " Url="html/d2d61364-c42e-b9ee-624a-422fdacf9545.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/c8a712cb-11cd-860f-98bc-5f11d8de8586.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="e18252ac-61e3-4f57-9ca9-d87eb97e50c5" Title="Context Type Conversions" Url="html/4d48367c-3e56-03f9-c90d-98f7afe171b4.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Context)" Url="html/fec3dc14-03c7-c3c0-4331-4231dc3dc037.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="933894cf-70dc-4577-bc02-56b9d26ec7a0" Title="Context Properties" Url="html/b84eaa0d-b4fd-49c7-b739-761f5d41c69d.htm">
+        <HelpTOCNode Title="contextActivities Property " Url="html/0a262ccd-7281-99ec-5246-222441be6bec.htm" />
+        <HelpTOCNode Title="extensions Property " Url="html/5cdc8265-72d4-7801-8817-289cd7b1be4d.htm" />
+        <HelpTOCNode Title="instructor Property " Url="html/93a60863-f4c1-2de5-0b83-6e7f1909288c.htm" />
+        <HelpTOCNode Title="language Property " Url="html/cb327fb1-1016-8d05-253e-b546c0913967.htm" />
+        <HelpTOCNode Title="platform Property " Url="html/0e47732a-1823-5e9a-1be0-0328ff843c4e.htm" />
+        <HelpTOCNode Title="registration Property " Url="html/09bc88a4-2ae8-24b4-c013-4c241e4f9153.htm" />
+        <HelpTOCNode Title="revision Property " Url="html/53412956-573f-59e1-858c-3c8427264b15.htm" />
+        <HelpTOCNode Title="statement Property " Url="html/f706295e-86a3-79d8-512f-ad8016140027.htm" />
+        <HelpTOCNode Title="team Property " Url="html/251bf6c7-52b8-b472-f766-f1b7c0570c10.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e2f604ae-9012-4e4f-947a-e7d5770737bb" Title="ContextActivities Class" Url="html/116327ea-303f-6c0e-e381-6ee3014fa568.htm">
+      <HelpTOCNode Title="ContextActivities Members" Url="html/dcf2cf8a-834b-9710-546a-a30f28f2a432.htm" />
+      <HelpTOCNode Id="7df8c54f-1d59-4019-9648-97053f686996" Title="ContextActivities Constructor " Url="html/c551ab4f-f799-e451-837a-b26d69758d57.htm">
+        <HelpTOCNode Title="ContextActivities Constructor " Url="html/b962124f-342c-5d40-026b-9eed87ca4c93.htm" />
+        <HelpTOCNode Title="ContextActivities Constructor (JObject)" Url="html/c095b288-f8f7-94ee-8fbc-91edbbfe3774.htm" />
+        <HelpTOCNode Title="ContextActivities Constructor (StringOfJSON)" Url="html/506f077c-99ae-4e5e-5b23-d4f76bcdf29d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="fcd9ac44-19a6-4002-99d0-d8466f8f259c" Title="ContextActivities Methods" Url="html/e9b70cb0-10b9-314e-7c5b-5ac94de31955.htm">
+        <HelpTOCNode Id="236a0c97-a599-44f6-8c60-d3776d1b6fc6" Title="ToJObject Method " Url="html/88f553a3-b770-6c8a-ce4e-23d03b1f9339.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/156316a0-3d76-7abd-9749-2de460283afd.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="7811b72d-e423-4ded-a36b-4c32cae49fa5" Title="ContextActivities Type Conversions" Url="html/adeb931e-dc41-9a7e-cb57-1f8140523a25.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to ContextActivities)" Url="html/1c5058a5-6dda-bed2-ff60-f41515623108.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b3602c83-d046-4e4e-bbd9-2e99f8a324fc" Title="ContextActivities Properties" Url="html/4fb8c398-b260-899a-d302-6b86aefc4555.htm">
+        <HelpTOCNode Title="category Property " Url="html/21ca13e6-9fa1-3831-2956-4d8702fb521f.htm" />
+        <HelpTOCNode Title="grouping Property " Url="html/1e2c348d-b040-63a4-6c7f-7fc852628e46.htm" />
+        <HelpTOCNode Title="other Property " Url="html/49eac398-74b7-9ce4-78d3-70a957ef034f.htm" />
+        <HelpTOCNode Title="parent Property " Url="html/5d50fbac-b5da-3124-c534-a6a781fd9f1d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ac91de08-e35b-4fd3-9b69-2a2a7fdde8e0" Title="Extensions Class" Url="html/967f1483-bfe7-a03b-a31b-7fa77982c084.htm">
+      <HelpTOCNode Title="Extensions Members" Url="html/81c70f5b-d69c-511a-04ca-450146205f07.htm" />
+      <HelpTOCNode Id="fef30359-9378-415f-afe2-fa96f2de3b32" Title="Extensions Constructor " Url="html/bcdfa77e-04b3-2bd3-c95a-d2e0bf18c9c0.htm">
+        <HelpTOCNode Title="Extensions Constructor " Url="html/8c0f3a34-819d-e332-2cef-074db8b4814e.htm" />
+        <HelpTOCNode Title="Extensions Constructor (JObject)" Url="html/548ebb03-8ce9-58f8-2a10-5ad1ff47e1a4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b0e38889-9a39-4d04-93b5-2d1d7cbd08a9" Title="Extensions Methods" Url="html/26b18c88-a7e6-c64c-dd58-6a31feec75a5.htm">
+        <HelpTOCNode Title="isEmpty Method " Url="html/b2a8ab89-a20b-fee4-da3d-f5ece68996a4.htm" />
+        <HelpTOCNode Id="a631417e-2bb4-446e-9b97-77a81aca00e0" Title="ToJObject Method " Url="html/d5cfd6c9-2da2-01fc-ec14-7b5ec13528f9.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/95e0b337-243b-2330-34f0-416e36c5dc1c.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4b2d80d3-0baa-45ce-915b-237f3dccbc9a" Title="Extensions Type Conversions" Url="html/e0b84e37-5803-5584-53ce-2ce4570a6eb1.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Extensions)" Url="html/11ab0675-7a31-170b-e12e-79f628dff4af.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="27cab5f3-3ea0-4729-8bfb-c0a29fc7a6a3" Title="Group Class" Url="html/3ec29de2-1c2d-aa29-7b40-204bc312040e.htm">
+      <HelpTOCNode Title="Group Members" Url="html/2551d614-5162-7509-4007-1a2ea7f2bce5.htm" />
+      <HelpTOCNode Id="925e1ea7-eeea-4384-8354-589741c15027" Title="Group Constructor " Url="html/11e18b6b-6dbc-241c-6520-aa82cf344916.htm">
+        <HelpTOCNode Title="Group Constructor " Url="html/1b93e3e8-542d-ebd1-ee32-d93372936cea.htm" />
+        <HelpTOCNode Title="Group Constructor (JObject)" Url="html/8293af8b-807d-554d-37d5-492828d94d4b.htm" />
+        <HelpTOCNode Title="Group Constructor (StringOfJSON)" Url="html/93ad37ff-7f29-f2be-1b2d-863bcebca836.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="061bdbb7-c560-4717-a6d8-cb1ad051aa8f" Title="Group Fields" Url="html/29ad08bd-5f13-f4e1-1040-a6a4cf38a39e.htm">
+        <HelpTOCNode Title="OBJECT_TYPE Field" Url="html/f14ba79a-ddd0-8c43-af31-990d5e787412.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2e623389-6dc8-4e02-9943-c7dc99f7e9ee" Title="Group Methods" Url="html/b7876105-5ca3-730a-e357-81a98bffa160.htm">
+        <HelpTOCNode Id="ee2c202f-b995-4c82-8252-704fd198a19e" Title="ToJObject Method " Url="html/d5e91b08-61ef-45a3-7af2-f0b1345043c9.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/fbdbe1d8-a7a1-0d9e-70c7-0af9435e670d.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="e188ae60-39d9-435c-bd31-8e3782b65c33" Title="Group Type Conversions" Url="html/25d06211-ea50-7b7d-b03f-93eb45d3f3e9.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Group)" Url="html/f2390921-d4bd-07c4-4c4a-d8baab2f4423.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6df7e3f0-dc7f-4d50-b60d-98cda6e30f21" Title="Group Properties" Url="html/f3265c98-5a50-7aba-49d4-445d658614a9.htm">
+        <HelpTOCNode Title="member Property " Url="html/506b5d99-5473-683d-77af-d6983913d33d.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/37e70365-eed2-bf44-d6bc-21d16aefda38.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4f4ce71f-c966-4497-9bfc-bff36168641a" Title="ILRS Interface" Url="html/6dc546de-12d4-29de-69e0-c99c91017054.htm">
+      <HelpTOCNode Title="ILRS Members" Url="html/370a6ce8-fc0f-99b4-2960-5ffcc7ca28f0.htm" />
+      <HelpTOCNode Id="0ad8da1d-26d8-434c-92d8-0aace8c7395c" Title="ILRS Methods" Url="html/d77d7b8e-07b5-81ad-5025-2aa098867070.htm">
+        <HelpTOCNode Title="About Method " Url="html/8eb3074c-4d5e-e5f5-6c93-b7b39b1cf052.htm" />
+        <HelpTOCNode Title="ClearState Method " Url="html/a78ee7e1-a4db-f8fe-9afa-d3992f0f7cfc.htm" />
+        <HelpTOCNode Title="DeleteActivityProfile Method " Url="html/834b4e22-2a71-c0ef-1ce4-ebbea91db8c3.htm" />
+        <HelpTOCNode Title="DeleteAgentProfile Method " Url="html/33bcce78-8554-c141-490e-a7fc2056f352.htm" />
+        <HelpTOCNode Title="DeleteState Method " Url="html/d7c0a24f-f8ed-6ce3-7d74-e4ee1f9bd456.htm" />
+        <HelpTOCNode Title="MoreStatements Method " Url="html/c1cc8f04-004d-af93-a197-d83fae1030f7.htm" />
+        <HelpTOCNode Title="QueryStatements Method " Url="html/40f97616-a739-e1ae-023f-b01e4cf92448.htm" />
+        <HelpTOCNode Title="RetrieveActivityProfile Method " Url="html/82ccf9f7-c7a7-34f0-adba-9747d908b12d.htm" />
+        <HelpTOCNode Title="RetrieveActivityProfileIds Method " Url="html/56c550d2-ba54-efaf-0aef-b7f9554f9eb8.htm" />
+        <HelpTOCNode Title="RetrieveAgentProfile Method " Url="html/cad194c5-57bd-bde0-473b-d57e8556ac1b.htm" />
+        <HelpTOCNode Title="RetrieveAgentProfileIds Method " Url="html/7dbcfe4e-5f68-5a53-9c8e-275d935e670c.htm" />
+        <HelpTOCNode Title="RetrieveState Method " Url="html/1dffcd88-9564-46f3-2a8e-6b9ab5902903.htm" />
+        <HelpTOCNode Title="RetrieveStateIds Method " Url="html/bf7e157b-e4ce-7e44-bd9b-e4a0c9c723fb.htm" />
+        <HelpTOCNode Title="RetrieveStatement Method " Url="html/3cd8fdcf-2412-e260-ed86-6985e0f2d8bc.htm" />
+        <HelpTOCNode Title="RetrieveVoidedStatement Method " Url="html/18e62e8b-5e61-6176-13f8-c44d9ec94e61.htm" />
+        <HelpTOCNode Title="SaveActivityProfile Method " Url="html/52e0f1e8-b080-4764-a117-9fb96bf7c932.htm" />
+        <HelpTOCNode Title="SaveAgentProfile Method " Url="html/f9e34a18-2b82-e383-4d92-fad4ba297730.htm" />
+        <HelpTOCNode Title="SaveState Method " Url="html/d37222e0-42e7-bd9a-083d-dc53a5c4861e.htm" />
+        <HelpTOCNode Title="SaveStatement Method " Url="html/40260d46-1f12-eace-3510-7f5304a394e3.htm" />
+        <HelpTOCNode Title="SaveStatements Method " Url="html/ae7c1dcf-7886-f5ea-fe3c-a0869e2cb96b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2fa7bc11-2125-4333-832a-ec35f05e7cc7" Title="LanguageMap Class" Url="html/441db8c3-1dd3-3297-335b-4365e2d252ba.htm">
+      <HelpTOCNode Title="LanguageMap Members" Url="html/82e5b076-fcf7-0f6e-fc28-c8062887d7c9.htm" />
+      <HelpTOCNode Id="c193eaa1-383c-4a9d-9dd6-b2da19504db6" Title="LanguageMap Constructor " Url="html/5b75fa71-7a5a-77ad-90ea-be6dfbdd070c.htm">
+        <HelpTOCNode Title="LanguageMap Constructor " Url="html/14768ee9-fd3e-6f73-4da3-2c5ec7e75b9c.htm" />
+        <HelpTOCNode Title="LanguageMap Constructor (JObject)" Url="html/de186eba-e206-b7c9-2e64-dd72f9e1733c.htm" />
+        <HelpTOCNode Title="LanguageMap Constructor (Dictionary(String, String))" Url="html/7007a0bb-fdf0-8840-9e5f-d6ddb21ff6ed.htm" />
+        <HelpTOCNode Title="LanguageMap Constructor (StringOfJSON)" Url="html/36508a2b-af3a-81ab-fe0b-3fd16f640211.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="71121fbe-5802-4bef-9ed3-a4d02505ad54" Title="LanguageMap Methods" Url="html/37c72af0-63c9-e7c4-34e8-9efe58a270d5.htm">
+        <HelpTOCNode Title="Add Method " Url="html/5e3e3502-cabb-1d5b-cd05-43cf4f260d3d.htm" />
+        <HelpTOCNode Title="isEmpty Method " Url="html/3d046914-80b6-3345-4f57-0c87e172487c.htm" />
+        <HelpTOCNode Id="19e67041-b87e-4be1-a040-16bdde8ede92" Title="ToJObject Method " Url="html/ec0fca5b-a141-8659-ca3b-1b03cc2a41b0.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/e2137640-d65e-04cf-37e0-e7f9119ed3ab.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="972120dc-2038-4fd3-b6f6-effd393083ac" Title="LanguageMap Type Conversions" Url="html/841f29a3-342e-63b8-f5ee-e0d765c14014.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to LanguageMap)" Url="html/af74ac93-1f4b-9e74-cf8f-f8c9a62f8415.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="537a3770-dcd2-4cf5-bfbf-33a53100ae02" Title="RemoteLRS Class" Url="html/6267bb11-fb26-428d-e094-331cc5d8f338.htm">
+      <HelpTOCNode Title="RemoteLRS Members" Url="html/fa03fd03-9360-3be7-641c-a96e62ba98df.htm" />
+      <HelpTOCNode Id="90f0bd2d-b97b-41b7-aa4d-d9f78a9be745" Title="RemoteLRS Constructor " Url="html/cf5ae5fc-4477-21bb-fa1a-f9a8da84b06e.htm">
+        <HelpTOCNode Title="RemoteLRS Constructor " Url="html/022f2ced-96e4-849f-805f-a123e4fe2862.htm" />
+        <HelpTOCNode Title="RemoteLRS Constructor (String, String, String)" Url="html/6a76e51f-5749-ecb2-1f9a-0ec58cd8c9ec.htm" />
+        <HelpTOCNode Title="RemoteLRS Constructor (String, TCAPIVersion, String, String)" Url="html/5b633b9a-79c0-92af-ea4c-d3ddcabbb2ae.htm" />
+        <HelpTOCNode Title="RemoteLRS Constructor (Uri, TCAPIVersion, String, String)" Url="html/9763a608-42b9-212c-b475-a76f5dbe3ea3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="001ea929-d70f-4740-ba79-909ad249a04c" Title="RemoteLRS Methods" Url="html/0faae0a6-525d-5b33-6c46-07e184146457.htm">
+        <HelpTOCNode Title="About Method " Url="html/8d270cbd-4b9b-a5c2-12b8-eb29255193c3.htm" />
+        <HelpTOCNode Title="ClearState Method " Url="html/073ba4a5-f25d-7103-63d2-a66eb15a333c.htm" />
+        <HelpTOCNode Title="DeleteActivityProfile Method " Url="html/756e39ae-cbd1-84e5-c3bc-6cd48dd4dbf3.htm" />
+        <HelpTOCNode Title="DeleteAgentProfile Method " Url="html/13d24764-e360-4ef3-e343-779f7b0c0126.htm" />
+        <HelpTOCNode Title="DeleteState Method " Url="html/96b4236f-2394-8d37-eb80-e9c7f295f700.htm" />
+        <HelpTOCNode Title="MoreStatements Method " Url="html/363478b6-dec1-1e16-5d95-fef996bfe6a2.htm" />
+        <HelpTOCNode Title="QueryStatements Method " Url="html/382bd994-6b88-8076-39a5-8a08daed1435.htm" />
+        <HelpTOCNode Title="RetrieveActivityProfile Method " Url="html/fd9adfce-f47d-1765-c24b-d8527c84f7b3.htm" />
+        <HelpTOCNode Title="RetrieveActivityProfileIds Method " Url="html/eb4d7737-e385-43f1-c7f9-42fae05742b3.htm" />
+        <HelpTOCNode Title="RetrieveAgentProfile Method " Url="html/4377d7fb-2acb-9d22-4c8c-2c43f0b0a120.htm" />
+        <HelpTOCNode Title="RetrieveAgentProfileIds Method " Url="html/b06982f3-1bdb-1ab7-6fc9-1c22708bac1e.htm" />
+        <HelpTOCNode Title="RetrieveState Method " Url="html/ca0ea9ac-28c6-f08c-2af8-dae079f23d09.htm" />
+        <HelpTOCNode Title="RetrieveStateIds Method " Url="html/c346f90b-3333-084d-d5f2-cde90c31eaf0.htm" />
+        <HelpTOCNode Title="RetrieveStatement Method " Url="html/d516e1bc-dbcb-b15e-4642-416ef0361938.htm" />
+        <HelpTOCNode Title="RetrieveVoidedStatement Method " Url="html/8524e773-6055-c3cc-4f2a-1fad328ef370.htm" />
+        <HelpTOCNode Title="SaveActivityProfile Method " Url="html/c8e124f5-c39a-f388-7910-14fb641751d1.htm" />
+        <HelpTOCNode Title="SaveAgentProfile Method " Url="html/3b1a7f44-8668-a7df-ae8d-426db0f9d6bd.htm" />
+        <HelpTOCNode Title="SaveState Method " Url="html/e3f30fe8-05ef-8ce1-0759-405c4c7898e0.htm" />
+        <HelpTOCNode Title="SaveStatement Method " Url="html/15bf1651-b3a3-b606-181a-9e14f3b0130f.htm" />
+        <HelpTOCNode Title="SaveStatements Method " Url="html/698307b7-5747-cb7f-6551-c27fa2469ce4.htm" />
+        <HelpTOCNode Title="SetAuth Method " Url="html/1eb92c28-dd6e-deba-ae50-01af7747e0e6.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0f52bdca-ff17-47bd-a84f-55ddbdd431bd" Title="RemoteLRS Properties" Url="html/b885a160-a3fc-fe65-acea-3064081c3d8d.htm">
+        <HelpTOCNode Title="auth Property " Url="html/38935f65-25c3-2e40-f915-b630a51bf548.htm" />
+        <HelpTOCNode Title="endpoint Property " Url="html/4fa229d3-b546-1d5c-eecd-30b3bd92faa3.htm" />
+        <HelpTOCNode Title="extended Property " Url="html/f62572b5-055b-70c8-7491-3772368c69b2.htm" />
+        <HelpTOCNode Title="version Property " Url="html/d4beaca0-b940-c169-ebe7-a3634a16a7e6.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ec0d2ac5-7932-4472-9e94-728d5d4f3228" Title="Result Class" Url="html/135845f3-3b4c-3d70-4782-bb30df6b8ccc.htm">
+      <HelpTOCNode Title="Result Members" Url="html/293e9bb4-0b10-4536-0d66-523db5781222.htm" />
+      <HelpTOCNode Id="b354ca5e-cfaa-477e-85c7-a37baef7dd62" Title="Result Constructor " Url="html/ab35592b-ac39-0d85-5124-071c158f912e.htm">
+        <HelpTOCNode Title="Result Constructor " Url="html/81bc07e1-7764-7639-ce34-7c0ced0e1899.htm" />
+        <HelpTOCNode Title="Result Constructor (JObject)" Url="html/082c303f-527b-839c-0d71-f520381ad62b.htm" />
+        <HelpTOCNode Title="Result Constructor (StringOfJSON)" Url="html/9cc45b1a-2803-71e5-45f3-b6d91639f578.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bf1b4f70-09a4-4c91-9d0e-983c3e97424d" Title="Result Methods" Url="html/fb04aa61-b640-39b7-1a60-f22c861b373b.htm">
+        <HelpTOCNode Id="335817f9-5370-41e2-8407-d56bbbf4261d" Title="ToJObject Method " Url="html/3384aa51-f2f9-ca5a-a85b-d288d0c9abaf.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/be22b0ee-7152-f2dc-9c08-f29ab39ee8f8.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="0f65a07e-fb52-46ff-8b56-2f212733a6b8" Title="Result Type Conversions" Url="html/fe214981-4db8-c49d-e5b6-e10988ccfe30.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Result)" Url="html/423ee6e1-e164-10d0-1cd9-380cf1278ee3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1e806154-6a6f-4825-9d0d-3a5ca85a8cdf" Title="Result Properties" Url="html/cb321709-3af4-3c3e-b77d-de3ab7be53b0.htm">
+        <HelpTOCNode Title="completion Property " Url="html/401443ec-1359-41ee-fda9-8c4dea8e6e1c.htm" />
+        <HelpTOCNode Title="duration Property " Url="html/7123cb30-d4b1-717e-cb71-22a6d3a69aeb.htm" />
+        <HelpTOCNode Title="extensions Property " Url="html/1d15b027-d3bf-32db-684b-7e7b9094c684.htm" />
+        <HelpTOCNode Title="response Property " Url="html/8924d323-2518-20b2-f186-e0df35111c1c.htm" />
+        <HelpTOCNode Title="score Property " Url="html/9bc417b0-ab8a-fec6-bf11-b42326cc0f51.htm" />
+        <HelpTOCNode Title="success Property " Url="html/8eefa1cd-7ff2-ee9b-de3f-4443db7906ec.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="44d2479a-0fbb-4c42-ac4f-08c27d38fc8b" Title="Score Class" Url="html/42e5c83d-29bb-21a5-c6fa-6bd1a6d9015e.htm">
+      <HelpTOCNode Title="Score Members" Url="html/75cb09cd-e103-9605-9235-617a4358a904.htm" />
+      <HelpTOCNode Id="546ee492-d0f5-48db-875f-0aa85a27fbae" Title="Score Constructor " Url="html/93f13d07-ff57-9a64-de94-7eb7149e2b61.htm">
+        <HelpTOCNode Title="Score Constructor " Url="html/6c09b90f-d75f-d3ad-a9f7-be99dd001af2.htm" />
+        <HelpTOCNode Title="Score Constructor (JObject)" Url="html/ceb57b06-d79c-4df4-2052-c51cd373a56a.htm" />
+        <HelpTOCNode Title="Score Constructor (StringOfJSON)" Url="html/1a3997c2-c957-0cda-5c83-5c71839226c3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4e382c33-bfe5-4cae-8564-d42d5d3e55a6" Title="Score Methods" Url="html/83465ca9-bf32-9544-8ea1-977f298168f1.htm">
+        <HelpTOCNode Id="31067aee-dcfd-4c76-a472-45634976cfe3" Title="ToJObject Method " Url="html/d5b0bf5f-7b37-88c1-b271-151e5b206c90.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/810ce5e1-286f-0789-d3a2-8142fd121064.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="f663f539-f18a-4323-b922-3d0061ec87de" Title="Score Type Conversions" Url="html/77d7e815-fede-359c-074d-a2bdb5de2469.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Score)" Url="html/6763c45d-765a-d88e-17be-2b82027e3f95.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f39f6b1d-c2f9-485f-8d71-9b271d829197" Title="Score Properties" Url="html/ea269c68-d1de-6eed-841f-bd68dc09715e.htm">
+        <HelpTOCNode Title="max Property " Url="html/c0853d65-0ab7-128e-f012-af8b2afc038d.htm" />
+        <HelpTOCNode Title="min Property " Url="html/f0fca54f-f942-c6de-1eb2-834ae70f1039.htm" />
+        <HelpTOCNode Title="raw Property " Url="html/c2fe1b0a-b53b-8474-fc8c-8d54efcdb82d.htm" />
+        <HelpTOCNode Title="scaled Property " Url="html/92d421e1-865b-e8ac-3e32-a722c0b348a1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7dd50b4b-55f6-478f-9b00-bebbf6db9cb9" Title="Statement Class" Url="html/52662e14-d275-2006-158e-d3b6518dcc8b.htm">
+      <HelpTOCNode Title="Statement Members" Url="html/f7fe7346-049d-b8ad-1a34-a78ede262425.htm" />
+      <HelpTOCNode Id="f8bd3680-43c2-41c5-abab-ad73b633c897" Title="Statement Constructor " Url="html/bea4d282-c095-0164-7032-9646605bcec5.htm">
+        <HelpTOCNode Title="Statement Constructor " Url="html/148e85a2-1448-f48c-b0af-ebece2fb28c5.htm" />
+        <HelpTOCNode Title="Statement Constructor (JObject)" Url="html/81b8e6ab-48c5-f5e4-594f-7e94e6b3243a.htm" />
+        <HelpTOCNode Title="Statement Constructor (StringOfJSON)" Url="html/3b9a3ae6-9c24-5228-7a2f-7abd58a0696c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1ba033e6-ccc3-4ead-9227-7c319e35e7a9" Title="Statement Methods" Url="html/73e52bc9-593a-9fc6-d0fd-06ef543d921b.htm">
+        <HelpTOCNode Title="Stamp Method " Url="html/c95fb132-f013-d704-afdf-40d1fe22e11f.htm" />
+        <HelpTOCNode Id="f625ca8d-f59a-4a6e-b3f9-f912e9f9a445" Title="ToJObject Method " Url="html/165458e1-0117-39d3-c90b-4eb2d9fd9104.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/441570fa-fdae-413f-cafc-f6f1c5839408.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="50fb421b-c453-4b33-9492-70f943dcd5a3" Title="Statement Properties" Url="html/2fe65c9e-b16d-a1e0-53dc-ff2344618486.htm">
+        <HelpTOCNode Title="authority Property " Url="html/4712f503-7c19-8c42-0329-f4a02fe4b1ba.htm" />
+        <HelpTOCNode Title="id Property " Url="html/f34095eb-db55-6f51-3d04-2d825d7ee086.htm" />
+        <HelpTOCNode Title="stored Property " Url="html/6044a94b-ae36-3dc9-e931-597cbf9cf398.htm" />
+        <HelpTOCNode Title="version Property " Url="html/9b57c151-20ef-934f-7ec3-390d406467fa.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6dc26f52-b2c8-4349-8e5d-f03d7fcfebb2" Title="StatementBase Class" Url="html/c69b3e72-d71d-56ac-ab4c-4129b150bd08.htm">
+      <HelpTOCNode Title="StatementBase Members" Url="html/32f260ff-f54b-694d-4068-b0ca47bee991.htm" />
+      <HelpTOCNode Id="4dcee591-4e01-4a5b-9942-9398fea100e0" Title="StatementBase Constructor " Url="html/1947a9f1-a7f8-dbc6-b088-4279cbc19942.htm">
+        <HelpTOCNode Title="StatementBase Constructor " Url="html/c3e41cd6-3822-853d-1bc4-84554ac6218f.htm" />
+        <HelpTOCNode Title="StatementBase Constructor (JObject)" Url="html/1b72a318-7235-50bb-c547-51a9db35abc3.htm" />
+        <HelpTOCNode Title="StatementBase Constructor (StringOfJSON)" Url="html/564cf86e-8800-c913-6ac3-d975dae8ba20.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e390674e-c3f0-4071-b955-6bca9e9bfd3e" Title="StatementBase Methods" Url="html/c6478424-69f7-4539-1bc7-aa93142e2239.htm">
+        <HelpTOCNode Id="f9b83c71-cce0-4669-a992-a8408cbc3337" Title="ToJObject Method " Url="html/95f2bbe4-10ec-f1b0-de6f-93e52322541d.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/509a9685-f0cf-078d-b1db-6dadc2fe115a.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4923d022-eb31-43da-a884-5253b4024a8e" Title="StatementBase Properties" Url="html/baa35c45-34c2-00c4-eedb-cffef43223d6.htm">
+        <HelpTOCNode Title="actor Property " Url="html/1a683c33-cae4-5488-71dc-3c4b6fd3db7b.htm" />
+        <HelpTOCNode Title="context Property " Url="html/f91eb402-91bf-d05a-3a9c-8aaf3d4c5ffd.htm" />
+        <HelpTOCNode Title="result Property " Url="html/5f35f611-f4d3-5da2-02f0-79c5b17bfd72.htm" />
+        <HelpTOCNode Title="target Property " Url="html/3413aa04-8b11-f2dc-6654-7452699a0295.htm" />
+        <HelpTOCNode Title="timestamp Property " Url="html/5f4a0be6-3614-9442-6e74-fc167b081bb6.htm" />
+        <HelpTOCNode Title="verb Property " Url="html/d313803d-70a1-174f-d666-62697aac988a.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c7cca66e-c874-414f-8ac7-9eddfdf6446e" Title="StatementRef Class" Url="html/4b227007-4769-4509-3fe8-c6c2aa2d6419.htm">
+      <HelpTOCNode Title="StatementRef Members" Url="html/19c387eb-0595-3dd8-10ae-c0676ba0e78d.htm" />
+      <HelpTOCNode Id="c85c2142-5549-4eb3-ae59-dbc673a50ef0" Title="StatementRef Constructor " Url="html/eb616dfd-3399-e60f-9aee-eb7300f73bd7.htm">
+        <HelpTOCNode Title="StatementRef Constructor " Url="html/879f2286-a92d-7951-e098-1a33aac6f9fb.htm" />
+        <HelpTOCNode Title="StatementRef Constructor (JObject)" Url="html/8de61b84-93b2-6da6-f50c-da4114dc2d66.htm" />
+        <HelpTOCNode Title="StatementRef Constructor (Guid)" Url="html/192e9017-b4a1-29ee-6831-db7e3e3d996a.htm" />
+        <HelpTOCNode Title="StatementRef Constructor (StringOfJSON)" Url="html/0092799f-c7ec-4de8-851c-7113611b27fe.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="92a9e56e-73eb-443e-8b23-c409aa382b9a" Title="StatementRef Fields" Url="html/deca6c8b-9ad5-94c3-ea73-86a389caa0f3.htm">
+        <HelpTOCNode Title="OBJECT_TYPE Field" Url="html/4ff2ef3e-83e4-06bd-5e10-fc6d4e342029.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b4bcff70-8965-43a3-bb28-b95fc75f81e2" Title="StatementRef Methods" Url="html/4c2e120d-9e0f-1d26-bca8-3821266e7f7c.htm">
+        <HelpTOCNode Id="890fd86d-fde0-49df-bbda-5231a206a874" Title="ToJObject Method " Url="html/2a4f6c7e-2912-cdea-4492-193b378280f7.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/3f8ee163-263d-c944-ccd3-863cc9a7e915.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4b638d68-e7ab-4dfe-8f81-9afab8935966" Title="StatementRef Type Conversions" Url="html/6fc3595f-891e-500d-6183-f656f42beeac.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to StatementRef)" Url="html/2ccb77ac-bf10-cbe5-8773-dacbd6f8958f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="99cc4406-fcce-4687-862d-475d3be8778c" Title="StatementRef Properties" Url="html/a88e700f-5fd3-30ed-becc-0873d2f8bbea.htm">
+        <HelpTOCNode Title="id Property " Url="html/927e82ea-3f71-5458-04f2-47688db962b0.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/46666de7-c94e-0841-b0ac-c8fcc6cf8af0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c1195ac2-ee7e-43de-99f8-931911601894" Title="StatementsQuery Class" Url="html/518d9a5c-8779-fcb3-38c4-edf6e41a0a0c.htm">
+      <HelpTOCNode Title="StatementsQuery Members" Url="html/c5edd117-f405-bf10-2071-1fc7b4a68760.htm" />
+      <HelpTOCNode Title="StatementsQuery Constructor " Url="html/faba19b7-7296-6bd2-1cf7-e882e07c4891.htm" />
+      <HelpTOCNode Id="aae3be37-e87b-4975-907d-521204e4080b" Title="StatementsQuery Methods" Url="html/fe32f7d0-83cf-518e-8361-3483524e606e.htm">
+        <HelpTOCNode Title="ToParameterMap Method " Url="html/ad019255-7af1-2b0d-54be-82f8f754aa7b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2b1c2b89-ccdf-4de3-869e-01ef0b96a099" Title="StatementsQuery Properties" Url="html/ccb08c53-aa3c-89a3-fbb5-a53c3206690d.htm">
+        <HelpTOCNode Title="activityId Property " Url="html/118f6829-e59f-2de0-444c-cb4382b68b96.htm" />
+        <HelpTOCNode Title="agent Property " Url="html/e7e39b0c-cb3c-9f0c-0508-afaf27a2b29c.htm" />
+        <HelpTOCNode Title="ascending Property " Url="html/40a803bf-b351-cd85-a8ce-32151b7edcb1.htm" />
+        <HelpTOCNode Title="format Property " Url="html/e88ef026-7a1f-a472-35d9-299ec2afe98f.htm" />
+        <HelpTOCNode Title="limit Property " Url="html/9747531a-1c4f-9a9b-4073-b9289751067d.htm" />
+        <HelpTOCNode Title="registration Property " Url="html/88073a58-d29a-3c99-9269-4eb469252ebb.htm" />
+        <HelpTOCNode Title="relatedActivities Property " Url="html/67c0b735-4425-645e-4750-af13bcd69254.htm" />
+        <HelpTOCNode Title="relatedAgents Property " Url="html/fb6ee72b-1c9b-f2ad-c9e7-f444c3a41362.htm" />
+        <HelpTOCNode Title="since Property " Url="html/7e96823e-2e05-1a49-a003-44ed8b561fca.htm" />
+        <HelpTOCNode Title="until Property " Url="html/5a97f440-b9aa-70f7-f5d3-4f565aa1857a.htm" />
+        <HelpTOCNode Title="verbId Property " Url="html/370d4fe2-e712-b573-4fc0-16a0450b2d9c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5e4365a7-6689-41fa-abe2-6070e3a731cc" Title="StatementsQueryResultFormat Class" Url="html/8443fa80-6e72-d191-4812-846e3d369f51.htm">
+      <HelpTOCNode Title="StatementsQueryResultFormat Members" Url="html/8c7effe1-2b43-4540-f4d5-f73530b15be9.htm" />
+      <HelpTOCNode Id="7aafa3f7-8537-43b5-b8ab-e52322170f4e" Title="StatementsQueryResultFormat Fields" Url="html/8b308f65-ded3-9c69-b152-d18f8fb4c009.htm">
+        <HelpTOCNode Title="CANONICAL Field" Url="html/254f8941-bebb-1d91-8664-d28738b5db68.htm" />
+        <HelpTOCNode Title="EXACT Field" Url="html/b3c42efa-6adc-7427-5f7b-cd04ba58181e.htm" />
+        <HelpTOCNode Title="IDS Field" Url="html/207368b5-7e06-016b-bd2d-48ae00bd4b60.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f49cafb1-af4d-4662-89b3-707c717a72a3" Title="StatementsQueryResultFormat Methods" Url="html/5794723b-ef85-291d-7ded-157dafdadf39.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/6efb297a-b7be-fe43-227b-12e2e8ef7796.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6ffadf4a-85c3-436a-8c0b-eda0327026d1" Title="StatementsResult Class" Url="html/02afa891-bf80-093d-035b-c399ba727197.htm">
+      <HelpTOCNode Title="StatementsResult Members" Url="html/52367cb4-99a2-3a16-4f6d-b5c559beacde.htm" />
+      <HelpTOCNode Id="84d30651-d5d9-44d9-9f85-085cf1b61cee" Title="StatementsResult Constructor " Url="html/f30e9c97-63db-7945-4054-e31d0e37827c.htm">
+        <HelpTOCNode Title="StatementsResult Constructor " Url="html/adefb024-851c-fbce-e941-f12f2c6841d0.htm" />
+        <HelpTOCNode Title="StatementsResult Constructor (JObject)" Url="html/67cfb3b5-57a1-6da1-eefa-3babc4b0bac8.htm" />
+        <HelpTOCNode Title="StatementsResult Constructor (String)" Url="html/bc42b01f-9b6c-61e4-2292-8d602fb92ca2.htm" />
+        <HelpTOCNode Title="StatementsResult Constructor (List(Statement))" Url="html/ce6e87f0-589f-9569-633f-d9f8ccc3a48b.htm" />
+        <HelpTOCNode Title="StatementsResult Constructor (StringOfJSON)" Url="html/e8aae3a2-81e6-7fbf-8fff-abeddab8990c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="StatementsResult Methods" Url="html/2ea91954-5147-c3c0-c397-0cae52fa1506.htm" />
+      <HelpTOCNode Id="dd0f1a72-07f2-4b4b-b916-cfe795768ece" Title="StatementsResult Properties" Url="html/fab83c58-511a-b8af-af4d-d748da4e37ca.htm">
+        <HelpTOCNode Title="more Property " Url="html/ea77b3ea-fc6c-7de0-72c7-96421cd65568.htm" />
+        <HelpTOCNode Title="statements Property " Url="html/fb896972-c77a-2c55-dd6b-8d27092ca1d9.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a30332fd-d99f-456d-a499-18de51435053" Title="StatementTarget Interface" Url="html/5460ba58-e574-2d11-597e-87a10c06f4b1.htm">
+      <HelpTOCNode Title="StatementTarget Members" Url="html/1ac6c942-b9d3-06b7-2109-95631c70c589.htm" />
+      <HelpTOCNode Id="66f2e54d-7247-43f1-9cac-49c662952022" Title="StatementTarget Methods" Url="html/8de35e97-3158-6b13-5cec-31863b7d8763.htm">
+        <HelpTOCNode Title="ToJObject Method " Url="html/83043479-feb0-9b9a-b991-b6ce043943d3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5b5ca345-f920-4d8d-b38f-478e869d9180" Title="StatementTarget Properties" Url="html/065b374b-c33f-3f3b-313d-6400b94aa0ba.htm">
+        <HelpTOCNode Title="ObjectType Property " Url="html/8d6d112a-03c7-9af1-0de9-9e411164b07d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1d07aa8d-3cb3-48b0-97e6-be6648b8cf76" Title="SubStatement Class" Url="html/97b1358a-58f3-e602-4c03-4674c4d0738a.htm">
+      <HelpTOCNode Title="SubStatement Members" Url="html/e62bb264-c7a5-2192-3dfb-eec71955be83.htm" />
+      <HelpTOCNode Id="1c7b76bd-7189-413d-ac9c-f851dae8cb62" Title="SubStatement Constructor " Url="html/b43ed118-1e85-01e9-a8c8-4c536b1855a5.htm">
+        <HelpTOCNode Title="SubStatement Constructor " Url="html/779eb43f-73c8-7fd8-4fef-dbc4b213c6c0.htm" />
+        <HelpTOCNode Title="SubStatement Constructor (JObject)" Url="html/34cdb9ab-08f5-0110-4ae8-615faacbc034.htm" />
+        <HelpTOCNode Title="SubStatement Constructor (StringOfJSON)" Url="html/54d8c8e2-7252-458f-a518-65800404eddd.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0e84846e-574a-4f87-a3d9-04b0e3410ff5" Title="SubStatement Fields" Url="html/c235a7f8-1470-7127-b956-07be778c4558.htm">
+        <HelpTOCNode Title="OBJECT_TYPE Field" Url="html/e8154d7b-10b7-7331-a98e-d7c507fb571c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e6a74131-7332-49d6-beb7-493fb6a4da44" Title="SubStatement Methods" Url="html/959f1fa9-08cb-3320-3ac5-1177da1f8419.htm">
+        <HelpTOCNode Id="62cd2496-56d7-4ca8-aff8-136d1886af26" Title="ToJObject Method " Url="html/d7ce5659-4fd5-b37c-39ed-5a4aa651127b.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/6545b662-09f1-46b8-9273-5b497bba37b4.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="f96c4f4a-4927-44da-9645-1df6c3334a48" Title="SubStatement Type Conversions" Url="html/e9eae04b-8350-d19c-1a27-0785a17c141f.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to SubStatement)" Url="html/aeb4c1c2-5db3-182f-2fde-35dfbb4e1da6.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cef870bb-6b56-4e08-a6f2-55f02109de86" Title="SubStatement Properties" Url="html/a4efe146-0a38-797e-6683-cb10d5e3d13e.htm">
+        <HelpTOCNode Title="ObjectType Property " Url="html/35d8b8f3-ff2b-1428-c999-a3972fc73397.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c5cd5258-ae09-49ad-b830-0f792c1b35ae" Title="TCAPIVersion Class" Url="html/326beac0-cd58-4786-47b1-950994264aae.htm">
+      <HelpTOCNode Title="TCAPIVersion Members" Url="html/192656c5-a340-cab2-6742-d7648bed91e1.htm" />
+      <HelpTOCNode Id="df1f00e6-73c7-45a4-b462-bab11cd07d2d" Title="TCAPIVersion Fields" Url="html/58ce0d7e-3e42-310b-5bb6-fb36c86872c0.htm">
+        <HelpTOCNode Title="V100 Field" Url="html/ffa80a72-20bf-c84c-fc18-ba135078c828.htm" />
+        <HelpTOCNode Title="V101 Field" Url="html/979d6c3d-e6fd-860c-eeaa-f14d3130fe23.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c8df2cd6-2f05-45db-90e8-7fcf2280c5e8" Title="TCAPIVersion Methods" Url="html/893c1ddb-2a46-ce01-b494-2b7c25e53f25.htm">
+        <HelpTOCNode Title="GetSupported Method " Url="html/dd8c589e-bd83-c517-8388-7982562485c1.htm" />
+        <HelpTOCNode Title="latest Method " Url="html/05adf530-fda5-a9a2-4df8-987df7274fe3.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/62282bd5-6fe0-617f-6a55-7b571c2d6b29.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b089ebc4-c9b9-48a7-b79f-dfb2c121f62e" Title="TCAPIVersion Type Conversions" Url="html/9c2039fe-2ddd-b735-355a-c59c950a4155.htm">
+        <HelpTOCNode Title="Explicit Conversion (String to TCAPIVersion)" Url="html/a400b66f-6ebd-51e3-1318-ed26310075ba.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="35495313-8016-4511-8215-de7dcdec71df" Title="Verb Class" Url="html/8848e0df-78db-c724-c078-77e29b0a182f.htm">
+      <HelpTOCNode Title="Verb Members" Url="html/a412bccb-a3bf-4938-850c-98a32c28a33d.htm" />
+      <HelpTOCNode Id="1b8f0038-52f2-4980-bc52-42fcdd38d049" Title="Verb Constructor " Url="html/c8766b8e-dbb9-55ef-b0dc-23efe3aa029b.htm">
+        <HelpTOCNode Title="Verb Constructor " Url="html/d3ff2fcf-a856-3aee-aaef-5896fc8b07cc.htm" />
+        <HelpTOCNode Title="Verb Constructor (JObject)" Url="html/8649c0ec-0639-8754-9a33-4ffd86eac484.htm" />
+        <HelpTOCNode Title="Verb Constructor (String)" Url="html/294bd527-139f-8e18-17fe-3b54aae97314.htm" />
+        <HelpTOCNode Title="Verb Constructor (Uri)" Url="html/3e0bdf5c-abfc-545b-b5d8-e1be6daed718.htm" />
+        <HelpTOCNode Title="Verb Constructor (StringOfJSON)" Url="html/6843a566-351d-9a0d-da3b-d45cf7275607.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b52a5bb2-9f5b-4dde-969f-0e904e742ae9" Title="Verb Methods" Url="html/1e70ab16-685f-10d4-4b18-ee4995c1883a.htm">
+        <HelpTOCNode Id="ac30539b-f8d1-4bad-a801-26b6848f2306" Title="ToJObject Method " Url="html/12bf4a4a-789d-c67a-5c34-b82250b02afb.htm">
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/0e1893d5-ce29-fdbe-f89b-8c84b497b862.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4e793ada-43b9-47bc-b798-7d1a035faa3f" Title="Verb Type Conversions" Url="html/e3e76167-7df5-eef4-24a3-639953642355.htm">
+        <HelpTOCNode Title="Explicit Conversion (JObject to Verb)" Url="html/37662be8-e478-c896-91b2-a5ee61f37ff6.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dc94dc21-f180-42cc-9cdb-be7e5bf2d2c4" Title="Verb Properties" Url="html/e4f7c024-9825-a6f0-cbfa-fa53680f854b.htm">
+        <HelpTOCNode Title="display Property " Url="html/39a8861b-e19b-c779-de7e-7080a7f90bbc.htm" />
+        <HelpTOCNode Title="id Property " Url="html/12cb1daa-3001-69ec-1a9a-27a38758baf6.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="765e9b1e-9b06-476a-9254-6b31161ad5e0" Title="TinCan.Documents" Url="html/593989b3-0024-7d5c-de4d-567439cb7bb2.htm">
+    <HelpTOCNode Id="a97d6bf2-1a88-4b47-b810-6076dd5779fa" Title="ActivityProfileDocument Class" Url="html/2790e086-eb3b-db6b-8f52-e794d8e081a3.htm">
+      <HelpTOCNode Title="ActivityProfileDocument Members" Url="html/3ed4b217-b473-2b68-eb03-41727197b7c1.htm" />
+      <HelpTOCNode Title="ActivityProfileDocument Constructor " Url="html/8376d689-5878-e484-7886-817bc4d776a3.htm" />
+      <HelpTOCNode Title="ActivityProfileDocument Methods" Url="html/a8a6d8b1-ac04-5fad-2ab1-9a6be84bc8e9.htm" />
+      <HelpTOCNode Id="43d79cc2-6e80-4592-9110-b210b5cfda29" Title="ActivityProfileDocument Properties" Url="html/a64e5f83-530a-2934-6158-680c86568560.htm">
+        <HelpTOCNode Title="activity Property " Url="html/96449f82-1fe4-7de6-f495-38fd341a6338.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9eafecad-3fce-4ae3-8880-54b8c69e87bd" Title="AgentProfileDocument Class" Url="html/3dff5320-1f95-f935-3142-fe9bd31894b5.htm">
+      <HelpTOCNode Title="AgentProfileDocument Members" Url="html/5a5b3de0-e02e-68d5-585d-ec12e4984f86.htm" />
+      <HelpTOCNode Title="AgentProfileDocument Constructor " Url="html/abd35c29-6f64-1ec1-2530-38efdeb8be76.htm" />
+      <HelpTOCNode Title="AgentProfileDocument Methods" Url="html/68b1ec66-ccb9-14cf-92d9-6b936176d698.htm" />
+      <HelpTOCNode Id="eceec156-31ba-45e3-9a3a-f923d47ce963" Title="AgentProfileDocument Properties" Url="html/6e345035-73a7-d067-37bf-04408eace6d0.htm">
+        <HelpTOCNode Title="agent Property " Url="html/c1c1bc3a-be8e-170d-3b73-a147f4ddc0b7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6c8c0848-2d9a-42eb-9fd6-c89c199dfe26" Title="Document Class" Url="html/f5e8aee8-b0e3-0075-7639-dd99e6d86571.htm">
+      <HelpTOCNode Title="Document Members" Url="html/8e241f78-e7ed-e8cc-aafe-454b877ecfa2.htm" />
+      <HelpTOCNode Title="Document Constructor " Url="html/5f9f05fa-be3f-cbdf-f884-6e79e6010e59.htm" />
+      <HelpTOCNode Title="Document Methods" Url="html/1e98d2ba-d06b-1377-2dc5-257914e26581.htm" />
+      <HelpTOCNode Id="7a9d1c9e-2a22-4894-b51f-69d7d8faff5c" Title="Document Properties" Url="html/40dc0e03-2b5a-6abb-f269-59bd2ce8b3ef.htm">
+        <HelpTOCNode Title="content Property " Url="html/b7cacb08-de68-85d3-bbc3-2abb1e5aecd0.htm" />
+        <HelpTOCNode Title="contentType Property " Url="html/3fc1ccd8-00ba-0999-a7e3-71f4bca03b33.htm" />
+        <HelpTOCNode Title="etag Property " Url="html/7ff20401-0e76-1502-a3e1-249d0ca9595d.htm" />
+        <HelpTOCNode Title="id Property " Url="html/2d7efccd-53c0-e104-ff39-aa807885d37f.htm" />
+        <HelpTOCNode Title="timestamp Property " Url="html/e8b0197c-c24a-7565-fc03-45c7ccf6cc32.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="710eac75-ad9e-4a77-9a72-1bde383d3c55" Title="StateDocument Class" Url="html/b490b986-eb86-32a4-5999-7005bdcf1a9f.htm">
+      <HelpTOCNode Title="StateDocument Members" Url="html/e60dd98a-47a4-0e6e-f19f-bdf6673b11c5.htm" />
+      <HelpTOCNode Title="StateDocument Constructor " Url="html/3f678bd6-4298-8787-8055-b03c6ffe5baa.htm" />
+      <HelpTOCNode Title="StateDocument Methods" Url="html/cf3d5fd9-2050-bcaf-6954-22058b813d20.htm" />
+      <HelpTOCNode Id="9d8a1667-920b-410e-ba3d-a051cb8204f6" Title="StateDocument Properties" Url="html/2fbaeded-d1a1-5ead-df72-9964811d0eab.htm">
+        <HelpTOCNode Title="activity Property " Url="html/2eeeca6a-9812-0146-ba49-c3500faf952f.htm" />
+        <HelpTOCNode Title="agent Property " Url="html/7534bfe8-d707-e065-b3b8-ab4fbd2b9d42.htm" />
+        <HelpTOCNode Title="registration Property " Url="html/9a3fd947-b055-93ff-fbe1-da806c99cdd7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="6c6eea09-09a5-4f5e-9703-82434d6809b7" Title="TinCan.Json" Url="html/90a6f22b-e561-5cf1-099d-e9c11f60187a.htm">
+    <HelpTOCNode Id="1ed35a27-8214-4783-86d0-7520236dc34a" Title="IJsonModel Interface" Url="html/93a976f4-0747-2bd2-4e95-ad1177aafea4.htm">
+      <HelpTOCNode Title="IJsonModel Members" Url="html/b08b759a-7059-1cf4-9801-27f3fb102b9b.htm" />
+      <HelpTOCNode Id="46e48e0e-8b1e-4e4d-a72a-94c031418499" Title="IJsonModel Methods" Url="html/c6453a08-beb5-9655-1faa-4021939d30b4.htm">
+        <HelpTOCNode Id="56d4550b-9663-4788-ae6a-e91cb96ecd66" Title="ToJObject Method " Url="html/ddc080fe-19c7-30d4-3ca9-4361273c0764.htm">
+          <HelpTOCNode Title="ToJObject Method " Url="html/ad5a4295-cecb-a6ea-c7d1-253a854fade3.htm" />
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/5d3bb682-15c7-bbcc-6eb2-0469719d968b.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="c61e0009-1ee6-4d16-8e99-d8319b00b4b5" Title="ToJSON Method " Url="html/801c6811-f0aa-01a1-8553-af6a198c5996.htm">
+          <HelpTOCNode Title="ToJSON Method (Boolean)" Url="html/31102b70-1df3-e015-3768-c68000db85e0.htm" />
+          <HelpTOCNode Title="ToJSON Method (TCAPIVersion, Boolean)" Url="html/15361e60-a1bf-1422-15bb-ebf91297d7aa.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1761e4b5-8512-4e43-b571-ab9fd80c28d8" Title="JsonModel Class" Url="html/12392783-552a-3163-fb66-e8aba06a43d2.htm">
+      <HelpTOCNode Title="JsonModel Members" Url="html/bb6f74b8-b4ea-6733-ddc3-ca113ebdf925.htm" />
+      <HelpTOCNode Title="JsonModel Constructor " Url="html/e20cd179-26f1-f1b5-27c8-5fb45c0ac83d.htm" />
+      <HelpTOCNode Id="42861f29-df3c-4237-8c59-af87e885cfa4" Title="JsonModel Methods" Url="html/65dc6fdb-8d9b-b41c-2fcd-14bae4ca03eb.htm">
+        <HelpTOCNode Id="10f106b2-f4f8-457d-a618-81cfe5814631" Title="ToJObject Method " Url="html/1bdbb9db-6af0-3c60-c988-8a2da6971be4.htm">
+          <HelpTOCNode Title="ToJObject Method " Url="html/d5411f91-0dbd-fd46-5846-0dd5325dba23.htm" />
+          <HelpTOCNode Title="ToJObject Method (TCAPIVersion)" Url="html/c9cd6580-5b19-4fff-767e-a1b521782b0e.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f0446d7c-c614-4920-b867-bcbf277b9f22" Title="ToJSON Method " Url="html/bc99fd4f-4f85-b401-ee5b-1bd6c37e1455.htm">
+          <HelpTOCNode Title="ToJSON Method (Boolean)" Url="html/15e38c2f-5317-26d6-f1a5-967d0ecfef0d.htm" />
+          <HelpTOCNode Title="ToJSON Method (TCAPIVersion, Boolean)" Url="html/a37d2ed3-437d-e9c7-7637-51114f68af6b.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="34d2409a-03a8-4eba-abae-5d3b50054306" Title="StringOfJSON Class" Url="html/613a6658-61ec-e779-b177-2fe3b5e884f8.htm">
+      <HelpTOCNode Title="StringOfJSON Members" Url="html/4b20bb1e-a13e-5b71-3d72-d6b07a25d81f.htm" />
+      <HelpTOCNode Title="StringOfJSON Constructor " Url="html/905b309f-edb5-7ddb-a9fd-5708608dcad4.htm" />
+      <HelpTOCNode Id="a3ab953a-f4a6-4509-814b-d1192dddab54" Title="StringOfJSON Methods" Url="html/24d8b287-e124-b4cd-cbf2-1955b6a204f4.htm">
+        <HelpTOCNode Title="toJObject Method " Url="html/b5f5dece-a478-f988-d2b3-d6e681c95610.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/070cfc98-2ff9-9ab9-d9ba-f1db651f8905.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="f3df7028-710a-4ec9-b2f2-adaaaf2ffbba" Title="TinCan.LRSResponses" Url="html/a0448580-657b-e13b-f2bc-e44afeea9f27.htm">
+    <HelpTOCNode Id="c9a9a72e-87f3-4f50-913b-70573c2fb2eb" Title="AboutLRSResponse Class" Url="html/d512936b-ba6d-3948-e58a-5ff875953c3a.htm">
+      <HelpTOCNode Title="AboutLRSResponse Members" Url="html/fb0ae152-3c76-76f0-78a3-7d2e92dab1d6.htm" />
+      <HelpTOCNode Title="AboutLRSResponse Constructor " Url="html/4b109f24-f5b8-918f-f2f6-c967d7321aef.htm" />
+      <HelpTOCNode Title="AboutLRSResponse Methods" Url="html/249e9e1c-ffb4-6a05-685c-d18ced5ee500.htm" />
+      <HelpTOCNode Id="abc0c734-a9ce-4291-850b-dc353c7d640b" Title="AboutLRSResponse Properties" Url="html/3aa4b6d2-5999-db0e-06d0-d594adb8974e.htm">
+        <HelpTOCNode Title="content Property " Url="html/caed1961-0d46-4bd7-04bf-2fc54aa70309.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="48a9d15a-9bbe-448d-81b0-91648b94deeb" Title="ActivityProfileLRSResponse Class" Url="html/07378550-5392-b31d-d5b9-d9cf587a8a0e.htm">
+      <HelpTOCNode Title="ActivityProfileLRSResponse Members" Url="html/4ee75548-b61c-53c1-e915-b625e6b369e1.htm" />
+      <HelpTOCNode Title="ActivityProfileLRSResponse Constructor " Url="html/42e15b00-a24a-9ca8-b6f1-ffb2429d4e84.htm" />
+      <HelpTOCNode Title="ActivityProfileLRSResponse Methods" Url="html/f6728a0a-9202-ad53-bff2-345f66556761.htm" />
+      <HelpTOCNode Id="0b8e8a26-e5c2-4888-9763-f16b713c6db8" Title="ActivityProfileLRSResponse Properties" Url="html/bb186442-6571-c8e6-103f-622b66d063f7.htm">
+        <HelpTOCNode Title="content Property " Url="html/b5fb2c78-74e7-c72a-1c97-28b7a1dbf505.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fbfc28dc-4486-40cd-9390-173142a10255" Title="AgentProfileLRSResponse Class" Url="html/7147de49-b1af-ecbc-5d44-980b8cf33db6.htm">
+      <HelpTOCNode Title="AgentProfileLRSResponse Members" Url="html/c057fbc8-7156-9faa-d345-360ca2235225.htm" />
+      <HelpTOCNode Title="AgentProfileLRSResponse Constructor " Url="html/4f4c05fb-7655-bdcb-e92f-d739cca0d166.htm" />
+      <HelpTOCNode Title="AgentProfileLRSResponse Methods" Url="html/e6f6947e-adad-1c71-0a41-0623743cbeb9.htm" />
+      <HelpTOCNode Id="9b51342b-4fd0-4c0c-902a-beff420e061b" Title="AgentProfileLRSResponse Properties" Url="html/d81b8516-2e4f-5dab-f10e-9b79a605cc69.htm">
+        <HelpTOCNode Title="content Property " Url="html/b82b7534-05dc-7f92-b7a1-160581e0b74f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9bf04ed3-9953-4fba-a0cf-45ff20e1b083" Title="LRSResponse Class" Url="html/b0708ad6-190b-c640-48d2-b2e6c000e955.htm">
+      <HelpTOCNode Title="LRSResponse Members" Url="html/187b2bfb-3c4d-217a-8abb-f726ade2d960.htm" />
+      <HelpTOCNode Title="LRSResponse Constructor " Url="html/a0fe3938-8428-3aa7-0280-22731df0ba48.htm" />
+      <HelpTOCNode Id="a5627899-2503-461f-a0e8-62c1fb46957c" Title="LRSResponse Methods" Url="html/583b4cb0-6c55-1cb8-0c13-18a0f9d0a954.htm">
+        <HelpTOCNode Title="SetErrMsgFromBytes Method " Url="html/32813977-8657-040b-7029-a92db9fcd1c9.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ba5dbf1a-6653-4711-a858-e448b926cf5f" Title="LRSResponse Properties" Url="html/1555ae85-ea30-3f5f-9a6c-8d6b7e1a8d86.htm">
+        <HelpTOCNode Title="errMsg Property " Url="html/e2a271fc-6d6e-f289-c16c-0cd196c92813.htm" />
+        <HelpTOCNode Title="httpException Property " Url="html/7e009a6d-4ca9-92eb-99c2-3d5ba720e1be.htm" />
+        <HelpTOCNode Title="success Property " Url="html/da06aeda-cc99-aaae-7d0d-ae0d8902c442.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="84960719-c60e-4c9b-9610-212c209bf541" Title="ProfileKeysLRSResponse Class" Url="html/d1c78a22-d786-681a-2fd5-aa390b2dbfbc.htm">
+      <HelpTOCNode Title="ProfileKeysLRSResponse Members" Url="html/8e1d797c-37f1-167c-61a6-5e12993d9f77.htm" />
+      <HelpTOCNode Title="ProfileKeysLRSResponse Constructor " Url="html/7c8c8ab5-2859-073a-0c68-06616b728e57.htm" />
+      <HelpTOCNode Title="ProfileKeysLRSResponse Methods" Url="html/3bc39705-1b04-4751-83b3-07cc73bab375.htm" />
+      <HelpTOCNode Id="d976d460-2161-41a8-9326-03e22e16fd46" Title="ProfileKeysLRSResponse Properties" Url="html/4525f2db-30ba-0049-7b9a-5bc4a8987c24.htm">
+        <HelpTOCNode Title="content Property " Url="html/81d9ab10-3f14-7bfd-dff7-c869fddf953d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3acda7f3-14ca-4800-b230-74d4ca8b4b1b" Title="StateLRSResponse Class" Url="html/c5910c17-bb77-21b1-eadf-83bb382cb4ed.htm">
+      <HelpTOCNode Title="StateLRSResponse Members" Url="html/81882981-5db2-88c1-658b-a1b4934ed400.htm" />
+      <HelpTOCNode Title="StateLRSResponse Constructor " Url="html/85ae39bb-a75a-be4f-dccf-70a507e765c6.htm" />
+      <HelpTOCNode Title="StateLRSResponse Methods" Url="html/cf8bc19e-e273-bad8-42d1-3e721e4a036d.htm" />
+      <HelpTOCNode Id="ec4f3916-3665-4ba9-9e3b-aff49016870a" Title="StateLRSResponse Properties" Url="html/63c92ab0-0b8f-c603-62eb-f947ddd15f72.htm">
+        <HelpTOCNode Title="content Property " Url="html/5cc63351-0f2f-06da-5689-662c0f90daea.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ad1c26f3-a64f-44b8-b562-60cbf20b774e" Title="StatementLRSResponse Class" Url="html/ceca1537-b766-646b-4fc2-cb337c1aacfb.htm">
+      <HelpTOCNode Title="StatementLRSResponse Members" Url="html/c996425e-bf91-67b1-c559-86207f826bd0.htm" />
+      <HelpTOCNode Title="StatementLRSResponse Constructor " Url="html/d2a24a8f-2e73-620d-a0b7-d2783b369a5c.htm" />
+      <HelpTOCNode Title="StatementLRSResponse Methods" Url="html/d74dc1ec-948f-299d-0627-236b135d5b34.htm" />
+      <HelpTOCNode Id="2678b941-2efd-42f1-8c1f-5026660d4e41" Title="StatementLRSResponse Properties" Url="html/5f6824be-d73c-9b42-588f-c480e1224763.htm">
+        <HelpTOCNode Title="content Property " Url="html/30ad5bef-24ef-d17a-c619-eb50187eec14.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="84b50703-d30d-438c-9682-9067c436cd23" Title="StatementsResultLRSResponse Class" Url="html/6cf14a2a-15d3-4aaf-145f-d8c0f8b822e3.htm">
+      <HelpTOCNode Title="StatementsResultLRSResponse Members" Url="html/b7fe4f52-03c1-3ec5-3fc0-bb4736359b59.htm" />
+      <HelpTOCNode Title="StatementsResultLRSResponse Constructor " Url="html/16fd664c-9f1d-19e8-cf0d-4db1a9d1b001.htm" />
+      <HelpTOCNode Title="StatementsResultLRSResponse Methods" Url="html/2c75e2e2-c342-1f0f-075b-b9a1ea416c89.htm" />
+      <HelpTOCNode Id="b822a4b4-ce80-4195-bf9d-2d08d84bef8a" Title="StatementsResultLRSResponse Properties" Url="html/8300de43-cf63-9489-8238-f94f4fd6784e.htm">
+        <HelpTOCNode Title="content Property " Url="html/f1c8716d-475a-382e-f6e7-8cca422e021e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
