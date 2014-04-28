@@ -17,9 +17,9 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace TinCan.json
+namespace TinCan.Json
 {
-    public abstract class JSONBase : JSON
+    public abstract class JsonModel : IJsonModel
     {
         // TODO: rename methods to ToJObject and ToJSON
         public abstract JObject ToJObject(TCAPIVersion version);

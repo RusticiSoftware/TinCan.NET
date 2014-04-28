@@ -21,7 +21,9 @@ namespace TinCanTests
     using NUnit.Framework;
     using Newtonsoft.Json.Linq;
     using TinCan;
-    using TinCan.json;
+    using TinCan.Documents;
+    using TinCan.Json;
+    using TinCan.LRSResponses;
 
     [TestFixture]
     class RemoteLRSResourceTest
@@ -103,7 +105,7 @@ namespace TinCanTests
         [Test]
         public void TestAbout()
         {
-            TinCan.LRSResponse.About lrsRes = lrs.About();
+            AboutLRSResponse lrsRes = lrs.About();
             Assert.IsTrue(lrsRes.success);
         }
 
@@ -112,7 +114,7 @@ namespace TinCanTests
         {
             lrs.endpoint = new Uri("http://cloud.scorm.com/tc/3TQLAI9/sandbox/");
 
-            TinCan.LRSResponse.About lrsRes = lrs.About();
+            AboutLRSResponse lrsRes = lrs.About();
             Assert.IsFalse(lrsRes.success);
             Console.WriteLine("TestAboutFailure - errMsg: " + lrsRes.errMsg);
         }
@@ -125,7 +127,7 @@ namespace TinCanTests
             statement.verb = verb;
             statement.target = activity;
 
-            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
             Assert.AreEqual(statement, lrsRes.content);
             Assert.IsNotNull(lrsRes.content.id);
@@ -140,7 +142,7 @@ namespace TinCanTests
             statement.verb = verb;
             statement.target = activity;
 
-            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
             Assert.AreEqual(statement, lrsRes.content);
         }
@@ -154,7 +156,7 @@ namespace TinCanTests
             statement.verb = verb;
             statement.target = statementRef;
 
-            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
             Assert.AreEqual(statement, lrsRes.content);
         }
@@ -170,7 +172,7 @@ namespace TinCanTests
 
             Console.WriteLine(statement.ToJSON(true));
 
-            TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
+            StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
             Assert.AreEqual(statement, lrsRes.content);
         }
@@ -193,7 +195,7 @@ namespace TinCanTests
             statements.Add(statement1);
             statements.Add(statement2);
 
-            TinCan.LRSResponse.StatementsResult lrsRes = lrs.SaveStatements(statements);
+            StatementsResultLRSResponse lrsRes = lrs.SaveStatements(statements);
             Assert.IsTrue(lrsRes.success);
             // TODO: check statements match and ids not null
         }
@@ -209,10 +211,10 @@ namespace TinCanTests
             statement.context = context;
             statement.result = result;
 
-            TinCan.LRSResponse.Statement saveRes = lrs.SaveStatement(statement);
+            StatementLRSResponse saveRes = lrs.SaveStatement(statement);
             if (saveRes.success)
             {
-                TinCan.LRSResponse.Statement retRes = lrs.RetrieveStatement(saveRes.content.id.Value);
+                StatementLRSResponse retRes = lrs.RetrieveStatement(saveRes.content.id.Value);
                 Assert.IsTrue(retRes.success);
                 Console.WriteLine("TestRetrieveStatement - statement: " + retRes.content.ToJSON(true));
             }
@@ -234,7 +236,7 @@ namespace TinCanTests
             query.format = StatementsQueryResultFormat.IDS;
             query.limit = 10;
 
-            TinCan.LRSResponse.StatementsResult lrsRes = lrs.QueryStatements(query);
+            StatementsResultLRSResponse lrsRes = lrs.QueryStatements(query);
             Assert.IsTrue(lrsRes.success);
             Console.WriteLine("TestQueryStatements - statement count: " + lrsRes.content.statements.Count);
         }
@@ -246,10 +248,10 @@ namespace TinCanTests
             query.format = StatementsQueryResultFormat.IDS;
             query.limit = 2;
 
-            TinCan.LRSResponse.StatementsResult queryRes = lrs.QueryStatements(query);
+            StatementsResultLRSResponse queryRes = lrs.QueryStatements(query);
             if (queryRes.success && queryRes.content.more != null)
             {
-                TinCan.LRSResponse.StatementsResult moreRes = lrs.MoreStatements(queryRes.content);
+                StatementsResultLRSResponse moreRes = lrs.MoreStatements(queryRes.content);
                 Assert.IsTrue(moreRes.success);
                 Console.WriteLine("TestMoreStatements - statement count: " + moreRes.content.statements.Count);
             }
@@ -262,120 +264,120 @@ namespace TinCanTests
         [Test]
         public void TestRetrieveStateIds()
         {
-            TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveStateIds(activity, agent);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveStateIds(activity, agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveState()
         {
-            TinCan.LRSResponse.State lrsRes = lrs.RetrieveState("test", activity, agent);
+            StateLRSResponse lrsRes = lrs.RetrieveState("test", activity, agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestSaveState()
         {
-            var doc = new TinCan.Document.State();
+            var doc = new StateDocument();
             doc.activity = activity;
             doc.agent = agent;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
-            TinCan.LRSResponse.Base lrsRes = lrs.SaveState(doc);
+            LRSResponse lrsRes = lrs.SaveState(doc);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestDeleteState()
         {
-            var doc = new TinCan.Document.State();
+            var doc = new StateDocument();
             doc.activity = activity;
             doc.agent = agent;
             doc.id = "test";
 
-            TinCan.LRSResponse.Base lrsRes = lrs.DeleteState(doc);
+            LRSResponse lrsRes = lrs.DeleteState(doc);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestClearState()
         {
-            TinCan.LRSResponse.Base lrsRes = lrs.ClearState(activity, agent);
+            LRSResponse lrsRes = lrs.ClearState(activity, agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveActivityProfileIds()
         {
-            TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveActivityProfileIds(activity);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveActivityProfileIds(activity);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveActivityProfile()
         {
-            TinCan.LRSResponse.ActivityProfile lrsRes = lrs.RetrieveActivityProfile("test", activity);
+            ActivityProfileLRSResponse lrsRes = lrs.RetrieveActivityProfile("test", activity);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestSaveActivityProfile()
         {
-            var doc = new TinCan.Document.ActivityProfile();
+            var doc = new ActivityProfileDocument();
             doc.activity = activity;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
-            TinCan.LRSResponse.Base lrsRes = lrs.SaveActivityProfile(doc);
+            LRSResponse lrsRes = lrs.SaveActivityProfile(doc);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestDeleteActivityProfile()
         {
-            var doc = new TinCan.Document.ActivityProfile();
+            var doc = new ActivityProfileDocument();
             doc.activity = activity;
             doc.id = "test";
 
-            TinCan.LRSResponse.Base lrsRes = lrs.DeleteActivityProfile(doc);
+            LRSResponse lrsRes = lrs.DeleteActivityProfile(doc);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveAgentProfileIds()
         {
-            TinCan.LRSResponse.ProfileKeys lrsRes = lrs.RetrieveAgentProfileIds(agent);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveAgentProfileIds(agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveAgentProfile()
         {
-            TinCan.LRSResponse.AgentProfile lrsRes = lrs.RetrieveAgentProfile("test", agent);
+            AgentProfileLRSResponse lrsRes = lrs.RetrieveAgentProfile("test", agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestSaveAgentProfile()
         {
-            var doc = new TinCan.Document.AgentProfile();
+            var doc = new AgentProfileDocument();
             doc.agent = agent;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
-            TinCan.LRSResponse.Base lrsRes = lrs.SaveAgentProfile(doc);
+            LRSResponse lrsRes = lrs.SaveAgentProfile(doc);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestDeleteAgentProfile()
         {
-            var doc = new TinCan.Document.AgentProfile();
+            var doc = new AgentProfileDocument();
             doc.agent = agent;
             doc.id = "test";
 
-            TinCan.LRSResponse.Base lrsRes = lrs.DeleteAgentProfile(doc);
+            LRSResponse lrsRes = lrs.DeleteAgentProfile(doc);
             Assert.IsTrue(lrsRes.success);
         }
     }

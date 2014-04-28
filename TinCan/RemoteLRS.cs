@@ -20,10 +20,12 @@ using System.Net;
 using System.Text;
 using System.Web;
 using Newtonsoft.Json.Linq;
+using TinCan.Documents;
+using TinCan.LRSResponses;
 
 namespace TinCan
 {
-    public class RemoteLRS : LRS
+    public class RemoteLRS : ILRS
     {
         public Uri endpoint { get; set; }
         public TCAPIVersion version { get; set; }
@@ -229,7 +231,7 @@ namespace TinCan
             return ret;
         }
 
-        private MyHTTPResponse GetDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
+        private MyHTTPResponse GetDocument(String resource, Dictionary<String, String> queryParams, Document document)
         {
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -248,9 +250,9 @@ namespace TinCan
             return res;
         }
 
-        private TinCan.LRSResponse.ProfileKeys GetProfileKeys(String resource, Dictionary<String, String> queryParams)
+        private ProfileKeysLRSResponse GetProfileKeys(String resource, Dictionary<String, String> queryParams)
         {
-            var r = new LRSResponse.ProfileKeys();
+            var r = new ProfileKeysLRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -279,9 +281,9 @@ namespace TinCan
             return r;
         }
 
-        private TinCan.LRSResponse.Base SaveDocument(String resource, Dictionary<String, String> queryParams, Document.Base document)
+        private LRSResponse SaveDocument(String resource, Dictionary<String, String> queryParams, Document document)
         {
-            var r = new LRSResponse.Base();
+            var r = new LRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "PUT";
@@ -304,9 +306,9 @@ namespace TinCan
             return r;
         }
 
-        private TinCan.LRSResponse.Base DeleteDocument(String resource, Dictionary<String, String> queryParams)
+        private LRSResponse DeleteDocument(String resource, Dictionary<String, String> queryParams)
         {
-            var r = new LRSResponse.Base();
+            var r = new LRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "DELETE";
@@ -327,9 +329,9 @@ namespace TinCan
             return r;
         }
 
-        private TinCan.LRSResponse.Statement GetStatement(Dictionary<String, String> queryParams)
+        private StatementLRSResponse GetStatement(Dictionary<String, String> queryParams)
         {
-            var r = new LRSResponse.Statement();
+            var r = new StatementLRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -346,14 +348,14 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new Statement(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
+            r.content = new Statement(new Json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
 
-        public TinCan.LRSResponse.About About()
+        public AboutLRSResponse About()
         {
-            var r = new LRSResponse.About();
+            var r = new AboutLRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -374,9 +376,9 @@ namespace TinCan
             return r;
         }
 
-        public TinCan.LRSResponse.Statement SaveStatement(Statement statement)
+        public StatementLRSResponse SaveStatement(Statement statement)
         {
-            var r = new LRSResponse.Statement();
+            var r = new StatementLRSResponse();
             var req = new MyHTTPRequest();
             req.queryParams = new Dictionary<String, String>();
             req.resource = "statements";
@@ -423,9 +425,9 @@ namespace TinCan
 
             return r;
         }
-        public TinCan.LRSResponse.StatementsResult SaveStatements(List<Statement> statements)
+        public StatementsResultLRSResponse SaveStatements(List<Statement> statements)
         {
-            var r = new LRSResponse.StatementsResult();
+            var r = new StatementsResultLRSResponse();
 
             var req = new MyHTTPRequest();
             req.resource = "statements";
@@ -459,23 +461,23 @@ namespace TinCan
 
             return r;
         }
-        public TinCan.LRSResponse.Statement RetrieveStatement(Guid id)
+        public StatementLRSResponse RetrieveStatement(Guid id)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("statementId", id.ToString());
 
             return GetStatement(queryParams);
         }
-        public TinCan.LRSResponse.Statement RetrieveVoidedStatement(Guid id)
+        public StatementLRSResponse RetrieveVoidedStatement(Guid id)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("voidedStatementId", id.ToString());
 
             return GetStatement(queryParams);
         }
-        public TinCan.LRSResponse.StatementsResult QueryStatements(StatementsQuery query)
+        public StatementsResultLRSResponse QueryStatements(StatementsQuery query)
         {
-            var r = new LRSResponse.StatementsResult();
+            var r = new StatementsResultLRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -492,13 +494,13 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new StatementsResult(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
+            r.content = new StatementsResult(new Json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
-        public TinCan.LRSResponse.StatementsResult MoreStatements(StatementsResult result)
+        public StatementsResultLRSResponse MoreStatements(StatementsResult result)
         {
-            var r = new LRSResponse.StatementsResult();
+            var r = new StatementsResultLRSResponse();
 
             var req = new MyHTTPRequest();
             req.method = "GET";
@@ -518,13 +520,13 @@ namespace TinCan
             }
 
             r.success = true;
-            r.content = new StatementsResult(new json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
+            r.content = new StatementsResult(new Json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
         }
 
         // TODO: since param
-        public TinCan.LRSResponse.ProfileKeys RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null)
+        public ProfileKeysLRSResponse RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("activityId", activity.id.ToString());
@@ -536,16 +538,16 @@ namespace TinCan
 
             return GetProfileKeys("activities/state", queryParams);
         }
-        public TinCan.LRSResponse.State RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null)
+        public StateLRSResponse RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null)
         {
-            var r = new LRSResponse.State();
+            var r = new StateLRSResponse();
 
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", id);
             queryParams.Add("activityId", activity.id.ToString());
             queryParams.Add("agent", agent.ToJSON(version));
 
-            var state = new Document.State();
+            var state = new StateDocument();
             state.id = id;
             state.activity = activity;
             state.agent = agent;
@@ -562,7 +564,7 @@ namespace TinCan
 
             return r;
         }
-        public TinCan.LRSResponse.Base SaveState(Document.State state)
+        public LRSResponse SaveState(StateDocument state)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", state.id);
@@ -571,7 +573,7 @@ namespace TinCan
 
             return SaveDocument("activities/state", queryParams, state);
         }
-        public TinCan.LRSResponse.Base DeleteState(Document.State state)
+        public LRSResponse DeleteState(StateDocument state)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", state.id);
@@ -584,7 +586,7 @@ namespace TinCan
 
             return DeleteDocument("activities/state", queryParams);
         }
-        public TinCan.LRSResponse.Base ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null)
+        public LRSResponse ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("activityId", activity.id.ToString());
@@ -598,22 +600,22 @@ namespace TinCan
         }
 
         // TODO: since param
-        public TinCan.LRSResponse.ProfileKeys RetrieveActivityProfileIds(Activity activity)
+        public ProfileKeysLRSResponse RetrieveActivityProfileIds(Activity activity)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("activityId", activity.id.ToString());
 
             return GetProfileKeys("activities/profile", queryParams);
         }
-        public TinCan.LRSResponse.ActivityProfile RetrieveActivityProfile(String id, Activity activity)
+        public ActivityProfileLRSResponse RetrieveActivityProfile(String id, Activity activity)
         {
-            var r = new LRSResponse.ActivityProfile();
+            var r = new ActivityProfileLRSResponse();
 
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", id);
             queryParams.Add("activityId", activity.id.ToString());
 
-            var profile = new Document.ActivityProfile();
+            var profile = new ActivityProfileDocument();
             profile.id = id;
             profile.activity = activity;
 
@@ -629,7 +631,7 @@ namespace TinCan
 
             return r;
         }
-        public TinCan.LRSResponse.Base SaveActivityProfile(Document.ActivityProfile profile)
+        public LRSResponse SaveActivityProfile(ActivityProfileDocument profile)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);
@@ -637,7 +639,7 @@ namespace TinCan
 
             return SaveDocument("activities/profile", queryParams, profile);
         }
-        public TinCan.LRSResponse.Base DeleteActivityProfile(Document.ActivityProfile profile)
+        public LRSResponse DeleteActivityProfile(ActivityProfileDocument profile)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);
@@ -648,22 +650,22 @@ namespace TinCan
         }
 
         // TODO: since param
-        public TinCan.LRSResponse.ProfileKeys RetrieveAgentProfileIds(Agent agent)
+        public ProfileKeysLRSResponse RetrieveAgentProfileIds(Agent agent)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("agent", agent.ToJSON(version));
 
             return GetProfileKeys("agents/profile", queryParams);
         }
-        public TinCan.LRSResponse.AgentProfile RetrieveAgentProfile(String id, Agent agent)
+        public AgentProfileLRSResponse RetrieveAgentProfile(String id, Agent agent)
         {
-            var r = new LRSResponse.AgentProfile();
+            var r = new AgentProfileLRSResponse();
 
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", id);
             queryParams.Add("agent", agent.ToJSON(version));
 
-            var profile = new Document.AgentProfile();
+            var profile = new AgentProfileDocument();
             profile.id = id;
             profile.agent = agent;
 
@@ -679,7 +681,7 @@ namespace TinCan
 
             return r;
         }
-        public TinCan.LRSResponse.Base SaveAgentProfile(Document.AgentProfile profile)
+        public LRSResponse SaveAgentProfile(AgentProfileDocument profile)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);
@@ -687,7 +689,7 @@ namespace TinCan
 
             return SaveDocument("agents/profile", queryParams, profile);
         }
-        public TinCan.LRSResponse.Base DeleteAgentProfile(Document.AgentProfile profile)
+        public LRSResponse DeleteAgentProfile(AgentProfileDocument profile)
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);

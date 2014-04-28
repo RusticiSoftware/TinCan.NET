@@ -14,16 +14,13 @@
     limitations under the License.
 */
 using System;
-using Newtonsoft.Json.Linq;
 
-namespace TinCan.json
+namespace TinCan.Documents
 {
-    interface JSON
+    public class StateDocument : Document
     {
-        JObject ToJObject(TCAPIVersion version);
-        JObject ToJObject();
-
-        String ToJSON(TCAPIVersion version, Boolean pretty = false);
-        String ToJSON(Boolean pretty = false);
+        public Activity activity { get; set; }
+        public Agent agent { get; set; }
+        public Guid registration { get; set; }
     }
 }

@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class ActivityDefinition : JSONBase
+    public class ActivityDefinition : JsonModel
     {
         public Uri type { get; set; }
         public Uri moreInfo { get; set; }

@@ -14,9 +14,9 @@
     limitations under the License.
 */
 
-namespace TinCan.Document
+namespace TinCan.Documents
 {
-    public class AgentProfile : Base
+    public class AgentProfileDocument : Document
     {
         public Agent agent { get; set; }
     }

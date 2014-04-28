@@ -15,12 +15,21 @@
 */
 using System;
 
-namespace TinCan.Document
+namespace TinCan.LRSResponses
 {
-    public class State : Base
+    //
+    // this isn't abstract because some responses for an LRS won't have content
+    // so in those cases we can get by just returning this base response
+    //
+    public class LRSResponse
     {
-        public Activity activity { get; set; }
-        public Agent agent { get; set; }
-        public Guid registration { get; set; }
+        public Boolean success { get; set; }
+        public Exception httpException { get; set; }
+        public String errMsg { get; set; }
+
+        public void SetErrMsgFromBytes(byte[] content)
+        {
+            errMsg = System.Text.Encoding.UTF8.GetString(content);
+        }
     }
 }

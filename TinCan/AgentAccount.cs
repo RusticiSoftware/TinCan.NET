@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class AgentAccount : JSONBase
+    public class AgentAccount : JsonModel
     {
         // TODO: check to make sure is absolute?
         public Uri homePage { get; set; }

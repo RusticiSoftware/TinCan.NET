@@ -13,16 +13,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-using System;
 
-namespace TinCan.Document
+namespace TinCan.LRSResponses
 {
-    public abstract class Base
+    public class StatementsResultLRSResponse : LRSResponse
     {
-        public String id { get; set; }
-        public String etag { get; set; }
-        public DateTime timestamp { get; set; }
-        public String contentType { get; set; }
-        public byte[] content { get; set; }
+        public TinCan.StatementsResult content { set; get; }
     }
 }

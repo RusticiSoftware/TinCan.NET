@@ -15,11 +15,11 @@
 */
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class ContextActivities : JSONBase
+    public class ContextActivities : JsonModel
     {
         public List<Activity> parent { get; set; }
         public List<Activity> grouping { get; set; }

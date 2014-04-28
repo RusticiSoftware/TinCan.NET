@@ -16,11 +16,11 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class LanguageMap : JSONBase
+    public class LanguageMap : JsonModel
     {
         private Dictionary<String, String> map;
 

@@ -16,7 +16,7 @@
 using System;
 using Newtonsoft.Json.Linq;
 
-namespace TinCan.json
+namespace TinCan.Json
 {
     public class StringOfJSON
     {

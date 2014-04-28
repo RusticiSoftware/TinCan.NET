@@ -14,10 +14,10 @@
     limitations under the License.
 */
 
-namespace TinCan.LRSResponse
+namespace TinCan.LRSResponses
 {
-    public class State : Base
+    public class ActivityProfileLRSResponse : LRSResponse
     {
-        public TinCan.Document.State content { set; get; }
+        public TinCan.Documents.ActivityProfileDocument content { set; get; }
     }
 }

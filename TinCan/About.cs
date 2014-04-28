@@ -16,11 +16,11 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class About : JSONBase
+    public class About : JsonModel
     {
         public List<TCAPIVersion> version { get; set; }
         public Extensions extensions { get; set; }

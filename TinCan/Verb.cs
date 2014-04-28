@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class Verb : JSONBase
+    public class Verb : JsonModel
     {
         public Uri id { get; set; }
         public LanguageMap display { get; set; }

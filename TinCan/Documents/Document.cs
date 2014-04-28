@@ -14,12 +14,15 @@
     limitations under the License.
 */
 using System;
-using System.Collections.Generic;
 
-namespace TinCan.LRSResponse
+namespace TinCan.Documents
 {
-    public class ProfileKeys : Base
+    public abstract class Document
     {
-        public List<String> content { set; get; }
+        public String id { get; set; }
+        public String etag { get; set; }
+        public DateTime timestamp { get; set; }
+        public String contentType { get; set; }
+        public byte[] content { get; set; }
     }
 }

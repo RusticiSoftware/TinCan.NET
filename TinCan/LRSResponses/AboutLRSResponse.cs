@@ -13,23 +13,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-using System;
 
-namespace TinCan.LRSResponse
+namespace TinCan.LRSResponses
 {
-    //
-    // this isn't abstract because some responses for an LRS won't have content
-    // so in those cases we can get by just returning this base response
-    //
-    public class Base
+    public class AboutLRSResponse : LRSResponse
     {
-        public Boolean success { get; set; }
-        public Exception httpException { get; set; }
-        public String errMsg { get; set; }
-
-        public void SetErrMsgFromBytes(byte[] content)
-        {
-            errMsg = System.Text.Encoding.UTF8.GetString(content);
-        }
+        public TinCan.About content { set; get; }
     }
 }

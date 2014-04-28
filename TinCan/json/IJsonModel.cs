@@ -13,11 +13,17 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using System;
+using Newtonsoft.Json.Linq;
 
-namespace TinCan.LRSResponse
+namespace TinCan.Json
 {
-    public class AgentProfile : Base
+    interface IJsonModel
     {
-        public TinCan.Document.AgentProfile content { set; get; }
+        JObject ToJObject(TCAPIVersion version);
+        JObject ToJObject();
+
+        String ToJSON(TCAPIVersion version, Boolean pretty = false);
+        String ToJSON(Boolean pretty = false);
     }
 }

@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class Agent : JSONBase, StatementTarget
+    public class Agent : JsonModel, StatementTarget
     {
         public static readonly String OBJECT_TYPE = "Agent";
         public virtual String ObjectType { get { return OBJECT_TYPE; } }

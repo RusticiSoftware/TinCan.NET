@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public abstract class StatementBase : JSONBase
+    public abstract class StatementBase : JsonModel
     {
         private const String ISODateTimeFormat = "o";
 

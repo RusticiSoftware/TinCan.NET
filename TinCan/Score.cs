@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class Score : JSONBase
+    public class Score : JsonModel
     {
         public Nullable<Double> scaled { get; set; }
         public Nullable<Double> raw { get; set; }

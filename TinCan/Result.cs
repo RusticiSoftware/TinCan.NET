@@ -16,11 +16,11 @@
 using System;
 using System.Xml;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class Result : JSONBase
+    public class Result : JsonModel
     {
         public Nullable<Boolean> completion { get; set; }
         public Nullable<Boolean> success { get; set; }

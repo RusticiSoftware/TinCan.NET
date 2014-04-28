@@ -14,10 +14,10 @@
     limitations under the License.
 */
 
-namespace TinCan.LRSResponse
+namespace TinCan.LRSResponses
 {
-    public class StatementsResult : Base
+    public class StatementLRSResponse : LRSResponse
     {
-        public TinCan.StatementsResult content { set; get; }
+        public TinCan.Statement content { set; get; }
     }
 }

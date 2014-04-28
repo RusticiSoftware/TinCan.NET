@@ -19,7 +19,7 @@ namespace TinCanTests
     using NUnit.Framework;
     using Newtonsoft.Json.Linq;
     using TinCan;
-    using TinCan.json;
+    using TinCan.Json;
 
     [TestFixture]
     class VerbTest

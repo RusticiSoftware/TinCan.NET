@@ -15,11 +15,11 @@
 */
 using System;
 using Newtonsoft.Json.Linq;
-using TinCan.json;
+using TinCan.Json;
 
 namespace TinCan
 {
-    public class StatementRef : JSONBase, StatementTarget
+    public class StatementRef : JsonModel, StatementTarget
     {
         public static readonly String OBJECT_TYPE = "StatementRef";
         public String ObjectType { get { return OBJECT_TYPE; } }
