@@ -42,9 +42,9 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
-            JObject result = base.toJObject(version);
+            JObject result = base.ToJObject(version);
             if (member != null && member.Count > 0)
             {
                 var jmember = new JArray();
@@ -52,7 +52,7 @@ namespace TinCan
 
                 foreach (Agent agent in member)
                 {
-                    jmember.Add(agent.toJObject(version));
+                    jmember.Add(agent.ToJObject(version));
                 }
             }
 

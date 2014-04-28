@@ -61,7 +61,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
 
             if (completion != null)
@@ -82,11 +82,11 @@ namespace TinCan
             }
             if (score != null)
             {
-                result.Add("score", score.toJObject(version));
+                result.Add("score", score.ToJObject(version));
             }
             if (extensions != null)
             {
-                result.Add("extensions", extensions.toJObject(version));
+                result.Add("extensions", extensions.ToJObject(version));
             }
 
             return result;

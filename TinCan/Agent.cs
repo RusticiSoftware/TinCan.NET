@@ -59,7 +59,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
             result.Add("objectType", ObjectType);
@@ -71,7 +71,7 @@ namespace TinCan
 
             if (account != null)
             {
-                result.Add("account", account.toJObject(version));
+                result.Add("account", account.ToJObject(version));
             }
             else if (mbox != null)
             {

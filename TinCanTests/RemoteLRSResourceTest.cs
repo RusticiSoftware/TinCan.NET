@@ -168,7 +168,7 @@ namespace TinCanTests
             statement.verb = verb;
             statement.target = subStatement;
 
-            Console.WriteLine(statement.toJSON(true));
+            Console.WriteLine(statement.ToJSON(true));
 
             TinCan.LRSResponse.Statement lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
@@ -214,7 +214,7 @@ namespace TinCanTests
             {
                 TinCan.LRSResponse.Statement retRes = lrs.RetrieveStatement(saveRes.content.id.Value);
                 Assert.IsTrue(retRes.success);
-                Console.WriteLine("TestRetrieveStatement - statement: " + retRes.content.toJSON(true));
+                Console.WriteLine("TestRetrieveStatement - statement: " + retRes.content.ToJSON(true));
             }
             else
             {

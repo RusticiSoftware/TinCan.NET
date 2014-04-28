@@ -24,14 +24,14 @@ namespace TinCan
         public static readonly StatementsQueryResultFormat EXACT = new StatementsQueryResultFormat("exact");
         public static readonly StatementsQueryResultFormat CANONICAL = new StatementsQueryResultFormat("canonical");
 
-        private string text;
+        private String text;
 
         private StatementsQueryResultFormat(String value)
         {
             text = value;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             return text;
         }

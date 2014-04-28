@@ -47,7 +47,7 @@ namespace TinCan
             this.name = name;
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
             if (homePage != null)

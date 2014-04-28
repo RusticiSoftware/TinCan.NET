@@ -25,7 +25,7 @@ namespace TinCan
         private Dictionary<String, String> map;
 
         public LanguageMap() {
-            map = new Dictionary<string,string>();
+            map = new Dictionary<String, String>();
         }
         public LanguageMap(Dictionary<String, String> map)
         {
@@ -40,7 +40,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
             foreach (KeyValuePair<String, String> entry in this.map)
@@ -51,7 +51,7 @@ namespace TinCan
             return result;
         }
 
-        public bool isEmpty()
+        public Boolean isEmpty()
         {
             return map.Count > 0 ? false : true;
         }

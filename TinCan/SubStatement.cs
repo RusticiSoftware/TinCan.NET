@@ -30,8 +30,8 @@ namespace TinCan
 
         public SubStatement(JObject jobj) : base(jobj) { }
 
-        public override JObject toJObject(TCAPIVersion version) {
-            var result = base.toJObject(version);
+        public override JObject ToJObject(TCAPIVersion version) {
+            var result = base.ToJObject(version);
 
             result.Add("objectType", ObjectType);
 

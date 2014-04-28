@@ -62,7 +62,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
 
             if (parent != null && parent.Count > 0)
@@ -72,7 +72,7 @@ namespace TinCan
 
                 foreach (Activity activity in parent)
                 {
-                    jparent.Add(activity.toJObject(version));
+                    jparent.Add(activity.ToJObject(version));
                 }
             }
             if (grouping != null && grouping.Count > 0)
@@ -82,7 +82,7 @@ namespace TinCan
 
                 foreach (Activity activity in grouping)
                 {
-                    jgrouping.Add(activity.toJObject(version));
+                    jgrouping.Add(activity.ToJObject(version));
                 }
             }
             if (category != null && category.Count > 0)
@@ -92,7 +92,7 @@ namespace TinCan
 
                 foreach (Activity activity in category)
                 {
-                    jcategory.Add(activity.toJObject(version));
+                    jcategory.Add(activity.ToJObject(version));
                 }
             }
             if (other != null && other.Count > 0)
@@ -102,7 +102,7 @@ namespace TinCan
 
                 foreach (Activity activity in other)
                 {
-                    jother.Add(activity.toJObject(version));
+                    jother.Add(activity.ToJObject(version));
                 }
             }
 

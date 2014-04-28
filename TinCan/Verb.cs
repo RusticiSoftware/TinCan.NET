@@ -45,12 +45,12 @@ namespace TinCan
             id = uri;
         }
 
-        public Verb(string str)
+        public Verb(String str)
         {
             id = new Uri (str);
         }
 
-        public override JObject toJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
             if (id != null)
             {
@@ -59,7 +59,7 @@ namespace TinCan
 
             if (display != null && ! display.isEmpty())
             {
-                result.Add("display", display.toJObject(version));
+                result.Add("display", display.ToJObject(version));
             }
 
             return result;

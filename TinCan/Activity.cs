@@ -43,7 +43,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
             result.Add("objectType", ObjectType);
@@ -54,7 +54,7 @@ namespace TinCan
             }
             if (definition != null)
             {
-                result.Add("definition", definition.toJObject(version));
+                result.Add("definition", definition.ToJObject(version));
             }
 
             return result;

@@ -20,7 +20,7 @@ namespace TinCan
 {
     public interface StatementTarget
     {
-        JObject toJObject(TCAPIVersion version);
+        JObject ToJObject(TCAPIVersion version);
 
         String ObjectType
         {

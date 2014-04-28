@@ -31,7 +31,7 @@ namespace TinCanTests
             Assert.IsInstanceOf<Agent>(obj);
             Assert.IsNull(obj.mbox);
 
-            StringAssert.AreEqualIgnoringCase("{\"objectType\":\"Agent\"}", obj.toJSON());
+            StringAssert.AreEqualIgnoringCase("{\"objectType\":\"Agent\"}", obj.ToJSON());
         }
 
         [Test]

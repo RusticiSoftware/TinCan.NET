@@ -56,14 +56,14 @@ namespace TinCan
             return s[vStr];
         }
 
-        private string text;
+        private String text;
 
         private TCAPIVersion(String value)
         {
             text = value;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             return text;
         }

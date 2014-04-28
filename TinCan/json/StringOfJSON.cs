@@ -13,15 +13,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+using System;
 using Newtonsoft.Json.Linq;
 
 namespace TinCan.json
 {
     public class StringOfJSON
     {
-        private string source;
+        private String source;
 
-        public StringOfJSON(string json)
+        public StringOfJSON(String json)
         {
             source = json;
         }
@@ -36,7 +37,7 @@ namespace TinCan.json
             return JObject.Parse(source);
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             return this.source;
         }

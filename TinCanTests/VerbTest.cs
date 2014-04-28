@@ -32,7 +32,7 @@ namespace TinCanTests
             Assert.IsNull(obj.id);
             Assert.IsNull(obj.display);
 
-            StringAssert.AreEqualIgnoringCase("{}", obj.toJSON());
+            StringAssert.AreEqualIgnoringCase("{}", obj.ToJSON());
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace TinCanTests
 
             Verb obj = new Verb(cfg);
             Assert.IsInstanceOf<Verb>(obj);
-            Assert.That(obj.toJSON(), Is.EqualTo("{\"id\":\"" + id + "\"}"));
+            Assert.That(obj.ToJSON(), Is.EqualTo("{\"id\":\"" + id + "\"}"));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace TinCanTests
 
             Verb obj = new Verb(strOfJson);
             Assert.IsInstanceOf<Verb>(obj);
-            Assert.That(obj.toJSON(), Is.EqualTo(json));
+            Assert.That(obj.ToJSON(), Is.EqualTo(json));
         }
     }
 }

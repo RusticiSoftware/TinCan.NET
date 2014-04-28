@@ -37,7 +37,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
             foreach (KeyValuePair<Uri, JToken> entry in map)
@@ -48,7 +48,7 @@ namespace TinCan
             return result;
         }
 
-        public bool isEmpty()
+        public Boolean isEmpty()
         {
             return map.Count > 0 ? false : true;
         }

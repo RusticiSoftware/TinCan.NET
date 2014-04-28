@@ -77,7 +77,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
 
             if (registration != null)
@@ -86,15 +86,15 @@ namespace TinCan
             }
             if (instructor != null)
             {
-                result.Add("instructor", instructor.toJObject(version));
+                result.Add("instructor", instructor.ToJObject(version));
             }
             if (team != null)
             {
-                result.Add("team", team.toJObject(version));
+                result.Add("team", team.ToJObject(version));
             }
             if (contextActivities != null)
             {
-                result.Add("contextActivities", contextActivities.toJObject(version));
+                result.Add("contextActivities", contextActivities.ToJObject(version));
             }
             if (revision != null)
             {
@@ -110,11 +110,11 @@ namespace TinCan
             }
             if (statement != null)
             {
-                result.Add("statement", statement.toJObject(version));
+                result.Add("statement", statement.ToJObject(version));
             }
             if (extensions != null)
             {
-                result.Add("extensions", extensions.toJObject(version));
+                result.Add("extensions", extensions.ToJObject(version));
             }
 
             return result;

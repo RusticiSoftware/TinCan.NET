@@ -40,7 +40,7 @@ namespace TinCan
 
             if (agent != null)
             {
-                result.Add("agent", agent.toJSON(version));
+                result.Add("agent", agent.ToJSON(version));
             }
             if (verbId != null)
             {

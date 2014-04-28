@@ -51,9 +51,9 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
-            JObject result = base.toJObject(version);
+            JObject result = base.ToJObject(version);
 
             if (id != null)
             {
@@ -65,7 +65,7 @@ namespace TinCan
             }
             if (authority != null)
             {
-                result.Add("authority", authority.toJObject(version));
+                result.Add("authority", authority.ToJObject(version));
             }
             if (version != null)
             {

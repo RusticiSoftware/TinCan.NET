@@ -86,31 +86,31 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version)
+        public override JObject ToJObject(TCAPIVersion version)
         {
             JObject result = new JObject();
 
             if (actor != null)
             {
-                result.Add("actor", actor.toJObject(version));
+                result.Add("actor", actor.ToJObject(version));
             }
 
             if (verb != null)
             {
-                result.Add("verb", verb.toJObject(version));
+                result.Add("verb", verb.ToJObject(version));
             }
 
             if (target != null)
             {
-                result.Add("object", target.toJObject(version));
+                result.Add("object", target.ToJObject(version));
             }
             if (this.result != null)
             {
-                result.Add("result", this.result.toJObject(version));
+                result.Add("result", this.result.ToJObject(version));
             }
             if (this.context != null)
             {
-                result.Add("context", context.toJObject(version));
+                result.Add("context", context.ToJObject(version));
             }
             if (timestamp != null)
             {

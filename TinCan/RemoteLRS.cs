@@ -392,7 +392,7 @@ namespace TinCan
             }
 
             req.contentType = "application/json";
-            req.content = Encoding.UTF8.GetBytes(statement.toJSON(version));
+            req.content = Encoding.UTF8.GetBytes(statement.ToJSON(version));
 
             var res = MakeSyncRequest(req);
             if (statement.id == null)
@@ -435,7 +435,7 @@ namespace TinCan
             var jarray = new JArray();
             foreach (Statement st in statements)
             {
-                jarray.Add(st.toJObject(version));
+                jarray.Add(st.ToJObject(version));
             }
             req.content = Encoding.UTF8.GetBytes(jarray.ToString());
 
@@ -528,7 +528,7 @@ namespace TinCan
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("activityId", activity.id.ToString());
-            queryParams.Add("agent", agent.toJSON(version));
+            queryParams.Add("agent", agent.ToJSON(version));
             if (registration != null)
             {
                 queryParams.Add("registration", registration.ToString());
@@ -543,7 +543,7 @@ namespace TinCan
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", id);
             queryParams.Add("activityId", activity.id.ToString());
-            queryParams.Add("agent", agent.toJSON(version));
+            queryParams.Add("agent", agent.ToJSON(version));
 
             var state = new Document.State();
             state.id = id;
@@ -567,7 +567,7 @@ namespace TinCan
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", state.id);
             queryParams.Add("activityId", state.activity.id.ToString());
-            queryParams.Add("agent", state.agent.toJSON(version));
+            queryParams.Add("agent", state.agent.ToJSON(version));
 
             return SaveDocument("activities/state", queryParams, state);
         }
@@ -576,7 +576,7 @@ namespace TinCan
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("stateId", state.id);
             queryParams.Add("activityId", state.activity.id.ToString());
-            queryParams.Add("agent", state.agent.toJSON(version));
+            queryParams.Add("agent", state.agent.ToJSON(version));
             if (state.registration != null)
             {
                 queryParams.Add("registration", state.registration.ToString());
@@ -588,7 +588,7 @@ namespace TinCan
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("activityId", activity.id.ToString());
-            queryParams.Add("agent", agent.toJSON(version));
+            queryParams.Add("agent", agent.ToJSON(version));
             if (registration != null)
             {
                 queryParams.Add("registration", registration.ToString());
@@ -651,7 +651,7 @@ namespace TinCan
         public TinCan.LRSResponse.ProfileKeys RetrieveAgentProfileIds(Agent agent)
         {
             var queryParams = new Dictionary<String, String>();
-            queryParams.Add("agent", agent.toJSON(version));
+            queryParams.Add("agent", agent.ToJSON(version));
 
             return GetProfileKeys("agents/profile", queryParams);
         }
@@ -661,7 +661,7 @@ namespace TinCan
 
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", id);
-            queryParams.Add("agent", agent.toJSON(version));
+            queryParams.Add("agent", agent.ToJSON(version));
 
             var profile = new Document.AgentProfile();
             profile.id = id;
@@ -683,7 +683,7 @@ namespace TinCan
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);
-            queryParams.Add("agent", profile.agent.toJSON(version));
+            queryParams.Add("agent", profile.agent.ToJSON(version));
 
             return SaveDocument("agents/profile", queryParams, profile);
         }
@@ -691,7 +691,7 @@ namespace TinCan
         {
             var queryParams = new Dictionary<String, String>();
             queryParams.Add("profileId", profile.id);
-            queryParams.Add("agent", profile.agent.toJSON(version));
+            queryParams.Add("agent", profile.agent.ToJSON(version));
             // TODO: need to pass Etag?
 
             return DeleteDocument("agents/profile", queryParams);

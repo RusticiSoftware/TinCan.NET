@@ -23,7 +23,7 @@ namespace TinCan.LRSResponse
     //
     public class Base
     {
-        public bool success { get; set; }
+        public Boolean success { get; set; }
         public Exception httpException { get; set; }
         public String errMsg { get; set; }
 

@@ -62,7 +62,7 @@ namespace TinCan
             }
         }
 
-        public override JObject toJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
 
             if (type != null)
@@ -75,15 +75,15 @@ namespace TinCan
             }
             if (name != null && ! name.isEmpty())
             {
-                result.Add("name", name.toJObject(version));
+                result.Add("name", name.ToJObject(version));
             }
             if (description != null && ! description.isEmpty())
             {
-                result.Add("description", description.toJObject(version));
+                result.Add("description", description.ToJObject(version));
             }
             if (extensions != null && ! extensions.isEmpty())
             {
-                result.Add("extensions", extensions.toJObject(version));
+                result.Add("extensions", extensions.ToJObject(version));
             }
 
             return result;
