@@ -24,7 +24,7 @@ var lrs = new RemoteLRS(
 );
 
 var actor = new Agent();
-agent.mbox = "mailto:info@tincanapi.com";
+actor.mbox = "mailto:info@tincanapi.com";
 
 var verb = new Verb();
 verb.id = "http://adlnet.gov/expapi/verbs/experienced";
