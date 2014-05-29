@@ -33,8 +33,8 @@ namespace TinCan
 
         ProfileKeysLRSResponse RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
         StateLRSResponse RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
-        LRSResponse SaveState(StateDocument profile);
-        LRSResponse DeleteState(StateDocument profile);
+        LRSResponse SaveState(StateDocument state);
+        LRSResponse DeleteState(StateDocument state);
         LRSResponse ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null);
 
         ProfileKeysLRSResponse RetrieveActivityProfileIds(Activity activity);

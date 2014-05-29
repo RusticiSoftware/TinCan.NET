@@ -46,7 +46,7 @@ namespace TinCan
 
         public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
-            if (version != null)
+            if (this.version != null)
             {
                 var versions = new JArray();
                 foreach (var v in this.version) {
