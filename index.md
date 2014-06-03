@@ -15,6 +15,7 @@ Install 'TinCan' via NuGet or download dll from GitHub releases.
 The following sample shows the most basic usage of TinCan.NET. There are *a lot* of other options, methods, and model elements, check the API documentation for more.
 
 ```csharp
+using System;
 using TinCan;
 using TinCan.LRSResponses;
 
@@ -55,6 +56,7 @@ else
 ### Query to Get 10 Statements Since a Specific Time
 
 ```csharp
+using System;
 using TinCan;
 using TinCan.LRSResponses;
 
