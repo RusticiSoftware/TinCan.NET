@@ -16,6 +16,7 @@ The following sample shows the most basic usage of TinCan.NET. There are *a lot*
 
 ```csharp
 using TinCan;
+using TinCan.LRSResponses;
 
 var lrs = new RemoteLRS(
     "https://cloud.scorm.com/tc/public/",
@@ -27,12 +28,12 @@ var actor = new Agent();
 actor.mbox = "mailto:info@tincanapi.com";
 
 var verb = new Verb();
-verb.id = "http://adlnet.gov/expapi/verbs/experienced";
+verb.id = new Uri ("http://adlnet.gov/expapi/verbs/experienced");
 verb.display = new LanguageMap();
 verb.display.Add("en-US", "experienced");
 
 var activity = new Activity();
-activity.id = "http://rusticisoftware.github.io/TinCan.NET";
+activity.id = new Uri ("http://rusticisoftware.github.io/TinCan.NET");
 
 var statement = new Statement();
 statement.actor = actor;
@@ -43,7 +44,7 @@ StatementLRSResponse lrsResponse = lrs.SaveStatement(statement);
 if (lrsResponse.success)
 {
     // Updated 'statement' here, now with id
-    Console.Writeline("Save statement: " + lrsResponse.content.id);
+    Console.WriteLine("Save statement: " + lrsResponse.content.id);
 }
 else
 {
@@ -55,6 +56,7 @@ else
 
 ```csharp
 using TinCan;
+using TinCan.LRSResponses;
 
 var lrs = new RemoteLRS(
     "https://cloud.scorm.com/tc/public/",
@@ -63,14 +65,14 @@ var lrs = new RemoteLRS(
 );
 
 var query = new StatementsQuery();
-query.since = new DateTime("2013-08-29 07:42:10CDT");
+query.since = DateTime.ParseExact("2013-08-29 07:42:10Z", "u", System.Globalization.CultureInfo.InvariantCulture);
 query.limit = 10;
 
-StatementsResultLRSResponse lrsResponse = lrs.GetStatements(query);
+StatementsResultLRSResponse lrsResponse = lrs.QueryStatements(query);
 if (lrsResponse.success)
 {
     // List of statements available
-    Console.Writeline("Count of statements: " + lrsResponse.content.statements.Count);
+    Console.WriteLine("Count of statements: " + lrsResponse.content.statements.Count);
 }
 else
 {
