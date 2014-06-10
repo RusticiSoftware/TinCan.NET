@@ -44,7 +44,7 @@ namespace TinCan
             }
             if (verbId != null)
             {
-                result.Add("verbId", verbId.ToString());
+                result.Add("verb", verbId.ToString());
             }
             if (activityId != null)
             {
