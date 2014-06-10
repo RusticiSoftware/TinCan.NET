@@ -20,14 +20,17 @@ namespace TinCan
 {
     public class StatementsQuery
     {
+        // TODO: put in common location
+        private const String ISODateTimeFormat = "o";
+
         public Agent agent { get; set; }
         public Uri verbId { get; set; }
         public Uri activityId { get; set; }
         public Nullable<Guid> registration { get; set; }
         public Nullable<Boolean> relatedActivities { get; set; }
         public Nullable<Boolean> relatedAgents { get; set; }
-        public DateTime since { get; set; }
-        public DateTime until { get; set; }
+        public Nullable<DateTime> since { get; set; }
+        public Nullable<DateTime> until { get; set; }
         public Nullable<Int32> limit { get; set; }
         public StatementsQueryResultFormat format { get; set; }
         public Nullable<Boolean> ascending { get; set; }
@@ -48,7 +51,7 @@ namespace TinCan
             }
             if (activityId != null)
             {
-                result.Add("activityId", activityId.ToString());
+                result.Add("activity", activityId.ToString());
             }
             if (registration != null)
             {
@@ -61,6 +64,14 @@ namespace TinCan
             if (relatedAgents != null)
             {
                 result.Add("related_agents", relatedAgents.Value.ToString());
+            }
+            if (since != null)
+            {
+                result.Add("since", since.Value.ToString(ISODateTimeFormat));
+            }
+            if (until != null)
+            {
+                result.Add("until", until.Value.ToString(ISODateTimeFormat));
             }
             if (limit != null)
             {

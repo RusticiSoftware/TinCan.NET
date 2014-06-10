@@ -21,6 +21,7 @@ namespace TinCan
 {
     public class Statement : StatementBase
     {
+        // TODO: put in common location
         private const String ISODateTimeFormat = "o";
 
         public Nullable<Guid> id { get; set; }
