@@ -66,6 +66,10 @@ namespace TinCan
                     {
                         target = (Activity)jobj.Value<JObject>("object");
                     }
+                    else if ((String)jobj["object"]["objectType"] == StatementRef.OBJECT_TYPE)
+                    {
+                        target = (StatementRef)jobj.Value<JObject>("object");
+                    }
                 }
                 else
                 {
