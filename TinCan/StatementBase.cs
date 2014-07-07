@@ -70,6 +70,18 @@ namespace TinCan
                     {
                         target = (StatementRef)jobj.Value<JObject>("object");
                     }
+                    else if ((String)jobj["object"]["objectType"] == SubStatement.OBJECT_TYPE)
+                    {
+                        if ((string)jobj["objectType"] != "SubStatement")
+                        {
+                            target = (SubStatement)jobj.Value<JObject>("object");
+                        }
+                        else
+                        {
+                            // nested statement not allowed exception here?
+                            target = (Activity)jobj.Value<JObject>("object");
+                        }
+                    }
                 }
                 else
                 {
