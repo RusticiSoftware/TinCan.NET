@@ -25,56 +25,10 @@ namespace TinCanTests
     [TestFixture]
     class StatementTest
     {
-        Agent agent;
-        Verb verb;
-        Activity activity;
-        Activity parent;
-        Context context;
-        Result result;
-        Score score;
-        StatementRef statementRef;
-        SubStatement subStatement;
-
         [SetUp]
         public void Init()
         {
             Console.WriteLine("Running " + TestContext.CurrentContext.Test.FullName);
-
-            agent = new Agent();
-            agent.mbox = "mailto:tincancsharp@tincanapi.com";
-
-            verb = new Verb("http://adlnet.gov/expapi/verbs/experienced");
-
-            activity = new Activity();
-            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0");
-            parent = new Activity();
-            parent.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
-
-            statementRef = new StatementRef(Guid.NewGuid());
-
-            context = new Context();
-            context.registration = Guid.NewGuid();
-            context.statement = statementRef;
-            context.contextActivities = new ContextActivities();
-            context.contextActivities.parent = new List<Activity>();
-            context.contextActivities.parent.Add(parent);
-
-            score = new Score();
-            score.raw = 97;
-            score.scaled = 0.97;
-            score.max = 100;
-            score.min = 0;
-
-            result = new Result();
-            result.score = score;
-            result.success = true;
-            result.completion = true;
-            result.duration = new TimeSpan(1, 2, 16, 43);
-
-            subStatement = new SubStatement();
-            subStatement.actor = agent;
-            subStatement.verb = verb;
-            subStatement.target = parent;
         }
 
         [Test]
@@ -99,9 +53,9 @@ namespace TinCanTests
         public void TestJObjectCtrSubStatement()
         {
             JObject cfg = new JObject();
-            cfg.Add("actor", agent.ToJObject());
-            cfg.Add("verb", verb.ToJObject());
-            cfg.Add("object", subStatement.ToJObject());
+            cfg.Add("actor", Support.agent.ToJObject());
+            cfg.Add("verb", Support.verb.ToJObject());
+            cfg.Add("object", Support.subStatement.ToJObject());
 
             Statement obj = new Statement(cfg);
             Assert.IsInstanceOf<Statement>(obj);
