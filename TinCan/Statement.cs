@@ -50,6 +50,15 @@ namespace TinCan
             {
                 version = (TCAPIVersion)jobj.Value<String>("version");
             }
+
+            //
+            // handle SubStatement as target which isn't provided by StatementBase
+            // because SubStatements are not allowed to nest
+            //
+            if (jobj["object"] != null && (String)jobj["object"]["objectType"] == SubStatement.OBJECT_TYPE)
+            {
+                target = (SubStatement)jobj.Value<JObject>("object");
+            }
         }
 
         public override JObject ToJObject(TCAPIVersion version)
