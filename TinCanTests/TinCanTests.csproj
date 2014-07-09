@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentTest.cs" />
+    <Compile Include="Support.cs" />
+    <Compile Include="SubStatementTest.cs" />
+    <Compile Include="StatementTest.cs" />
     <Compile Include="RemoteLRSResourceTest.cs" />
     <Compile Include="RemoteLRSTest.cs" />
     <Compile Include="LanguageMapTest.cs" />

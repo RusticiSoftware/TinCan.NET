@@ -29,77 +29,22 @@ namespace TinCanTests
     class RemoteLRSResourceTest
     {
         RemoteLRS lrs;
-        Agent agent;
-        Verb verb;
-        Activity activity;
-        Activity parent;
-        Context context;
-        Result result;
-        Score score;
-        StatementRef statementRef;
-        SubStatement subStatement;
 
         [SetUp]
         public void Init()
         {
             Console.WriteLine("Running " + TestContext.CurrentContext.Test.FullName);
+
+            //
+            // these are credentials used by the other OSS libs when building via Travis-CI
+            // so are okay to include in the repository, if you wish to have access to the
+            // results of the test suite then supply your own endpoint, username, and password
+            //
             lrs = new RemoteLRS(
-                "",
-                "",
-                ""
+                "https://cloud.scorm.com/tc/SYPGYC448W/sandbox/",
+                "-DOzXB-DAFR1O3RAazI",
+                "pL-Kyru9fUCFE8981N4"
             );
-
-            agent = new Agent();
-            agent.mbox = "mailto:tincancsharp@tincanapi.com";
-
-            verb = new Verb("http://adlnet.gov/expapi/verbs/experienced");
-            verb.display = new LanguageMap();
-            verb.display.Add("en-US", "experienced");
-
-            activity = new Activity();
-            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0");
-            activity.definition = new ActivityDefinition();
-            activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test");
-            activity.definition.name = new LanguageMap();
-            activity.definition.name.Add("en-US", "Tin Can C# Tests: Unit 0");
-            activity.definition.description = new LanguageMap();
-            activity.definition.description.Add("en-US", "Unit test 0 in the test suite for the Tin Can C# library.");
-
-            parent = new Activity();
-            parent.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
-            parent.definition = new ActivityDefinition();
-            parent.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite");
-            //parent.definition.moreInfo = new Uri("http://rusticisoftware.github.io/TinCanCSharp/");
-            parent.definition.name = new LanguageMap();
-            parent.definition.name.Add("en-US", "Tin Can C# Tests");
-            parent.definition.description = new LanguageMap();
-            parent.definition.description.Add("en-US", "Unit test suite for the Tin Can C# library.");
-
-            statementRef = new StatementRef(Guid.NewGuid());
-
-            context = new Context();
-            context.registration = Guid.NewGuid();
-            context.statement = statementRef;
-            context.contextActivities = new ContextActivities();
-            context.contextActivities.parent = new List<Activity>();
-            context.contextActivities.parent.Add(parent);
-
-            score = new Score();
-            score.raw = 97;
-            score.scaled = 0.97;
-            score.max = 100;
-            score.min = 0;
-
-            result = new Result();
-            result.score = score;
-            result.success = true;
-            result.completion = true;
-            result.duration = new TimeSpan(1, 2, 16, 43);
-
-            subStatement = new SubStatement();
-            subStatement.actor = agent;
-            subStatement.verb = verb;
-            subStatement.target = parent;
         }
 
         [Test]
@@ -123,9 +68,9 @@ namespace TinCanTests
         public void TestSaveStatement()
         {
             var statement = new Statement();
-            statement.actor = agent;
-            statement.verb = verb;
-            statement.target = activity;
+            statement.actor = Support.agent;
+            statement.verb = Support.verb;
+            statement.target = Support.activity;
 
             StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
@@ -138,9 +83,9 @@ namespace TinCanTests
         {
             var statement = new Statement();
             statement.Stamp();
-            statement.actor = agent;
-            statement.verb = verb;
-            statement.target = activity;
+            statement.actor = Support.agent;
+            statement.verb = Support.verb;
+            statement.target = Support.activity;
 
             StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
@@ -152,9 +97,9 @@ namespace TinCanTests
         {
             var statement = new Statement();
             statement.Stamp();
-            statement.actor = agent;
-            statement.verb = verb;
-            statement.target = statementRef;
+            statement.actor = Support.agent;
+            statement.verb = Support.verb;
+            statement.target = Support.statementRef;
 
             StatementLRSResponse lrsRes = lrs.SaveStatement(statement);
             Assert.IsTrue(lrsRes.success);
@@ -166,9 +111,9 @@ namespace TinCanTests
         {
             var statement = new Statement();
             statement.Stamp();
-            statement.actor = agent;
-            statement.verb = verb;
-            statement.target = subStatement;
+            statement.actor = Support.agent;
+            statement.verb = Support.verb;
+            statement.target = Support.subStatement;
 
             Console.WriteLine(statement.ToJSON(true));
 
@@ -181,15 +126,15 @@ namespace TinCanTests
         public void TestSaveStatements()
         {
             var statement1 = new Statement();
-            statement1.actor = agent;
-            statement1.verb = verb;
-            statement1.target = parent;
+            statement1.actor = Support.agent;
+            statement1.verb = Support.verb;
+            statement1.target = Support.parent;
 
             var statement2 = new Statement();
-            statement2.actor = agent;
-            statement2.verb = verb;
-            statement2.target = activity;
-            statement2.context = context;
+            statement2.actor = Support.agent;
+            statement2.verb = Support.verb;
+            statement2.target = Support.activity;
+            statement2.context = Support.context;
 
             var statements = new List<Statement>();
             statements.Add(statement1);
@@ -205,11 +150,11 @@ namespace TinCanTests
         {
             var statement = new TinCan.Statement();
             statement.Stamp();
-            statement.actor = agent;
-            statement.verb = verb;
-            statement.target = activity;
-            statement.context = context;
-            statement.result = result;
+            statement.actor = Support.agent;
+            statement.verb = Support.verb;
+            statement.target = Support.activity;
+            statement.context = Support.context;
+            statement.result = Support.result;
 
             StatementLRSResponse saveRes = lrs.SaveStatement(statement);
             if (saveRes.success)
@@ -228,9 +173,9 @@ namespace TinCanTests
         public void TestQueryStatements()
         {
             var query = new TinCan.StatementsQuery();
-            query.agent = agent;
-            query.verbId = verb.id;
-            query.activityId = parent.id;
+            query.agent = Support.agent;
+            query.verbId = Support.verb.id;
+            query.activityId = Support.parent.id;
             query.relatedActivities = true;
             query.relatedAgents = true;
             query.format = StatementsQueryResultFormat.IDS;
@@ -264,14 +209,14 @@ namespace TinCanTests
         [Test]
         public void TestRetrieveStateIds()
         {
-            ProfileKeysLRSResponse lrsRes = lrs.RetrieveStateIds(activity, agent);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveStateIds(Support.activity, Support.agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveState()
         {
-            StateLRSResponse lrsRes = lrs.RetrieveState("test", activity, agent);
+            StateLRSResponse lrsRes = lrs.RetrieveState("test", Support.activity, Support.agent);
             Assert.IsTrue(lrsRes.success);
         }
 
@@ -279,8 +224,8 @@ namespace TinCanTests
         public void TestSaveState()
         {
             var doc = new StateDocument();
-            doc.activity = activity;
-            doc.agent = agent;
+            doc.activity = Support.activity;
+            doc.agent = Support.agent;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
@@ -292,8 +237,8 @@ namespace TinCanTests
         public void TestDeleteState()
         {
             var doc = new StateDocument();
-            doc.activity = activity;
-            doc.agent = agent;
+            doc.activity = Support.activity;
+            doc.agent = Support.agent;
             doc.id = "test";
 
             LRSResponse lrsRes = lrs.DeleteState(doc);
@@ -303,21 +248,21 @@ namespace TinCanTests
         [Test]
         public void TestClearState()
         {
-            LRSResponse lrsRes = lrs.ClearState(activity, agent);
+            LRSResponse lrsRes = lrs.ClearState(Support.activity, Support.agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveActivityProfileIds()
         {
-            ProfileKeysLRSResponse lrsRes = lrs.RetrieveActivityProfileIds(activity);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveActivityProfileIds(Support.activity);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveActivityProfile()
         {
-            ActivityProfileLRSResponse lrsRes = lrs.RetrieveActivityProfile("test", activity);
+            ActivityProfileLRSResponse lrsRes = lrs.RetrieveActivityProfile("test", Support.activity);
             Assert.IsTrue(lrsRes.success);
         }
 
@@ -325,7 +270,7 @@ namespace TinCanTests
         public void TestSaveActivityProfile()
         {
             var doc = new ActivityProfileDocument();
-            doc.activity = activity;
+            doc.activity = Support.activity;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
@@ -337,7 +282,7 @@ namespace TinCanTests
         public void TestDeleteActivityProfile()
         {
             var doc = new ActivityProfileDocument();
-            doc.activity = activity;
+            doc.activity = Support.activity;
             doc.id = "test";
 
             LRSResponse lrsRes = lrs.DeleteActivityProfile(doc);
@@ -347,14 +292,14 @@ namespace TinCanTests
         [Test]
         public void TestRetrieveAgentProfileIds()
         {
-            ProfileKeysLRSResponse lrsRes = lrs.RetrieveAgentProfileIds(agent);
+            ProfileKeysLRSResponse lrsRes = lrs.RetrieveAgentProfileIds(Support.agent);
             Assert.IsTrue(lrsRes.success);
         }
 
         [Test]
         public void TestRetrieveAgentProfile()
         {
-            AgentProfileLRSResponse lrsRes = lrs.RetrieveAgentProfile("test", agent);
+            AgentProfileLRSResponse lrsRes = lrs.RetrieveAgentProfile("test", Support.agent);
             Assert.IsTrue(lrsRes.success);
         }
 
@@ -362,7 +307,7 @@ namespace TinCanTests
         public void TestSaveAgentProfile()
         {
             var doc = new AgentProfileDocument();
-            doc.agent = agent;
+            doc.agent = Support.agent;
             doc.id = "test";
             doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
 
@@ -374,7 +319,7 @@ namespace TinCanTests
         public void TestDeleteAgentProfile()
         {
             var doc = new AgentProfileDocument();
-            doc.agent = agent;
+            doc.agent = Support.agent;
             doc.id = "test";
 
             LRSResponse lrsRes = lrs.DeleteAgentProfile(doc);
