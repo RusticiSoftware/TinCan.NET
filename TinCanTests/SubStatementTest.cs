@@ -23,7 +23,7 @@ namespace TinCanTests
     using TinCan.Json;
 
     [TestFixture]
-    class StatementTest
+    class SubStatementTest
     {
         [SetUp]
         public void Init()
@@ -34,32 +34,28 @@ namespace TinCanTests
         [Test]
         public void TestEmptyCtr()
         {
-            Statement obj = new Statement();
-            Assert.IsInstanceOf<Statement>(obj);
-            Assert.IsNull(obj.id);
+            var obj = new SubStatement();
+            Assert.IsInstanceOf<SubStatement>(obj);
             Assert.IsNull(obj.actor);
             Assert.IsNull(obj.verb);
             Assert.IsNull(obj.target);
             Assert.IsNull(obj.result);
             Assert.IsNull(obj.context);
-            Assert.IsNull(obj.version);
-            Assert.IsNull(obj.timestamp);
-            Assert.IsNull(obj.stored);
 
-            StringAssert.AreEqualIgnoringCase("{\"version\":\"1.0.1\"}", obj.ToJSON());
+            StringAssert.AreEqualIgnoringCase("{\"objectType\":\"SubStatement\"}", obj.ToJSON());
         }
 
         [Test]
-        public void TestJObjectCtrSubStatement()
+        public void TestJObjectCtrNestedSubStatement()
         {
             JObject cfg = new JObject();
             cfg.Add("actor", Support.agent.ToJObject());
             cfg.Add("verb", Support.verb.ToJObject());
             cfg.Add("object", Support.subStatement.ToJObject());
 
-            Statement obj = new Statement(cfg);
-            Assert.IsInstanceOf<Statement>(obj);
-            Assert.IsInstanceOf<SubStatement>(obj.target);
+            var obj = new SubStatement(cfg);
+            Assert.IsInstanceOf<SubStatement>(obj);
+            Assert.IsNull(obj.target);
         }
     }
 }
