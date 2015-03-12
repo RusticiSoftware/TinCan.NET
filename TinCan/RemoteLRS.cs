@@ -552,6 +552,12 @@ namespace TinCan
             state.activity = activity;
             state.agent = agent;
 
+            if (registration != null)
+            {
+                queryParams.Add("registration", registration.ToString());
+                state.registration = registration;
+            }
+
             var resp = GetDocument("activities/state", queryParams, state);
             if (resp.status != HttpStatusCode.OK && resp.status != HttpStatusCode.NotFound)
             {
@@ -570,6 +576,10 @@ namespace TinCan
             queryParams.Add("stateId", state.id);
             queryParams.Add("activityId", state.activity.id.ToString());
             queryParams.Add("agent", state.agent.ToJSON(version));
+            if (state.registration != null)
+            {
+                queryParams.Add("registration", state.registration.ToString());
+            }
 
             return SaveDocument("activities/state", queryParams, state);
         }

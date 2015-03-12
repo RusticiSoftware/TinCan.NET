@@ -23,13 +23,32 @@ namespace TinCan
         //public static readonly TCAPIVersion V102 = new TCAPIVersion("1.0.2");
         public static readonly TCAPIVersion V101 = new TCAPIVersion("1.0.1");
         public static readonly TCAPIVersion V100 = new TCAPIVersion("1.0.0");
+        public static readonly TCAPIVersion V095 = new TCAPIVersion("0.95");
+        public static readonly TCAPIVersion V090 = new TCAPIVersion("0.9");
 
         public static TCAPIVersion latest()
         {
             return V101;
         }
 
+        private static Dictionary<String, TCAPIVersion> known;
         private static Dictionary<String, TCAPIVersion> supported;
+
+        public static Dictionary<String, TCAPIVersion> GetKnown()
+        {
+            if (known != null) {
+                return known;
+            }
+
+            known = new Dictionary<String, TCAPIVersion>();
+            //known.Add("1.0.2", V102);
+            known.Add("1.0.1", V101);
+            known.Add("1.0.0", V100);
+            known.Add("0.95", V095);
+            known.Add("0.9", V090);
+
+            return known;
+        }
 
         public static Dictionary<String, TCAPIVersion> GetSupported()
         {
@@ -47,10 +66,10 @@ namespace TinCan
 
         public static explicit operator TCAPIVersion(String vStr)
         {
-            var s = GetSupported();
+            var s = GetKnown();
             if (!s.ContainsKey(vStr))
             {
-                throw new ArgumentException("Unsupported version: " + vStr);
+                throw new ArgumentException("Unrecognized version: " + vStr);
             }
 
             return s[vStr];
