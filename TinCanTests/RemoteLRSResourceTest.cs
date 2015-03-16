@@ -41,9 +41,9 @@ namespace TinCanTests
             // results of the test suite then supply your own endpoint, username, and password
             //
             lrs = new RemoteLRS(
-                "https://cloud.scorm.com/tc/SYPGYC448W/sandbox/",
-                "-DOzXB-DAFR1O3RAazI",
-                "pL-Kyru9fUCFE8981N4"
+                "https://cloud.scorm.com/tc/U2S4SI5FY0/sandbox/",
+                "Nja986GYE1_XrWMmFUE",
+                "Bd9lDr1kjaWWY6RID_4"
             );
         }
 

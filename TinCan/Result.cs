@@ -25,7 +25,7 @@ namespace TinCan
         public Nullable<Boolean> completion { get; set; }
         public Nullable<Boolean> success { get; set; }
         public String response { get; set; }
-        public TimeSpan duration { get; set; }
+        public Nullable<TimeSpan> duration { get; set; }
         public Score score { get; set; }
         public Extensions extensions { get; set; }
 
@@ -78,7 +78,7 @@ namespace TinCan
             }
             if (duration != null)
             {
-                result.Add("duration", XmlConvert.ToString(duration));
+                result.Add("duration", XmlConvert.ToString((TimeSpan)duration));
             }
             if (score != null)
             {

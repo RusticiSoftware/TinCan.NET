@@ -21,6 +21,6 @@ namespace TinCan.Documents
     {
         public Activity activity { get; set; }
         public Agent agent { get; set; }
-        public Guid registration { get; set; }
+        public Nullable<Guid> registration { get; set; }
     }
 }
