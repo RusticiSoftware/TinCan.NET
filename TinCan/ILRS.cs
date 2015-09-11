@@ -30,6 +30,7 @@ namespace TinCan
         StatementLRSResponse RetrieveVoidedStatement(Guid id);
         StatementsResultLRSResponse QueryStatements(StatementsQuery query);
         StatementsResultLRSResponse MoreStatements(StatementsResult result);
+        StatementLRSResponse VoidStatement(Guid id, Agent agent);
 
         ProfileKeysLRSResponse RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
         StateLRSResponse RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
