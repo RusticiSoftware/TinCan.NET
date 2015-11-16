@@ -655,6 +655,7 @@ namespace TinCan
                 return r;
             }
             r.success = true;
+            r.content = profile;
 
             return r;
         }
@@ -705,6 +706,7 @@ namespace TinCan
                 return r;
             }
             r.success = true;
+            r.content = profile;
 
             return r;
         }

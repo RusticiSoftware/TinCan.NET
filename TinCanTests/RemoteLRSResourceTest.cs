@@ -229,6 +229,7 @@ namespace TinCanTests
         {
             StateLRSResponse lrsRes = lrs.RetrieveState("test", Support.activity, Support.agent);
             Assert.IsTrue(lrsRes.success);
+            Assert.IsInstanceOf<TinCan.Documents.StateDocument>(lrsRes.content);
         }
 
         [Test]
@@ -275,6 +276,7 @@ namespace TinCanTests
         {
             ActivityProfileLRSResponse lrsRes = lrs.RetrieveActivityProfile("test", Support.activity);
             Assert.IsTrue(lrsRes.success);
+            Assert.IsInstanceOf<TinCan.Documents.ActivityProfileDocument>(lrsRes.content);
         }
 
         [Test]
@@ -312,6 +314,7 @@ namespace TinCanTests
         {
             AgentProfileLRSResponse lrsRes = lrs.RetrieveAgentProfile("test", Support.agent);
             Assert.IsTrue(lrsRes.success);
+            Assert.IsInstanceOf<TinCan.Documents.AgentProfileDocument>(lrsRes.content);
         }
 
         [Test]
