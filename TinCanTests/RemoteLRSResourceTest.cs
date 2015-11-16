@@ -123,6 +123,17 @@ namespace TinCanTests
         }
 
         [Test]
+        public void TestVoidStatement()
+        {
+            Guid toVoid = Guid.NewGuid();
+            StatementLRSResponse lrsRes = lrs.VoidStatement(toVoid, Support.agent);
+
+            Assert.IsTrue(lrsRes.success, "LRS response successful");
+            Assert.AreEqual(new Uri("http://adlnet.gov/expapi/verbs/voided"), lrsRes.content.verb.id, "voiding statement uses voided verb");
+            Assert.AreEqual(toVoid, ((StatementRef) lrsRes.content.target).id, "voiding statement target correct id");
+        }
+
+        [Test]
         public void TestSaveStatements()
         {
             var statement1 = new Statement();

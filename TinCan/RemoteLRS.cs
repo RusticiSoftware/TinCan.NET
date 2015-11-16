@@ -425,6 +425,22 @@ namespace TinCan
 
             return r;
         }
+        public StatementLRSResponse VoidStatement(Guid id, Agent agent)
+        {
+            var voidStatement = new Statement
+            {
+                actor = agent,
+                verb = new Verb
+                {
+                    id = new Uri("http://adlnet.gov/expapi/verbs/voided"),
+                    display = new LanguageMap()
+                },
+                target = new StatementRef { id = id }
+            };
+            voidStatement.verb.display.Add("en-US", "voided");
+
+            return SaveStatement(voidStatement);
+        }
         public StatementsResultLRSResponse SaveStatements(List<Statement> statements)
         {
             var r = new StatementsResultLRSResponse();
@@ -523,23 +539,6 @@ namespace TinCan
             r.content = new StatementsResult(new Json.StringOfJSON(Encoding.UTF8.GetString(res.content)));
 
             return r;
-        }
-        
-        public StatementLRSResponse VoidStatement(Guid id, Agent agent)
-        {
-            var voidStatement = new Statement
-            {
-                actor = agent,
-                verb = new Verb
-                {
-                    id = new Uri("http://adlnet.gov/expapi/verbs/voided"),
-                    display = new LanguageMap()
-                },
-                target = new StatementRef { id = id }
-            };
-            voidStatement.verb.display.Add("en-US", "voided");
-
-            return SaveStatement(voidStatement);
         }
 
         // TODO: since param
