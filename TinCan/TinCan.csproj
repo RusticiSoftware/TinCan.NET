@@ -60,6 +60,8 @@
     <Compile Include="ActivityDefinition.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="ContextActivities.cs" />
+    <Compile Include="InteractionComponent.cs" />
+    <Compile Include="InteractionType.cs" />
     <Compile Include="StatementsQueryResultFormat.cs" />
     <Compile Include="StatementsQuery.cs" />
     <Compile Include="SubStatement.cs" />
