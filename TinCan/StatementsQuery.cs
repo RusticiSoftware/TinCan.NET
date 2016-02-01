@@ -59,7 +59,7 @@ namespace TinCan
             }
             if (activityId != null)
             {
-                result.Add("activity", activityId.ToString());
+                result.Add("activity", activityId);
             }
             if (registration != null)
             {
