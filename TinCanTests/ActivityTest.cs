@@ -30,7 +30,6 @@ namespace TinCanTests
             Assert.AreEqual(noTrailingSlash, activity.id);
         }
 
-
         [Test]
         public void TestActivityIdCase()
         {
@@ -41,6 +40,7 @@ namespace TinCanTests
         }
 
         [Test]
+        [ExpectedException("System.UriFormatException")]
         public void TestActivityIdInvalidUri()
         {
             var activity = new Activity();
