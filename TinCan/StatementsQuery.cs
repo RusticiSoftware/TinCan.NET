@@ -25,8 +25,8 @@ namespace TinCan
 
         public Agent agent { get; set; }
         public Uri verbId { get; set; }
-        private String _activityId;
-        public String activityId {
+        private string _activityId;
+        public string activityId {
             get { return _activityId; }
             set
             {

@@ -24,8 +24,8 @@ namespace TinCan
         public static readonly String OBJECT_TYPE = "Activity";
         public String ObjectType { get { return OBJECT_TYPE; } }
 
-        private String _id;
-        public String id
+        private string _id;
+        public string id
         {
             get { return _id; }
             set
@@ -45,7 +45,7 @@ namespace TinCan
         {
             if (jobj["id"] != null)
             {
-                String idFromJSON = jobj.Value<String>("id");
+                string idFromJSON = jobj.Value<String>("id");
                 Uri uri = new Uri(idFromJSON);
                 id = idFromJSON;
             }
