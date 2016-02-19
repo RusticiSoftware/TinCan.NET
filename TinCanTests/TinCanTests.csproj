@@ -71,6 +71,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityTest.cs" />
     <Compile Include="AgentTest.cs" />
     <Compile Include="ResultTest.cs" />
     <Compile Include="Support.cs" />

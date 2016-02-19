@@ -40,7 +40,7 @@ namespace TinCanTests
             verb.display.Add("en-US", "experienced");
 
             activity = new Activity();
-            activity.id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0");
+            activity.id = "http://tincanapi.com/TinCanCSharp/Test/Unit/0";
             activity.definition = new ActivityDefinition();
             activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test");
             activity.definition.name = new LanguageMap();
@@ -49,7 +49,7 @@ namespace TinCanTests
             activity.definition.description.Add("en-US", "Unit test 0 in the test suite for the Tin Can C# library.");
 
             parent = new Activity();
-            parent.id = new Uri("http://tincanapi.com/TinCanCSharp/Test");
+            parent.id = "http://tincanapi.com/TinCanCSharp/Test";
             parent.definition = new ActivityDefinition();
             parent.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite");
             //parent.definition.moreInfo = new Uri("http://rusticisoftware.github.io/TinCanCSharp/");

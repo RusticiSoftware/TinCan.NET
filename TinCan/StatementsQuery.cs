@@ -25,7 +25,15 @@ namespace TinCan
 
         public Agent agent { get; set; }
         public Uri verbId { get; set; }
-        public Uri activityId { get; set; }
+        private string _activityId;
+        public string activityId {
+            get { return _activityId; }
+            set
+            {
+                Uri uri = new Uri(value);
+                _activityId = value;
+            }
+        }
         public Nullable<Guid> registration { get; set; }
         public Nullable<Boolean> relatedActivities { get; set; }
         public Nullable<Boolean> relatedAgents { get; set; }
@@ -51,7 +59,7 @@ namespace TinCan
             }
             if (activityId != null)
             {
-                result.Add("activity", activityId.ToString());
+                result.Add("activity", activityId);
             }
             if (registration != null)
             {
