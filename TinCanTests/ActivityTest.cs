@@ -40,8 +40,12 @@ namespace TinCanTests
         }
 
         [Test]
-        [ExpectedException("System.UriFormatException")]
         public void TestActivityIdInvalidUri()
+        {
+            Assert.That(() => UseActivityIdInvalidUri(), Throws.InstanceOf<System.UriFormatException>());
+        }
+
+        void UseActivityIdInvalidUri()
         {
             var activity = new Activity();
             string invalid = "foo";
