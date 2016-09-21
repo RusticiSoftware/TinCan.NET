@@ -1,3 +1,5 @@
 *.php
 *.aspx
 fti/
+_site
+Gemfile.lock
