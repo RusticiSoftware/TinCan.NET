@@ -58,8 +58,8 @@ namespace TinCan
                 return supported;
             }
 
-			supported = new Dictionary<String, TCAPIVersion>();
-			supported.Add("1.0.3", V103);
+            supported = new Dictionary<String, TCAPIVersion>();
+            supported.Add("1.0.3", V103);
             supported.Add("1.0.2", V102);
             supported.Add("1.0.1", V101);
             supported.Add("1.0.0", V100);
