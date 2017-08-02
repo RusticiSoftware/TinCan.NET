@@ -18,4 +18,7 @@
       <dependency id="Newtonsoft.Json" version="8.0" />
     </dependencies>
   </metadata>
+  <files>
+      <file src="bin\Release\**" target="lib" />
+  </files>
 </package>
