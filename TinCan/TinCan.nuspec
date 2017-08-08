@@ -19,6 +19,6 @@
     </dependencies>
   </metadata>
   <files>
-      <file src="bin\Release\**" target="lib" />
+      <file src="bin\Release\**\TinCan*" target="lib" />
   </files>
 </package>
