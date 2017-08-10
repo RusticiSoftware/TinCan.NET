@@ -10,7 +10,7 @@ Release-net40
 Release-net45
 Release-net45-signed
 
-The click "Build" to build the selected configurations. (Verify `bin/Release/net<X>/TinCan.dll` has correct version.)
+Then click "Build" to build the selected configurations. (Verify `bin/Release/net<X>/TinCan.dll` has correct version.)
 
 With `nuget.exe` installed and in your path do:
 
