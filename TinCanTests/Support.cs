@@ -86,7 +86,7 @@ namespace TinCanTests
             context.statement = statementRef;
             context.contextActivities = new ContextActivities();
             context.contextActivities.parent = new List<Activity>();
-            context.contextActivities.parent.Add(parent);          
+            context.contextActivities.parent.Add(parent);
 
             score = new Score();
             score.raw = 97;
