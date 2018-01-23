@@ -119,7 +119,7 @@ namespace TinCan
 
         public override JObject ToJObject(TCAPIVersion version) {
             JObject result = new JObject();
-           
+
             if (type != null)
             {
                 result.Add("type", type.ToString());

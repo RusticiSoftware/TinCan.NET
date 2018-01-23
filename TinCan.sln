@@ -1,8 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCan", "TinCan\TinCan.csproj", "{27D0FCA1-E869-440C-9D16-F62D7A068C53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanTests", "TinCanTests\TinCanTests.csproj", "{854413C2-2F81-4A82-9949-DE2868A10078}"

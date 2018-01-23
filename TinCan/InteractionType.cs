@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace TinCan
 {
     public sealed class InteractionType
     {
-        private const string choice = "choice";
-        private const string sequencing = "sequencing";
-        private const string likert = "likert";
-        private const string matching = "matching";
-        private const string performance = "performance";
-        private const string truefalse = "true-false";
-        private const string fillin = "fill-in";
-        private const string numeric = "numeric";
-        private const string other = "other";
+        private const string CHOICE = "choice";
+        private const string SEQUENCING = "sequencing";
+        private const string LIKERT = "likert";
+        private const string MATCHING = "matching";
+        private const string PERFORMANCE = "performance";
+        private const string TRUEFALSE = "true-false";
+        private const string FILLIN = "fill-in";
+        private const string LONGFILLIN = "long-fill-in";
+        private const string NUMERIC = "numeric";
+        private const string OTHER = "other";
 
-
-        public static readonly InteractionType Choice = new InteractionType("choice");
-        public static readonly InteractionType Sequencing = new InteractionType("sequencing");
-        public static readonly InteractionType Likert = new InteractionType("likert");
-        public static readonly InteractionType Matching = new InteractionType("matching");
-        public static readonly InteractionType Performance = new InteractionType("performance");
-        public static readonly InteractionType TrueFalse = new InteractionType("true-false");
-        public static readonly InteractionType FillIn = new InteractionType("fill-in");
-        public static readonly InteractionType Numeric = new InteractionType("numeric");
-        public static readonly InteractionType Other = new InteractionType("other");
-
+        public static readonly InteractionType Choice = new InteractionType(CHOICE);
+        public static readonly InteractionType Sequencing = new InteractionType(SEQUENCING);
+        public static readonly InteractionType Likert = new InteractionType(LIKERT);
+        public static readonly InteractionType Matching = new InteractionType(MATCHING);
+        public static readonly InteractionType Performance = new InteractionType(PERFORMANCE);
+        public static readonly InteractionType TrueFalse = new InteractionType(TRUEFALSE);
+        public static readonly InteractionType FillIn = new InteractionType(FILLIN);
+        public static readonly InteractionType LongFillIn = new InteractionType(LONGFILLIN);
+        public static readonly InteractionType Numeric = new InteractionType(NUMERIC);
+        public static readonly InteractionType Other = new InteractionType(OTHER);
 
         private InteractionType(string value)
         {
@@ -38,36 +35,39 @@ namespace TinCan
         {
             switch (value)
             {
-                case choice:
+                case CHOICE:
                     return Choice;
 
-                case sequencing:
+                case SEQUENCING:
                     return Sequencing;
 
-                case likert:
+                case LIKERT:
                     return Likert;
 
-                case matching:
+                case MATCHING:
                     return Matching;
 
-                case performance:
+                case PERFORMANCE:
                     return Performance;
 
-                case truefalse:
+                case TRUEFALSE:
                     return TrueFalse;
 
-                case fillin:
+                case FILLIN:
                     return FillIn;
+                    
+                case LONGFILLIN:
+                    return LongFillIn;
 
-                case numeric:
+                case NUMERIC:
                     return Numeric;
 
-                case other:
+                case OTHER:
                     return Other;
 
                 default:
-                    return null;
-
+                    throw new ArgumentOutOfRangeException(nameof(value),
+                        $"'{value}' is not a valid interactionType.");
             }
         }
 
