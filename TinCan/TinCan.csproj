@@ -3,12 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version>1.1.0.0</Version>
-    <Authors>Pétur Ingi Egilsson</Authors>
-    <Company>Ingi</Company>
-    <Product>TinCan (.NET Core 2 port)</Product>
-    <PackageId>TinCanNetCore2</PackageId>
-    <Description>A .NET Core 2 port of the TinCanNet API (https://github.com/RusticiSoftware/TinCan.NET).</Description>
+    <Authors>brianjmiller;rustici-software-systems</Authors>
+    <Company>RusticiSoftware</Company>
+    <Product>TinCan</Product>
+    <Title>TinCan</Title>
+    <Copyright>Apache License</Copyright>
+    <Description>Library for implementing Tin Can API (Experience API)</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/RusticiSoftware/TinCan.NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
