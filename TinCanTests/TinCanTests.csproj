@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="ActivityTest.cs" />
     <Compile Include="AgentTest.cs" />
+    <Compile Include="ContextTest.cs" />
     <Compile Include="ResultTest.cs" />
     <Compile Include="Support.cs" />
     <Compile Include="SubStatementTest.cs" />
