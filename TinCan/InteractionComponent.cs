@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright 2015 Rustici Software
+    Copyright 2018 Rustici Software
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -40,10 +40,10 @@ namespace TinCan
             {
                 description = (LanguageMap)jobj.Value<JObject>("description");
             }
- 
         }
 
-        public override JObject ToJObject(TCAPIVersion version) {
+        public override JObject ToJObject(TCAPIVersion version)
+        {
             JObject result = new JObject();
 
             if (id != null)

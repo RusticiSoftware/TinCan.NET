@@ -66,8 +66,8 @@ namespace TinCanTests
 
             for (int i = 1; i <= 2; i++)
             {
-                activity.definition.correctResponsesPattern.Add("choice-" + i.ToString());                
-            }            
+                activity.definition.correctResponsesPattern.Add("choice-" + i.ToString());
+            }
 
             parent = new Activity();
             parent.id = "http://tincanapi.com/TinCanCSharp/Test";

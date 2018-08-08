@@ -112,9 +112,6 @@ namespace TinCan
                     steps.Add(new InteractionComponent(jstep));
                 }
             }
-
-
-
         }
 
         public override JObject ToJObject(TCAPIVersion version) {
