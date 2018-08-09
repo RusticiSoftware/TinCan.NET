@@ -43,13 +43,25 @@ namespace TinCan
             }
             if (jobj["instructor"] != null)
             {
-                // TODO: can be Group?
-                instructor = (Agent)jobj.Value<JObject>("instructor");
+                if (jobj["instructor"]["objectType"] != null && (String)jobj["instructor"]["objectType"] == Group.OBJECT_TYPE)
+                {
+                    instructor = (Group)jobj.Value<JObject>("instructor");
+                }
+                else
+                {
+                    instructor = (Agent)jobj.Value<JObject>("instructor");
+                }
             }
             if (jobj["team"] != null)
             {
-                // TODO: can be Group?
-                team = (Agent)jobj.Value<JObject>("team");
+                if (jobj["team"]["objectType"] != null && (String)jobj["team"]["objectType"] == Group.OBJECT_TYPE)
+                {
+                    team = (Group)jobj.Value<JObject>("team");
+                }
+                else
+                {
+                    team = (Agent)jobj.Value<JObject>("team");
+                }
             }
             if (jobj["contextActivities"] != null)
             {
