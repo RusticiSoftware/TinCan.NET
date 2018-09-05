@@ -117,3 +117,10 @@ Doc/Help/
 .DS_Store
 *.swp
 tmp/
+.idea/.idea.TinCan/riderModule.iml
+.idea/.idea.TinCan/.idea/.name
+.idea/.idea.TinCan/.idea/contentModel.xml
+.idea/.idea.TinCan/.idea/indexLayout.xml
+.idea/.idea.TinCan/.idea/modules.xml
+.idea/.idea.TinCan/.idea/vcs.xml
+.idea/.idea.TinCan/.idea/workspace.xml
