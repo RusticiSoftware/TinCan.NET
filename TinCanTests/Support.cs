@@ -48,6 +48,27 @@ namespace TinCanTests
             activity.definition.description = new LanguageMap();
             activity.definition.description.Add("en-US", "Unit test 0 in the test suite for the Tin Can C# library.");
 
+            activity.definition.interactionType = InteractionType.Choice;
+            activity.definition.choices = new List<InteractionComponent>();
+
+            for (int i = 1; i <= 3; i++)
+            {
+                InteractionComponent interactionComponent = new InteractionComponent();
+                
+                interactionComponent.id = "choice-" + i.ToString();
+                interactionComponent.description = new LanguageMap();
+                interactionComponent.description.Add("en-US", "Choice " + i.ToString());
+
+                activity.definition.choices.Add(interactionComponent);
+            }
+
+            activity.definition.correctResponsesPattern = new List<string>();
+
+            for (int i = 1; i <= 2; i++)
+            {
+                activity.definition.correctResponsesPattern.Add("choice-" + i.ToString());                
+            }            
+
             parent = new Activity();
             parent.id = "http://tincanapi.com/TinCanCSharp/Test";
             parent.definition = new ActivityDefinition();
@@ -65,7 +86,7 @@ namespace TinCanTests
             context.statement = statementRef;
             context.contextActivities = new ContextActivities();
             context.contextActivities.parent = new List<Activity>();
-            context.contextActivities.parent.Add(parent);
+            context.contextActivities.parent.Add(parent);          
 
             score = new Score();
             score.raw = 97;
@@ -78,6 +99,7 @@ namespace TinCanTests
             result.success = true;
             result.completion = true;
             result.duration = new TimeSpan(1, 2, 16, 43);
+            result.response = "choice-2";
 
             subStatement = new SubStatement();
             subStatement.actor = agent;
