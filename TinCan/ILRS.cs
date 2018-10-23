@@ -15,6 +15,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TinCan.Documents;
 using TinCan.LRSResponses;
 
@@ -22,30 +23,30 @@ namespace TinCan
 {
     public interface ILRS
     {
-        AboutLRSResponse About();
+        Task<AboutLRSResponse> About();
 
-        StatementLRSResponse SaveStatement(Statement statement);
-        StatementLRSResponse VoidStatement(Guid id, Agent agent);
-        StatementsResultLRSResponse SaveStatements(List<Statement> statements);
-        StatementLRSResponse RetrieveStatement(Guid id);
-        StatementLRSResponse RetrieveVoidedStatement(Guid id);
-        StatementsResultLRSResponse QueryStatements(StatementsQuery query);
-        StatementsResultLRSResponse MoreStatements(StatementsResult result);
+        Task<StatementLRSResponse> SaveStatement(Statement statement);
+        Task<StatementLRSResponse> VoidStatement(Guid id, Agent agent);
+        Task<StatementsResultLRSResponse> SaveStatements(List<Statement> statements);
+        Task<StatementLRSResponse> RetrieveStatement(Guid id);
+        Task<StatementLRSResponse> RetrieveVoidedStatement(Guid id);
+        Task<StatementsResultLRSResponse> QueryStatements(StatementsQuery query);
+        Task<StatementsResultLRSResponse> MoreStatements(StatementsResult result);
 
-        ProfileKeysLRSResponse RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
-        StateLRSResponse RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
-        LRSResponse SaveState(StateDocument state);
-        LRSResponse DeleteState(StateDocument state);
-        LRSResponse ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null);
+        Task<ProfileKeysLRSResponse> RetrieveStateIds(Activity activity, Agent agent, Nullable<Guid> registration = null);
+        Task<StateLRSResponse> RetrieveState(String id, Activity activity, Agent agent, Nullable<Guid> registration = null);
+        Task<LRSResponse> SaveState(StateDocument state);
+        Task<LRSResponse> DeleteState(StateDocument state);
+        Task<LRSResponse> ClearState(Activity activity, Agent agent, Nullable<Guid> registration = null);
 
-        ProfileKeysLRSResponse RetrieveActivityProfileIds(Activity activity);
-        ActivityProfileLRSResponse RetrieveActivityProfile(String id, Activity activity);
-        LRSResponse SaveActivityProfile(ActivityProfileDocument profile);
-        LRSResponse DeleteActivityProfile(ActivityProfileDocument profile);
+        Task<ProfileKeysLRSResponse> RetrieveActivityProfileIds(Activity activity);
+        Task<ActivityProfileLRSResponse> RetrieveActivityProfile(String id, Activity activity);
+        Task<LRSResponse> SaveActivityProfile(ActivityProfileDocument profile);
+        Task<LRSResponse> DeleteActivityProfile(ActivityProfileDocument profile);
 
-        ProfileKeysLRSResponse RetrieveAgentProfileIds(Agent agent);
-        AgentProfileLRSResponse RetrieveAgentProfile(String id, Agent agent);
-        LRSResponse SaveAgentProfile(AgentProfileDocument profile);
-        LRSResponse DeleteAgentProfile(AgentProfileDocument profile);
+        Task<ProfileKeysLRSResponse> RetrieveAgentProfileIds(Agent agent);
+        Task<AgentProfileLRSResponse> RetrieveAgentProfile(String id, Agent agent);
+        Task<LRSResponse> SaveAgentProfile(AgentProfileDocument profile);
+        Task<LRSResponse> DeleteAgentProfile(AgentProfileDocument profile);
     }
 }
