@@ -46,7 +46,7 @@ namespace TinCanTests
             Assert.IsNull(obj.timestamp);
             Assert.IsNull(obj.stored);
 
-            StringAssert.AreEqualIgnoringCase("{\"version\":\"1.0.1\"}", obj.ToJSON());
+            StringAssert.AreEqualIgnoringCase("{\"version\":\"1.0.3\"}", obj.ToJSON());
         }
 
         [Test]
