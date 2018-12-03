@@ -339,5 +339,23 @@ namespace TinCanTests
             LRSResponse lrsRes = lrs.DeleteAgentProfile(doc);
             Assert.IsTrue(lrsRes.success);
         }
+
+        [Test]
+        public void TestExtendedParameters()
+        {
+            // RemoteLRS doesn't provide a helpful interface for testing
+            // that we successfully altered the request URL, but this test
+            // is helpful in manual testing and it at least ensures that
+            // specifying values in extended doesn't cause errors.
+            lrs.extended.Add("test", "param");
+            var doc = new StateDocument();
+            doc.activity = Support.activity;
+            doc.agent = Support.agent;
+            doc.id = "test";
+            doc.content = System.Text.Encoding.UTF8.GetBytes("Test value");
+
+            LRSResponse lrsRes = lrs.SaveState(doc);
+            Assert.IsTrue(lrsRes.success);
+        }
     }
 }

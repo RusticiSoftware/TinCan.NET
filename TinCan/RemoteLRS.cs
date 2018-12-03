@@ -81,6 +81,20 @@ namespace TinCan
             }
         }
 
+        private string AppendParamsToExistingQueryString(string currentQueryString, Dictionary<string, string> parameters)
+        {
+            foreach (KeyValuePair<String, String> entry in parameters)
+            {
+                if (currentQueryString != "")
+                {
+                    currentQueryString += "&";
+                }
+                currentQueryString += HttpUtility.UrlEncode(entry.Key) + "=" + HttpUtility.UrlEncode(entry.Value);
+            }
+
+            return currentQueryString;
+        }
+
         private MyHTTPResponse MakeSyncRequest(MyHTTPRequest req)
         {
             String url;
@@ -97,21 +111,13 @@ namespace TinCan
                 url += req.resource;
             }
 
-            if (req.queryParams != null)
+            String qs = "";
+            qs = AppendParamsToExistingQueryString(qs, req.queryParams);
+            qs = AppendParamsToExistingQueryString(qs, extended);
+
+            if (qs != "")
             {
-                String qs = "";
-                foreach (KeyValuePair<String, String> entry in req.queryParams)
-                {
-                    if (qs != "")
-                    {
-                        qs += "&";
-                    }
-                    qs += HttpUtility.UrlEncode(entry.Key) + "=" + HttpUtility.UrlEncode(entry.Value);
-                }
-                if (qs != "")
-                {
-                    url += "?" + qs;
-                }
+                url += "?" + qs;
             }
 
             // TODO: handle special properties we recognize, such as content type, modified since, etc.
@@ -123,13 +129,11 @@ namespace TinCan
             {
                 webReq.Headers.Add("Authorization", auth);
             }
-            if (req.headers != null)
+            foreach (KeyValuePair<String, String> entry in req.headers)
             {
-                foreach (KeyValuePair<String, String> entry in req.headers)
-                {
-                    webReq.Headers.Add(entry.Key, entry.Value);
-                }
+                webReq.Headers.Add(entry.Key, entry.Value);
             }
+            
 
             if (req.contentType != null)
             {
