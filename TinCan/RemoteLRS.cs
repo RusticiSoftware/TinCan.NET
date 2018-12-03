@@ -30,7 +30,7 @@ namespace TinCan
         public Uri endpoint { get; set; }
         public TCAPIVersion version { get; set; }
         public String auth { get; set; }
-        public Dictionary<String, String> extended { get; set; }
+        public Dictionary<String, String> extended { get; set; } = new Dictionary<String, String>();
 
         public void SetAuth(String username, String password)
         {
@@ -51,8 +51,8 @@ namespace TinCan
         {
             public String method { get; set; }
             public String resource { get; set; }
-            public Dictionary<String, String> queryParams { get; set; }
-            public Dictionary<String, String> headers { get; set; }
+            public Dictionary<String, String> queryParams { get; set; } = new Dictionary<String, String>();
+            public Dictionary<String, String> headers { get; set; } = new Dictionary<String, String>();
             public String contentType { get; set; }
             public byte[] content { get; set; }
         }
