@@ -35,29 +35,60 @@ namespace TinCan
             if (jobj["parent"] != null)
             {
                 parent = new List<Activity>();
-                foreach (JObject jactivity in jobj["parent"]) {
-                    parent.Add((Activity)jactivity);
+                if (jobj["parent"].Type == JTokenType.Array)
+                {
+                    foreach (JObject jactivity in jobj["parent"]) {
+                        parent.Add((Activity)jactivity);
+                    }
+                }
+                else
+                {
+                    parent.Add((Activity)jobj["parent"]);
                 }
             }
             if (jobj["grouping"] != null)
             {
                 grouping = new List<Activity>();
-                foreach (JObject jactivity in jobj["grouping"]) {
-                    grouping.Add((Activity)jactivity);
+                if (jobj["grouping"].Type == JTokenType.Array)
+                {
+                    foreach (JObject jactivity in jobj["grouping"])
+                    {
+                        grouping.Add((Activity)jactivity);
+                    }
+                }
+                else
+                {
+                    grouping.Add((Activity)jobj["grouping"]);
                 }
             }
             if (jobj["category"] != null)
             {
                 category = new List<Activity>();
-                foreach (JObject jactivity in jobj["category"]) {
-                    category.Add((Activity)jactivity);
+                if (jobj["category"].Type == JTokenType.Array)
+                {
+                    foreach (JObject jactivity in jobj["category"])
+                    {
+                        category.Add((Activity)jactivity);
+                    }
+                }
+                else
+                {
+                    category.Add((Activity)jobj["category"]);
                 }
             }
             if (jobj["other"] != null)
             {
                 other = new List<Activity>();
-                foreach (JObject jactivity in jobj["other"]) {
-                    other.Add((Activity)jactivity);
+                if (jobj["other"].Type == JTokenType.Array)
+                {
+                    foreach (JObject jactivity in jobj["other"])
+                    {
+                        other.Add((Activity)jactivity);
+                    }
+                }
+                else
+                {
+                    other.Add((Activity)jobj["other"]);
                 }
             }
         }
