@@ -22,6 +22,7 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using TinCan.Documents;
 using TinCan.LRSResponses;
+using System.Linq;
 
 namespace TinCan
 {
@@ -81,7 +82,7 @@ namespace TinCan
             }
         }
 
-        private string AppendParamsToExistingQueryString(string currentQueryString, Dictionary<string, string> parameters)
+        private string AppendParamsToExistingQueryString(string currentQueryString,  IEnumerable<KeyValuePair<string,  string>> parameters)
         {
             foreach (KeyValuePair<String, String> entry in parameters)
             {
@@ -113,7 +114,7 @@ namespace TinCan
 
             String qs = "";
             qs = AppendParamsToExistingQueryString(qs, req.queryParams);
-            qs = AppendParamsToExistingQueryString(qs, extended);
+            qs = AppendParamsToExistingQueryString(qs, extended.Where(w => !req.queryParams.ContainsKey(w.Key)));
 
             if (qs != "")
             {
