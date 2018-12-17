@@ -35,7 +35,7 @@ namespace TinCan
             if (jobj["parent"] != null)
             {
                 parent = new List<Activity>();
-                if(jobj["parent"].Type == JTokenType.Array)
+                if (jobj["parent"].Type == JTokenType.Array)
                 {
                     foreach (JObject jactivity in jobj["parent"]) {
                         parent.Add((Activity)jactivity);
