@@ -22,6 +22,7 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using TinCan.Documents;
 using TinCan.LRSResponses;
+using System.Linq;
 
 namespace TinCan
 {
@@ -30,7 +31,7 @@ namespace TinCan
         public Uri endpoint { get; set; }
         public TCAPIVersion version { get; set; }
         public String auth { get; set; }
-        public Dictionary<String, String> extended { get; set; }
+        public Dictionary<String, String> extended { get; set; } = new Dictionary<String, String>();
 
         public void SetAuth(String username, String password)
         {
@@ -51,8 +52,8 @@ namespace TinCan
         {
             public String method { get; set; }
             public String resource { get; set; }
-            public Dictionary<String, String> queryParams { get; set; }
-            public Dictionary<String, String> headers { get; set; }
+            public Dictionary<String, String> queryParams { get; set; } = new Dictionary<String, String>();
+            public Dictionary<String, String> headers { get; set; } = new Dictionary<String, String>();
             public String contentType { get; set; }
             public byte[] content { get; set; }
         }
@@ -81,6 +82,20 @@ namespace TinCan
             }
         }
 
+        private string AppendParamsToExistingQueryString(string currentQueryString,  IEnumerable<KeyValuePair<string,  string>> parameters)
+        {
+            foreach (KeyValuePair<String, String> entry in parameters)
+            {
+                if (currentQueryString != "")
+                {
+                    currentQueryString += "&";
+                }
+                currentQueryString += HttpUtility.UrlEncode(entry.Key) + "=" + HttpUtility.UrlEncode(entry.Value);
+            }
+
+            return currentQueryString;
+        }
+
         private MyHTTPResponse MakeSyncRequest(MyHTTPRequest req)
         {
             String url;
@@ -97,21 +112,13 @@ namespace TinCan
                 url += req.resource;
             }
 
-            if (req.queryParams != null)
+            String qs = "";
+            qs = AppendParamsToExistingQueryString(qs, req.queryParams);
+            qs = AppendParamsToExistingQueryString(qs, extended.Where(w => !req.queryParams.ContainsKey(w.Key)));
+
+            if (qs != "")
             {
-                String qs = "";
-                foreach (KeyValuePair<String, String> entry in req.queryParams)
-                {
-                    if (qs != "")
-                    {
-                        qs += "&";
-                    }
-                    qs += HttpUtility.UrlEncode(entry.Key) + "=" + HttpUtility.UrlEncode(entry.Value);
-                }
-                if (qs != "")
-                {
-                    url += "?" + qs;
-                }
+                url += "?" + qs;
             }
 
             // TODO: handle special properties we recognize, such as content type, modified since, etc.
@@ -123,13 +130,11 @@ namespace TinCan
             {
                 webReq.Headers.Add("Authorization", auth);
             }
-            if (req.headers != null)
+            foreach (KeyValuePair<String, String> entry in req.headers)
             {
-                foreach (KeyValuePair<String, String> entry in req.headers)
-                {
-                    webReq.Headers.Add(entry.Key, entry.Value);
-                }
+                webReq.Headers.Add(entry.Key, entry.Value);
             }
+            
 
             if (req.contentType != null)
             {
