@@ -34,7 +34,7 @@ verb.display = new LanguageMap();
 verb.display.Add("en-US", "experienced");
 
 var activity = new Activity();
-activity.id = new Uri ("http://rusticisoftware.github.io/TinCan.NET");
+activity.id = "http://rusticisoftware.github.io/TinCan.NET";
 
 var statement = new Statement();
 statement.actor = actor;
