@@ -27,12 +27,10 @@ autom4te.cache/
 tarballs/
 test-results/
 Thumbs.db
-.vs/
 
 # Mac bundle stuff
 *.dmg
 *.app
-.DS_Store
 
 # resharper
 *_Resharper.*
@@ -40,5 +38,13 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+TestResult.xml
+Resource.designer.cs
+.vs
 
-coverage.*.xml
+.vscode
+*/coverage.*.xml
+
+#Cake
+tools/*
+!tools/packages.config
