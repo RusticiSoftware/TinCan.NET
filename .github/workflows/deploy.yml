@@ -19,4 +19,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        env:
+          FLOAT_NUGET_TOKEN: ${{ secrets.FLOAT_NUGET_TOKEN }}
         run: ./build.sh --task=Deploy --configuration=Release --nugetUrl="https://api.nuget.org/v3/index.json" --nugetToken="${FLOAT_NUGET_TOKEN}"
