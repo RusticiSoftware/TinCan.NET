@@ -18,7 +18,7 @@ var task = Argument("task", "Build");
 var projectName = Argument("projectName", "Float.TinCan");
 var configuration = Argument("configuration", "Debug");
 var nugetUrl = Argument<Uri>("nugetUrl", null);
-var nugetToken = Argument<Guid>("nugetToken", default);
+var nugetToken = Argument("nugetToken", string.Empty);
 var restoreAssemblyInfo = Argument("restoreAssemblyInfo", true);
 
 // Derived global parameters
@@ -178,7 +178,7 @@ Task("Deploy")
 
         PublishNuGets(
             nugetUrl.AbsoluteUri,
-            nugetToken.ToString(),
+            nugetToken,
             new PublishNuGetsSettings
             {
             },
