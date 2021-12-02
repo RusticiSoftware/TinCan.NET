@@ -23,6 +23,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TinCan\TinCan.csproj" />
+    <ProjectReference Include="..\Float.TinCan\Float.TinCan.csproj" />
   </ItemGroup>
 </Project>

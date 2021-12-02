@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCan.Tests", "TinCan.Tests\TinCan.Tests.csproj", "{C5BF7AFD-65EC-4A26-8C88-99100AC39336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Float.TinCan.Tests", "Float.TinCan.Tests\Float.TinCan.Tests.csproj", "{C5BF7AFD-65EC-4A26-8C88-99100AC39336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCan", "TinCan\TinCan.csproj", "{1E5670EB-4939-4F74-BCC6-EDD72C322740}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Float.TinCan", "Float.TinCan\Float.TinCan.csproj", "{1E5670EB-4939-4F74-BCC6-EDD72C322740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

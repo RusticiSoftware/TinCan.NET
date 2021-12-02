@@ -9,6 +9,7 @@
     <Summary>TinCan implementation for .NET runtimes</Summary>
     <Title>Float.TinCan</Title>
     <Description>TinCan implementation for .NET runtimes</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="../stylecop.json" />
