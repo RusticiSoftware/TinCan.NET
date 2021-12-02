@@ -1,22 +1,13 @@
-A C#/.NET library for implementing Tin Can API.
+# Float.TinCan
 
-For hosted API documentation, basic usage instructions, supported version listing, etc. visit the main project website at:
+This is a C# implementation of the xAPI specification, based on the previous Rustici implementation. This makes a few changes identified while working with xAPI, largely in Xamarin projects.
 
-http://rusticisoftware.github.io/TinCan.NET/
+# Building
 
-For more information about the Tin Can API visit:
+This can be built using dotnet from the command line:
 
-http://tincanapi.com/
+    dotnet build --no-restore
 
-Requires .NET 3.5 or later.
+# License
 
-### .NET Standard 1.3
-Float, LLC has updated the project to support the [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/library) library.
-
-#### Building Nuget
-1. Build the TinCan.csproj file
-2. ```nuget pack TinCan.csproj -IncludeReferencedProjects -Prop Configuration=Release```
-
-### Installation
-
-Available via NuGet.
+All content in this repository is shared under an Apache 2 license. See [license.md](./license.md) for details.
