@@ -1,4 +1,4 @@
-﻿// <copyright file="Document.cs" company="Float">
+// <copyright file="ILRSContentResponse.cs" company="Float">
 // Copyright 2014 Rustici Software, 2018 Float, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,20 +14,16 @@
 // limitations under the License.
 // </copyright>
 
-using System;
-
-namespace TinCan.Documents
+namespace TinCan.LRSResponses
 {
-    public abstract class Document
+    /// <summary>
+    /// An interface for LRS responses with associated content.
+    /// </summary>
+    public interface ILRSContentResponse<TContent> : ILRSResponse
     {
-        public string id { get; set; }
-
-        public string etag { get; set; }
-
-        public DateTime timestamp { get; set; }
-
-        public string contentType { get; set; }
-
-        public byte[] content { get; set; }
+        /// <summary>
+        /// Gets or sets the content associated with the response.
+        /// </summary>
+        TContent content { get; set; }
     }
 }

@@ -1,145 +1,36 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27D0FCA1-E869-440C-9D16-F62D7A068C53}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TinCan</RootNamespace>
-    <AssemblyName>TinCan</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\TinCan.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-net35|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\net35\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Documentation|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Documentation\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\TinCan.XML</DocumentationFile>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-net40|AnyCPU'">
-    <OutputPath>bin\Release\net40\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-net45|AnyCPU'">
-    <OutputPath>bin\Release\net45\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-net45-signed|AnyCPU'">
-    <OutputPath>bin\Release\net45-signed</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TinCan.NET.pfx</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>Float.TinCan</PackageId>
+    <PackageVersion>1.0.3.13</PackageVersion>
+    <Authors>Float</Authors>
+    <Owners>Float</Owners>
+    <Summary>TinCan implementation for .NET runtimes</Summary>
+    <Title>Float.TinCan</Title>
+    <Description>TinCan implementation for .NET runtimes</Description>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.cs" />
-    <Compile Include="Agent.cs" />
-    <Compile Include="AgentAccount.cs" />
-    <Compile Include="Activity.cs" />
-    <Compile Include="ActivityDefinition.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="ContextActivities.cs" />
-    <Compile Include="InteractionComponent.cs" />
-    <Compile Include="InteractionType.cs" />
-    <Compile Include="StatementsQueryResultFormat.cs" />
-    <Compile Include="StatementsQuery.cs" />
-    <Compile Include="SubStatement.cs" />
-    <Compile Include="StatementRef.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="Score.cs" />
-    <Compile Include="Statement.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="LRSResponses\StatementLRSResponse.cs" />
-    <Compile Include="StatementBase.cs" />
-    <Compile Include="StatementsResult.cs" />
-    <Compile Include="Documents\AgentProfileDocument.cs" />
-    <Compile Include="Documents\Document.cs" />
-    <Compile Include="Documents\ActivityProfileDocument.cs" />
-    <Compile Include="Documents\StateDocument.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="ILRS.cs" />
-    <Compile Include="LRSResponses\LRSResponse.cs" />
-    <Compile Include="LRSResponses\AboutLRSResponse.cs" />
-    <Compile Include="LRSResponses\AgentProfileLRSResponse.cs" />
-    <Compile Include="LRSResponses\ActivityProfileLRSResponse.cs" />
-    <Compile Include="LRSResponses\StatementsResultLRSResponse.cs" />
-    <Compile Include="LRSResponses\ProfileKeysLRSResponse.cs" />
-    <Compile Include="LRSResponses\StateLRSResponse.cs" />
-    <Compile Include="RemoteLRS.cs" />
-    <Compile Include="Json\JsonModel.cs" />
-    <Compile Include="Json\IJsonModel.cs" />
-    <Compile Include="Json\StringOfJSON.cs" />
-    <Compile Include="LanguageMap.cs" />
-    <Compile Include="StatementTarget.cs" />
-    <Compile Include="Verb.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TCAPIVersion.cs" />
+    <None Remove="Documents\" />
+    <None Remove="Json\" />
+    <None Remove="LRSResponses\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="TinCan.NET.pfx" />
+    <Folder Include="Documents\" />
+    <Folder Include="Json\" />
+    <Folder Include="LRSResponses\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

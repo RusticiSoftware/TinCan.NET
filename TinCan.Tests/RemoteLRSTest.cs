@@ -1,4 +1,4 @@
-﻿// <copyright file="Document.cs" company="Float">
+﻿// <copyright file="RemoteLRSTest.cs" company="Float">
 // Copyright 2014 Rustici Software, 2018 Float, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,20 +14,21 @@
 // limitations under the License.
 // </copyright>
 
-using System;
-
-namespace TinCan.Documents
+namespace TinCan.Tests
 {
-    public abstract class Document
+    using Xunit;
+    using TinCan;
+
+    public class RemoteLRSTest
     {
-        public string id { get; set; }
-
-        public string etag { get; set; }
-
-        public DateTime timestamp { get; set; }
-
-        public string contentType { get; set; }
-
-        public byte[] content { get; set; }
+        [Fact]
+        public void TestEmptyCtr()
+        {
+            var obj = new RemoteLRS();
+            Assert.IsType<RemoteLRS>(obj);
+            Assert.Null(obj.endpoint);
+            Assert.Null(obj.auth);
+            Assert.Null(obj.version);
+        }
     }
 }

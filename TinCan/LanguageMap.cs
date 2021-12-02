@@ -1,49 +1,61 @@
-﻿/*
-    Copyright 2014 Rustici Software
+﻿// <copyright file="LanguageMap.cs" company="Float">
+// Copyright 2014 Rustici Software, 2018 Float, LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// </copyright>
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using Newtonsoft.Json.Linq;
 using TinCan.Json;
 
 namespace TinCan
 {
-    public class LanguageMap : JsonModel
+    public class LanguageMap : JsonModel, IEnumerable<KeyValuePair<string, string>>
     {
-        private Dictionary<String, String> map;
+        readonly Dictionary<string, string> map;
 
-        public LanguageMap() {
-            map = new Dictionary<String, String>();
-        }
-        public LanguageMap(Dictionary<String, String> map)
+        public LanguageMap()
         {
+            map = new Dictionary<string, string>();
+        }
+
+        public LanguageMap(Dictionary<string, string> map)
+        {
+            Contract.Requires(map != null);
             this.map = map;
         }
 
-        public LanguageMap(StringOfJSON json) : this(json.toJObject()) { }
+        public LanguageMap(StringOfJSON json) : this(json?.toJObject())
+        {
+        }
+
         public LanguageMap(JObject jobj) : this()
         {
-            foreach (KeyValuePair<String,JToken> entry in jobj) {
-                map.Add(entry.Key, (String)entry.Value);
+            Contract.Requires(jobj != null);
+
+            foreach (var entry in jobj)
+            {
+                map.Add(entry.Key, (string)entry.Value);
             }
         }
 
         public override JObject ToJObject(TCAPIVersion version)
         {
-            JObject result = new JObject();
-            foreach (KeyValuePair<String, String> entry in this.map)
+            var result = new JObject();
+
+            foreach (var entry in map)
             {
                 result.Add(entry.Key, entry.Value);
             }
@@ -51,19 +63,29 @@ namespace TinCan
             return result;
         }
 
-        public Boolean isEmpty()
+        public bool isEmpty()
         {
-            return map.Count > 0 ? false : true;
+            return map.Count <= 0;
         }
 
-        public void Add(String lang, String value)
+        public void Add(string lang, string value)
         {
-            this.map.Add(lang, value);
+            map.Add(lang, value);
         }
 
-        public static explicit operator LanguageMap(JObject jobj)
+        public override string ToString()
         {
-            return new LanguageMap(jobj);
+            return $"[LanguageMap: {string.Join(",", map)}]";
+        }
+
+        public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
+        {
+            return map.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return map.GetEnumerator();
         }
     }
 }

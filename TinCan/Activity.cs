@@ -1,19 +1,21 @@
-﻿/*
-    Copyright 2014 Rustici Software
+﻿// <copyright file="Activity.cs" company="Float">
+// Copyright 2014 Rustici Software, 2018 Float, LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// </copyright>
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
 using System;
+using System.Diagnostics.Contracts;
 using Newtonsoft.Json.Linq;
 using TinCan.Json;
 
@@ -21,49 +23,51 @@ namespace TinCan
 {
     public class Activity : JsonModel, StatementTarget
     {
-        public static readonly String OBJECT_TYPE = "Activity";
-        public String ObjectType { get { return OBJECT_TYPE; } }
+        public static readonly string OBJECT_TYPE = "Activity";
 
-        private string _id;
-        public string id
+        public Activity()
         {
-            get { return _id; }
-            set
+        }
+
+        public Activity(StringOfJSON json) : this(json?.toJObject())
+        {
+        }
+
+        public Activity(JObject jobj)
+        {
+            Contract.Requires(jobj != null);
+
+            if (jobj["id"] != null)
             {
-                Uri uri = new Uri(value);
-                _id = value;
+                var thisId = jobj.Value<string>("id");
+                var uri = new Uri(thisId);
+                id = uri;
+            }
+
+            if (jobj["definition"] != null)
+            {
+                definition = new ActivityDefinition(jobj.Value<JObject>("definition"));
             }
         }
 
         public ActivityDefinition definition { get; set; }
 
-        public Activity() { }
+        public Uri id { get; set; }
 
-        public Activity(StringOfJSON json) : this(json.toJObject()) { }
-
-        public Activity(JObject jobj)
-        {
-            if (jobj["id"] != null)
-            {
-                string idFromJSON = jobj.Value<String>("id");
-                Uri uri = new Uri(idFromJSON);
-                id = idFromJSON;
-            }
-            if (jobj["definition"] != null)
-            {
-                definition = (ActivityDefinition)jobj.Value<JObject>("definition");
-            }
-        }
+        public string ObjectType => OBJECT_TYPE;
 
         public override JObject ToJObject(TCAPIVersion version)
         {
-            JObject result = new JObject();
-            result.Add("objectType", ObjectType);
+            var result = new JObject
+            {
+                { "objectType", ObjectType },
+            };
 
             if (id != null)
             {
-                result.Add("id", id);
+                result.Add("id", id.ToString());
             }
+
             if (definition != null)
             {
                 result.Add("definition", definition.ToJObject(version));
@@ -72,9 +76,10 @@ namespace TinCan
             return result;
         }
 
-        public static explicit operator Activity(JObject jobj)
+        /// <inheritdoc />
+        public override string ToString()
         {
-            return new Activity(jobj);
+            return $"[Activity: id={id}, definition={definition}]";
         }
     }
 }

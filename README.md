@@ -10,6 +10,13 @@ http://tincanapi.com/
 
 Requires .NET 3.5 or later.
 
+### .NET Standard 1.3
+Float, LLC has updated the project to support the [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/library) library.
+
+#### Building Nuget
+1. Build the TinCan.csproj file
+2. ```nuget pack TinCan.csproj -IncludeReferencedProjects -Prop Configuration=Release```
+
 ### Installation
 
 Available via NuGet.

@@ -1,4 +1,4 @@
-﻿// <copyright file="StatementsResultLRSResponse.cs" company="Float">
+﻿// <copyright file="LRSResponseError.cs" company="Float">
 // Copyright 2014 Rustici Software, 2018 Float, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,14 +16,37 @@
 
 namespace TinCan.LRSResponses
 {
-    public class StatementsResultLRSResponse : LRSResponse, ILRSContentResponse<StatementsResult>
+    public struct LRSResponseError
     {
-        public StatementsResult content { get; set; }
+        public LRSResponseError(string message, int code = -1)
+        {
+            Message = message;
+            Code = code;
+        }
+
+        public string Message { get; }
+
+        public int Code { get; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is LRSResponseError error)
+            {
+                return error.Message == Message && error.Code == Code;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Message.GetHashCode() ^ Code.GetHashCode();
+        }
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"[StatementsResultLRSResponse: content={content}, base={base.ToString()}]";
+            return $"[LRSResponseError: Message={Message}, Code={Code}]";
         }
     }
 }
