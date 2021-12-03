@@ -7,9 +7,9 @@ using System;
 // Tools and addins
 
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.12.0
-#tool nuget:?package=GitVersion.Tool&version=5.8.1
 #addin nuget:?package=Cake.Coverlet&version=2.5.4
 #addin nuget:?package=Cake.ExtendedNuGet&version=4.0.2
+#addin nuget:?package=Cake.GitVersioning&version=3.4.244
 #addin nuget:?package=Cake.Git&version=1.0.1
 
 // Parameters and arguments
@@ -60,16 +60,14 @@ Task("RestorePackages")
 Task("GitVersion")
     .Does(() =>
     {
-        var gitVersion = GitVersion(new GitVersionSettings
-        {
-        });
+        var gitVersion = GitVersioningGetVersion();
 
-        assemblyVersion = gitVersion.AssemblySemVer;
-        packageVersion = gitVersion.NuGetVersion;
+        assemblyVersion = $"{gitVersion.AssemblyVersion}";
+        packageVersion = $"{gitVersion.AssemblyFileVersion}";
 
-        Information($"AssemblySemVer: {gitVersion.AssemblySemVer}");
-        Information($"NuGetVersion: {gitVersion.NuGetVersion}");
-        Information($"InformationalVersion: {gitVersion.InformationalVersion}");
+        Information($"Assembly version: {assemblyVersion}");
+        Information($"NuGet version: {gitVersion.AssemblyFileVersion}");
+        Information($"Informational version: {gitVersion.AssemblyInformationalVersion}");
 
         var visible = isReleaseBuild 
             ? new string[] {}
@@ -77,9 +75,9 @@ Task("GitVersion")
 
         CreateAssemblyInfo(netAssemblyInfoLocation, new AssemblyInfoSettings
         {
-            Version = gitVersion.AssemblySemVer,
-            FileVersion = gitVersion.AssemblySemFileVer,
-            InformationalVersion = gitVersion.InformationalVersion,
+            Version = $"{gitVersion.AssemblyVersion}",
+            FileVersion = $"{gitVersion.AssemblyFileVersion}",
+            InformationalVersion = $"{gitVersion.AssemblyInformationalVersion}",
             ComVisible = true,
             InternalsVisibleTo = visible,
             CustomAttributes = new []
@@ -191,10 +189,7 @@ Task("Deploy")
 
 Teardown(context =>
 {
-    if (restoreAssemblyInfo)
-    {
-        GitCheckout(root, new FilePath[] { netAssemblyInfoLocation });
-    }
+    // assembly info restoration is disabled as it was throwing an exception in LibGit2Sharp
 });
 
 // Run
