@@ -1,4 +1,4 @@
-name: .NET
+name: Test
 
 on:
   push:
