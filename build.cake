@@ -182,7 +182,7 @@ Task("Deploy")
             },
             new []
             {
-                $"./{projectName}/bin/{configuration}/*.nupkg",
+                $"./{projectName}/bin/{configuration}/{projectName}.{assemblyVersion}.nupkg",
             }
         );
     });
