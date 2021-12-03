@@ -10,6 +10,7 @@
     <Title>Float.TinCan</Title>
     <Description>TinCan implementation for .NET runtimes</Description>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="../stylecop.json" />
