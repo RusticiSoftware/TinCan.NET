@@ -7,7 +7,7 @@ using System;
 // Tools and addins
 
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.12.0
-#tool nuget:?package=GitVersion.CommandLine&version=5.8.1
+#tool nuget:?package=GitVersion.Tool&version=5.8.1
 #addin nuget:?package=Cake.Coverlet&version=2.5.4
 #addin nuget:?package=Cake.ExtendedNuGet&version=4.0.2
 #addin nuget:?package=Cake.Git&version=1.0.1
