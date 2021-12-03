@@ -22,4 +22,4 @@ jobs:
       - name: Deploy to NuGet
         env:
           FLOAT_NUGET_TOKEN: ${{ secrets.FLOAT_NUGET_TOKEN }}
-        run: ./build.sh --task=Deploy --configuration=Release --nugetUrl="https://api.nuget.org/v3/index.json" --nugetToken="${FLOAT_NUGET_TOKEN}" --verbosity=diagnostic
+        run: ./build.sh --task=Deploy --configuration=Release --nugetUrl="https://api.nuget.org/v3/index.json" --nugetToken="${FLOAT_NUGET_TOKEN}"
