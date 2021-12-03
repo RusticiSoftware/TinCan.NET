@@ -3,7 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Float.TinCan</PackageId>
-    <PackageVersion>1.0.3.13</PackageVersion>
     <Authors>Float</Authors>
     <Owners>Float</Owners>
     <Summary>TinCan implementation for .NET runtimes</Summary>
