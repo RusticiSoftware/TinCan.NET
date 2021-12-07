@@ -1,4 +1,4 @@
-# Float.TinCan [![Test](https://github.com/gowithfloat/Float.TinCan/actions/workflows/test.yml/badge.svg)](https://github.com/gowithfloat/Float.TinCan/actions/workflows/test.yml)
+# Float.TinCan [![Test](https://github.com/gowithfloat/Float.TinCan/actions/workflows/test.yml/badge.svg)](https://github.com/gowithfloat/Float.TinCan/actions/workflows/test.yml) [![NuGet](https://img.shields.io/nuget/v/Float.TinCan)](https://www.nuget.org/packages/Float.TinCan/)
 
 This is a C# implementation of the xAPI specification, based on the previous Rustici implementation. This makes a few changes identified while working with xAPI, largely in Xamarin projects.
 
