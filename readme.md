@@ -4,7 +4,7 @@ This is a C# implementation of the xAPI specification, based on the previous Rus
 
 # Building
 
-This project can be built using [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) or [Cake](https://cakebuild.net/). It is recommended that you build this project by invoking the boostrap script:
+This project can be built using [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) or [Cake](https://cakebuild.net/). It is recommended that you build this project by invoking the bootstrap script:
 
     ./build.sh
 
