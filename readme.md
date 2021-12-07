@@ -15,8 +15,7 @@ There are a number of optional arguments that can be provided to the bootstrappe
         --projectName=Float.TinCan \
         --configuration=Debug \
         --nugetUrl=https://nuget.org \
-        --nugetToken=#### \
-        --restoreAssemblyInfo
+        --nugetToken=####
 
 # License
 
