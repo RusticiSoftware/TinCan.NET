@@ -10,6 +10,7 @@
     <Description>TinCan implementation for .NET runtimes</Description>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>../readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="../stylecop.json" />
@@ -33,5 +34,8 @@
     <Folder Include="Documents\" />
     <Folder Include="Json\" />
     <Folder Include="LRSResponses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../readme.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>
