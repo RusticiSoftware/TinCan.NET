@@ -22,12 +22,12 @@ namespace TinCan
 {
     public sealed class TCAPIVersion
     {
-        public static readonly TCAPIVersion V103 = new TCAPIVersion("1.0.3");
-        public static readonly TCAPIVersion V102 = new TCAPIVersion("1.0.2");
-        public static readonly TCAPIVersion V101 = new TCAPIVersion("1.0.1");
-        public static readonly TCAPIVersion V100 = new TCAPIVersion("1.0.0");
-        public static readonly TCAPIVersion V095 = new TCAPIVersion("0.95");
-        public static readonly TCAPIVersion V090 = new TCAPIVersion("0.9");
+        public static readonly TCAPIVersion V103 = new ("1.0.3");
+        public static readonly TCAPIVersion V102 = new ("1.0.2");
+        public static readonly TCAPIVersion V101 = new ("1.0.1");
+        public static readonly TCAPIVersion V100 = new ("1.0.0");
+        public static readonly TCAPIVersion V095 = new ("0.95");
+        public static readonly TCAPIVersion V090 = new ("0.9");
 
         static Dictionary<string, TCAPIVersion> known;
         static Dictionary<string, TCAPIVersion> supported;

@@ -18,9 +18,9 @@ namespace TinCan
 {
     public sealed class StatementsQueryResultFormat
     {
-        public static readonly StatementsQueryResultFormat IDS = new StatementsQueryResultFormat("ids");
-        public static readonly StatementsQueryResultFormat EXACT = new StatementsQueryResultFormat("exact");
-        public static readonly StatementsQueryResultFormat CANONICAL = new StatementsQueryResultFormat("canonical");
+        public static readonly StatementsQueryResultFormat IDS = new ("ids");
+        public static readonly StatementsQueryResultFormat EXACT = new ("exact");
+        public static readonly StatementsQueryResultFormat CANONICAL = new ("canonical");
 
         readonly string text;
 

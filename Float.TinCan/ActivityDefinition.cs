@@ -23,9 +23,9 @@ namespace TinCan
 {
     public class ActivityDefinition : JsonModel
     {
-        public static readonly Uri ModuleActivityType = new Uri("http://adlnet.gov/expapi/activities/module");
-        public static readonly Uri CourseActivityType = new Uri("http://adlnet.gov/expapi/activities/course");
-        public static readonly Uri ResourceActivityType = new Uri("http://id.tincanapi.com/activitytype/resource");
+        public static readonly Uri ModuleActivityType = new ("http://adlnet.gov/expapi/activities/module");
+        public static readonly Uri CourseActivityType = new ("http://adlnet.gov/expapi/activities/course");
+        public static readonly Uri ResourceActivityType = new ("http://id.tincanapi.com/activitytype/resource");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActivityDefinition"/> class.

@@ -23,18 +23,18 @@ namespace TinCan
 {
     public class Verb : JsonModel
     {
-        public static readonly Verb Completed = new Verb(new Uri("http://adlnet.gov/expapi/verbs/completed"), "en-US", "completed");
-        public static readonly Verb Terminated = new Verb(new Uri("http://adlnet.gov/expapi/verbs/terminated"), "en-US", "terminated");
-        public static readonly Verb Launched = new Verb(new Uri("http://adlnet.gov/expapi/verbs/launched"), "en-US", "launched");
-        public static readonly Verb Suspended = new Verb(new Uri("http://adlnet.gov/expapi/verbs/suspended"), "en-US", "suspended");
-        public static readonly Verb Favorited = new Verb(new Uri("http://activitystrea.ms/schema/1.0/favorite"), "en-US", "favorited");
-        public static readonly Verb Unfavorited = new Verb(new Uri("http://activitystrea.ms/schema/1.0/unfavorite"), "en-US", "unfavorited");
-        public static readonly Verb Initialized = new Verb(new Uri("http://adlnet.gov/expapi/verbs/initialized"), "en -US", "initialized");
-        internal static readonly Verb Voided = new Verb(new Uri("http://adlnet.gov/expapi/verbs/voided"), "en-US", "voided");
 
         public Verb()
         {
         }
+        public static readonly Verb Completed = new (new ("http://adlnet.gov/expapi/verbs/completed"), "en-US", "completed");
+        public static readonly Verb Terminated = new (new ("http://adlnet.gov/expapi/verbs/terminated"), "en-US", "terminated");
+        public static readonly Verb Launched = new (new ("http://adlnet.gov/expapi/verbs/launched"), "en-US", "launched");
+        public static readonly Verb Suspended = new (new ("http://adlnet.gov/expapi/verbs/suspended"), "en-US", "suspended");
+        public static readonly Verb Favorited = new (new ("http://activitystrea.ms/schema/1.0/favorite"), "en-US", "favorited");
+        public static readonly Verb Unfavorited = new (new ("http://activitystrea.ms/schema/1.0/unfavorite"), "en-US", "unfavorited");
+        public static readonly Verb Initialized = new (new ("http://adlnet.gov/expapi/verbs/initialized"), "en -US", "initialized");
+        internal static readonly Verb Voided = new (new ("http://adlnet.gov/expapi/verbs/voided"), "en-US", "voided");
 
         public Verb(StringOfJSON json) : this(json?.toJObject())
         {
