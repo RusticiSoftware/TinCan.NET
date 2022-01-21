@@ -39,17 +39,12 @@ namespace TinCan.Tests
                 mbox = "mailto:tincancsharp@tincanapi.com"
             };
 
-            verb = new Verb("http://adlnet.gov/expapi/verbs/experienced")
-            {
-                display = new LanguageMap(),
-            };
-
+            verb = new Verb(new Uri("http://adlnet.gov/expapi/verbs/experienced"));
             verb.display.Add("en-US", "experienced");
 
             activity = new Activity
             {
                 id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0"),
-                definition = new ActivityDefinition(),
             };
 
             activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test");

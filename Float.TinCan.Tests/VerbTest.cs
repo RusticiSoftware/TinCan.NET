@@ -20,17 +20,18 @@ namespace TinCan.Tests
     using Newtonsoft.Json.Linq;
     using TinCan;
     using TinCan.Json;
+    using System;
 
     public class VerbTest
     {
         [Fact]
         public void TestEmptyCtr()
         {
-            var obj = new Verb();
+            var obj = new Verb(new Uri("http://example.com"));
             Assert.IsType<Verb>(obj);
-            Assert.Null(obj.id);
-            Assert.Null(obj.display);
-            Assert.Equal("{}", obj.ToJSON());
+            Assert.Equal(new Uri("http://example.com"), obj.id);
+            Assert.NotNull(obj.display);
+            Assert.Equal("{\"id\":\"http://example.com/\"}", obj.ToJSON());
         }
 
         [Fact]
