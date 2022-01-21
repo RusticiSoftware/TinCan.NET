@@ -23,17 +23,12 @@ namespace TinCan
     public class StatementsQuery
     {
         const string ISODateTimeFormat = "o";
-        string _activityId;
 
         public Agent agent { get; set; }
 
         public Uri verbId { get; set; }
 
-        public string activityId
-        {
-            get => _activityId;
-            set => _activityId = new Uri(value).ToString();
-        }
+        public Uri activityId { get; set; }
 
         public Guid? registration { get; set; }
 
@@ -67,7 +62,7 @@ namespace TinCan
 
             if (activityId != null)
             {
-                result.Add("activity", activityId);
+                result.Add("activity", activityId.ToString());
             }
 
             if (registration != null)

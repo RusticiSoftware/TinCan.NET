@@ -185,7 +185,7 @@ namespace TinCan.Tests
             {
                 agent = Support.agent,
                 verbId = Support.verb.id,
-                activityId = $"{Support.parent.id}",
+                activityId = Support.parent.id,
                 relatedActivities = true,
                 relatedAgents = true,
                 format = StatementsQueryResultFormat.IDS,
