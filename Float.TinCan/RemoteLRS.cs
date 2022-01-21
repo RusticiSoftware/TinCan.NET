@@ -33,9 +33,9 @@ namespace TinCan
 {
     public class RemoteLRS : ILRS
     {
-        readonly SemaphoreSlim makeRequestSemaphore = new SemaphoreSlim(1, 1);
+        readonly SemaphoreSlim makeRequestSemaphore = new (1, 1);
 
-        readonly HttpClient client = new HttpClient();
+        readonly HttpClient client = new ();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoteLRS"/> class.
