@@ -21,7 +21,7 @@ namespace TinCan
 {
     public class SubStatement : StatementBase, StatementTarget
     {
-        public static readonly string OBJECT_TYPE = "SubStatement";
+        public static readonly string OBJECT_TYPE = nameof(SubStatement);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SubStatement"/> class.

@@ -23,7 +23,7 @@ namespace TinCan
 {
     public class Group : Agent
     {
-        public static readonly new string OBJECT_TYPE = "Group";
+        public static readonly new string OBJECT_TYPE = nameof(Group);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Group"/> class.

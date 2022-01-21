@@ -22,7 +22,7 @@ namespace TinCan
 {
     public class Agent : JsonModel, StatementTarget
     {
-        public static readonly string OBJECT_TYPE = "Agent";
+        public static readonly string OBJECT_TYPE = nameof(Agent);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Agent"/> class.

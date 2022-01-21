@@ -23,7 +23,7 @@ namespace TinCan
 {
     public class Activity : JsonModel, StatementTarget
     {
-        public static readonly string OBJECT_TYPE = "Activity";
+        public static readonly string OBJECT_TYPE = nameof(Activity);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Activity"/> class.

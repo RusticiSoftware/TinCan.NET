@@ -23,7 +23,7 @@ namespace TinCan
 {
     public class StatementRef : JsonModel, StatementTarget
     {
-        public static readonly string OBJECT_TYPE = "StatementRef";
+        public static readonly string OBJECT_TYPE = nameof(StatementRef);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StatementRef"/> class.
