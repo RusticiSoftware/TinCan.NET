@@ -48,7 +48,7 @@ namespace TinCan
             text = value;
         }
 
-        public static TCAPIVersion latest() => V101;
+        public static TCAPIVersion latest() => V103;
 
         public static Dictionary<string, TCAPIVersion> GetKnown()
         {
