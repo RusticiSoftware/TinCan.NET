@@ -70,12 +70,6 @@ namespace TinCan
             };
         }
 
-        public Verb(string str)
-        {
-            Contract.Requires(!string.IsNullOrWhiteSpace(str));
-            id = new Uri(str);
-        }
-
         public Uri id { get; set; }
 
         public LanguageMap display { get; set; }
