@@ -70,9 +70,9 @@ namespace TinCan
             };
         }
 
-        public Uri id { get; set; }
+        public Uri id { get; }
 
-        public LanguageMap display { get; set; }
+        public LanguageMap display { get; }
 
         public override JObject ToJObject(TCAPIVersion version)
         {
