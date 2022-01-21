@@ -36,7 +36,7 @@ namespace TinCan.Tests
             Assert.Null(obj.version);
             Assert.Null(obj.timestamp);
             Assert.Null(obj.stored);
-            Assert.Equal("{\"version\":\"1.0.1\"}", obj.ToJSON(), true);
+            Assert.Equal("{\"version\":\"1.0.3\"}", obj.ToJSON(), true);
         }
 
         [Fact]
