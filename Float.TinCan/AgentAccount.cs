@@ -23,6 +23,9 @@ namespace TinCan
 {
     public class AgentAccount : JsonModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AgentAccount"/> class.
+        /// </summary>
         public AgentAccount()
         {
         }
@@ -60,6 +63,7 @@ namespace TinCan
 
         public string name { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

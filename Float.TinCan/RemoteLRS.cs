@@ -37,6 +37,9 @@ namespace TinCan
 
         readonly HttpClient client = new HttpClient();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoteLRS"/> class.
+        /// </summary>
         public RemoteLRS()
         {
         }
@@ -78,6 +81,7 @@ namespace TinCan
             auth = $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}"))}";
         }
 
+        /// <inheritdoc/>
         public async Task<AboutLRSResponse> About()
         {
             var request = new LRSHttpRequest
@@ -93,6 +97,7 @@ namespace TinCan
                 : FailureResult<AboutLRSResponse>(response);
         }
 
+        /// <inheritdoc/>
         public async Task<StatementLRSResponse> SaveStatement(Statement statement)
         {
             Contract.Requires(statement != null);

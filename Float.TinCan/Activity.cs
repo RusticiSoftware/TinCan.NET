@@ -25,6 +25,9 @@ namespace TinCan
     {
         public static readonly string OBJECT_TYPE = "Activity";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Activity"/> class.
+        /// </summary>
         public Activity()
         {
         }
@@ -56,6 +59,7 @@ namespace TinCan
 
         public string ObjectType => OBJECT_TYPE;
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject

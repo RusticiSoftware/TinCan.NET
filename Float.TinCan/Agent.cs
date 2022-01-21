@@ -24,6 +24,9 @@ namespace TinCan
     {
         public static readonly string OBJECT_TYPE = "Agent";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Agent"/> class.
+        /// </summary>
         public Agent()
         {
         }
@@ -74,6 +77,7 @@ namespace TinCan
 
         public AgentAccount account { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject

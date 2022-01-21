@@ -27,6 +27,9 @@ namespace TinCan
         public static readonly Uri CourseActivityType = new Uri("http://adlnet.gov/expapi/activities/course");
         public static readonly Uri ResourceActivityType = new Uri("http://id.tincanapi.com/activitytype/resource");
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActivityDefinition"/> class.
+        /// </summary>
         public ActivityDefinition()
         {
         }
@@ -75,6 +78,7 @@ namespace TinCan
 
         public Extensions extensions { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

@@ -19,11 +19,13 @@ namespace TinCan.LRSResponses
     /// <summary>
     /// An interface for LRS responses with associated content.
     /// </summary>
+    /// <typeparam name="TContent">The type of content associated with the response.</typeparam>
     public interface ILRSContentResponse<TContent> : ILRSResponse
     {
         /// <summary>
         /// Gets or sets the content associated with the response.
         /// </summary>
+        /// <value>The content associated with the response.</value>
         TContent content { get; set; }
     }
 }

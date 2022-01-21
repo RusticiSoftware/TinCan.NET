@@ -55,6 +55,7 @@ namespace TinCan
 
         public Extensions extensions { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

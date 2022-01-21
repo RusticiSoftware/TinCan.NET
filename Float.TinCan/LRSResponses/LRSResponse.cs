@@ -23,6 +23,9 @@ namespace TinCan.LRSResponses
     // so in those cases we can get by just returning this base response
     public class LRSResponse : ILRSResponse
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LRSResponse"/> class.
+        /// </summary>
         public LRSResponse()
         {
         }

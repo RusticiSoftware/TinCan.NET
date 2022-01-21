@@ -25,6 +25,9 @@ namespace TinCan
     {
         public static readonly new string OBJECT_TYPE = "Group";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Group"/> class.
+        /// </summary>
         public Group()
         {
         }
@@ -55,6 +58,7 @@ namespace TinCan
 
         public List<Agent> member { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = base.ToJObject(version);

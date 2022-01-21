@@ -23,6 +23,9 @@ namespace TinCan
 {
     public class ContextActivities : JsonModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContextActivities"/> class.
+        /// </summary>
         public ContextActivities()
         {
         }
@@ -88,6 +91,7 @@ namespace TinCan
 
         public List<Activity> other { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

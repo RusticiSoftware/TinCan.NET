@@ -26,6 +26,9 @@ namespace TinCan
     {
         readonly Dictionary<string, string> map;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LanguageMap"/> class.
+        /// </summary>
         public LanguageMap()
         {
             map = new Dictionary<string, string>();
@@ -51,6 +54,7 @@ namespace TinCan
             }
         }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();
@@ -73,16 +77,19 @@ namespace TinCan
             map.Add(lang, value);
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return $"[LanguageMap: {string.Join(",", map)}]";
         }
 
+        /// <inheritdoc />
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             return map.GetEnumerator();
         }
 
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator()
         {
             return map.GetEnumerator();

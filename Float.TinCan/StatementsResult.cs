@@ -24,6 +24,9 @@ namespace TinCan
 {
     public class StatementsResult
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatementsResult"/> class.
+        /// </summary>
         public StatementsResult()
         {
         }

@@ -25,6 +25,9 @@ namespace TinCan
     {
         public static readonly string OBJECT_TYPE = "StatementRef";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatementRef"/> class.
+        /// </summary>
         public StatementRef()
         {
         }
@@ -52,6 +55,7 @@ namespace TinCan
 
         public Guid? id { get; set; }
 
+        /// <inheritdoc/>
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject

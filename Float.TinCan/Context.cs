@@ -23,6 +23,9 @@ namespace TinCan
 {
     public class Context : JsonModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Context"/> class.
+        /// </summary>
         public Context()
         {
         }
@@ -101,6 +104,7 @@ namespace TinCan
 
         public Extensions extensions { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

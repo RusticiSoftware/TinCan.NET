@@ -28,6 +28,7 @@ namespace TinCan.LRSResponses
 
         public int Code { get; }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             if (obj is LRSResponseError error)
@@ -38,6 +39,7 @@ namespace TinCan.LRSResponses
             return false;
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             return Message.GetHashCode() ^ Code.GetHashCode();

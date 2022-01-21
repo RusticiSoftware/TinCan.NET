@@ -23,6 +23,9 @@ namespace TinCan
     {
         public static readonly string OBJECT_TYPE = "SubStatement";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubStatement"/> class.
+        /// </summary>
         public SubStatement()
         {
         }
@@ -37,6 +40,7 @@ namespace TinCan
 
         public string ObjectType => OBJECT_TYPE;
 
+        /// <inheritdoc/>
         public override JObject ToJObject(TCAPIVersion version)
         {
             var resultObject = base.ToJObject(version);

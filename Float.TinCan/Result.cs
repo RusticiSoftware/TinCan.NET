@@ -24,6 +24,9 @@ namespace TinCan
 {
     public class Result : JsonModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Result"/> class.
+        /// </summary>
         public Result()
         {
         }
@@ -79,6 +82,7 @@ namespace TinCan
 
         public Extensions extensions { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

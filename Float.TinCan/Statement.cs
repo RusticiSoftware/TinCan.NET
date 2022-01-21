@@ -26,6 +26,9 @@ namespace TinCan
     {
         const string ISODateTimeFormat = "o";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Statement"/> class.
+        /// </summary>
         public Statement()
         {
         }
@@ -74,6 +77,7 @@ namespace TinCan
 
         public TCAPIVersion version { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var resultObject = base.ToJObject(version);

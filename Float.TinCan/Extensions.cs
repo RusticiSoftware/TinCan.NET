@@ -26,6 +26,9 @@ namespace TinCan
     {
         readonly Dictionary<Uri, JToken> map;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Extensions"/> class.
+        /// </summary>
         public Extensions()
         {
             map = new Dictionary<Uri, JToken>();
@@ -41,6 +44,7 @@ namespace TinCan
             }
         }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();

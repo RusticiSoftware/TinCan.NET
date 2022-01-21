@@ -22,6 +22,9 @@ namespace TinCan
 {
     public class Score : JsonModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Score"/> class.
+        /// </summary>
         public Score()
         {
         }
@@ -63,6 +66,7 @@ namespace TinCan
 
         public double? max { get; set; }
 
+        /// <inheritdoc />
         public override JObject ToJObject(TCAPIVersion version)
         {
             var result = new JObject();
