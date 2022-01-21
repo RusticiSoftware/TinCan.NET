@@ -78,9 +78,7 @@ namespace TinCan
             return supported;
         }
 
-        public override string ToString()
-        {
-            return text;
-        }
+        /// <inheritdoc/>
+        public override string ToString() => text;
     }
 }
