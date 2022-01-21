@@ -29,7 +29,7 @@ namespace TinCan
         public static readonly Verb Suspended = new (new ("http://adlnet.gov/expapi/verbs/suspended"), "en-US", "suspended");
         public static readonly Verb Favorited = new (new ("http://activitystrea.ms/schema/1.0/favorite"), "en-US", "favorited");
         public static readonly Verb Unfavorited = new (new ("http://activitystrea.ms/schema/1.0/unfavorite"), "en-US", "unfavorited");
-        public static readonly Verb Initialized = new (new ("http://adlnet.gov/expapi/verbs/initialized"), "en -US", "initialized");
+        public static readonly Verb Initialized = new (new ("http://adlnet.gov/expapi/verbs/initialized"), "en-US", "initialized");
         internal static readonly Verb Voided = new (new ("http://adlnet.gov/expapi/verbs/voided"), "en-US", "voided");
 
         public Verb(StringOfJSON json) : this(json?.toJObject())
