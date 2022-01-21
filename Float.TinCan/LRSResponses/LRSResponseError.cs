@@ -31,12 +31,7 @@ namespace TinCan.LRSResponses
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is LRSResponseError error)
-            {
-                return error.Message == Message && error.Code == Code;
-            }
-
-            return false;
+            return obj is LRSResponseError error && error.Message == Message && error.Code == Code;
         }
 
         /// <inheritdoc />
