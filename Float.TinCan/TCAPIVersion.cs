@@ -52,12 +52,7 @@ namespace TinCan
 
         public static Dictionary<string, TCAPIVersion> GetKnown()
         {
-            if (known != null)
-            {
-                return known;
-            }
-
-            known = new Dictionary<string, TCAPIVersion>
+            known ??= new Dictionary<string, TCAPIVersion>
             {
                 { "1.0.3", V103 },
                 { "1.0.2", V102 },
@@ -72,12 +67,7 @@ namespace TinCan
 
         public static Dictionary<string, TCAPIVersion> GetSupported()
         {
-            if (supported != null)
-            {
-                return supported;
-            }
-
-            supported = new Dictionary<string, TCAPIVersion>
+            supported ??= new Dictionary<string, TCAPIVersion>
             {
                 { "1.0.3", V103 },
                 { "1.0.2", V102 },
