@@ -24,14 +24,13 @@ namespace TinCan
 {
     public class Extensions : JsonModel
     {
-        readonly Dictionary<Uri, JToken> map;
+        readonly Dictionary<Uri, JToken> map = new ();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Extensions"/> class.
         /// </summary>
         public Extensions()
         {
-            map = new Dictionary<Uri, JToken>();
         }
 
         public Extensions(JObject jobj) : this()
