@@ -136,7 +136,8 @@ namespace TinCan
             }
         }
 
-        public async Task<StatementLRSResponse> VoidStatement(Guid id, Agent agent)
+        /// <inheritdoc/>
+        public Task<StatementLRSResponse> VoidStatement(Guid id, Agent agent)
         {
             Contract.Requires(agent != null);
 
@@ -147,9 +148,10 @@ namespace TinCan
                 target = new StatementRef { id = id },
             };
 
-            return await SaveStatement(voidStatement).ConfigureAwait(false);
+            return SaveStatement(voidStatement);
         }
 
+        /// <inheritdoc/>
         public async Task<StatementsResultLRSResponse> SaveStatements(List<Statement> statements)
         {
             Contract.Requires(statements != null);
@@ -187,26 +189,29 @@ namespace TinCan
             return result;
         }
 
-        public async Task<StatementLRSResponse> RetrieveStatement(Guid id)
+        /// <inheritdoc/>
+        public Task<StatementLRSResponse> RetrieveStatement(Guid id)
         {
             var queryParams = new Dictionary<string, string>
             {
                 { "statementId", id.ToString() },
             };
 
-            return await GetStatement(queryParams).ConfigureAwait(false);
+            return GetStatement(queryParams);
         }
 
-        public async Task<StatementLRSResponse> RetrieveVoidedStatement(Guid id)
+        /// <inheritdoc/>
+        public Task<StatementLRSResponse> RetrieveVoidedStatement(Guid id)
         {
             var queryParams = new Dictionary<string, string>
             {
                 { "voidedStatementId", id.ToString() },
             };
 
-            return await GetStatement(queryParams).ConfigureAwait(false);
+            return GetStatement(queryParams);
         }
 
+        /// <inheritdoc/>
         public async Task<StatementsResultLRSResponse> QueryStatements(StatementsQuery query)
         {
             Contract.Requires(query != null);
@@ -225,6 +230,7 @@ namespace TinCan
                 : FailureResult<StatementsResultLRSResponse>(response);
         }
 
+        /// <inheritdoc/>
         public async Task<StatementsResultLRSResponse> MoreStatements(StatementsResult statementsResult)
         {
             Contract.Requires(statementsResult != null);
@@ -254,7 +260,8 @@ namespace TinCan
                 : FailureResult<StatementsResultLRSResponse>(response);
         }
 
-        public async Task<ProfileKeysLRSResponse> RetrieveStateIds(Activity activity, Agent agent, Guid? registration = null)
+        /// <inheritdoc/>
+        public Task<ProfileKeysLRSResponse> RetrieveStateIds(Activity activity, Agent agent, Guid? registration = null)
         {
             Contract.Requires(activity != null);
             Contract.Requires(agent != null);
@@ -270,9 +277,10 @@ namespace TinCan
                 queryParams.Add("registration", registration.ToString());
             }
 
-            return await GetProfileKeys("activities/state", queryParams).ConfigureAwait(false);
+            return GetProfileKeys("activities/state", queryParams);
         }
 
+        /// <inheritdoc/>
         public async Task<StateLRSResponse> RetrieveState(string id, Activity activity, Agent agent, Guid? registration = null)
         {
             Contract.Requires(!string.IsNullOrWhiteSpace(id));
@@ -306,7 +314,8 @@ namespace TinCan
                 : FailureResult<StateLRSResponse>(response);
         }
 
-        public async Task<LRSResponse> SaveState(StateDocument state)
+        /// <inheritdoc/>
+        public Task<LRSResponse> SaveState(StateDocument state)
         {
             Contract.Requires(state != null);
 
@@ -322,10 +331,11 @@ namespace TinCan
                 queryParams.Add("registration", state.registration.ToString());
             }
 
-            return await SaveDocument("activities/state", queryParams, state).ConfigureAwait(false);
+            return SaveDocument("activities/state", queryParams, state);
         }
 
-        public async Task<LRSResponse> DeleteState(StateDocument state)
+        /// <inheritdoc/>
+        public Task<LRSResponse> DeleteState(StateDocument state)
         {
             Contract.Requires(state != null);
 
@@ -341,10 +351,11 @@ namespace TinCan
                 queryParams.Add("registration", state.registration.ToString());
             }
 
-            return await DeleteDocument("activities/state", queryParams).ConfigureAwait(false);
+            return DeleteDocument("activities/state", queryParams);
         }
 
-        public async Task<LRSResponse> ClearState(Activity activity, Agent agent, Guid? registration = null)
+        /// <inheritdoc/>
+        public Task<LRSResponse> ClearState(Activity activity, Agent agent, Guid? registration = null)
         {
             Contract.Requires(activity != null);
             Contract.Requires(agent != null);
@@ -360,10 +371,11 @@ namespace TinCan
                 queryParams.Add("registration", registration.ToString());
             }
 
-            return await DeleteDocument("activities/state", queryParams).ConfigureAwait(false);
+            return DeleteDocument("activities/state", queryParams);
         }
 
-        public async Task<ProfileKeysLRSResponse> RetrieveActivityProfileIds(Activity activity)
+        /// <inheritdoc/>
+        public Task<ProfileKeysLRSResponse> RetrieveActivityProfileIds(Activity activity)
         {
             Contract.Requires(activity != null);
 
@@ -372,9 +384,10 @@ namespace TinCan
                 { "activityId", $"{activity.id}" },
             };
 
-            return await GetProfileKeys("activities/profile", queryParams).ConfigureAwait(false);
+            return GetProfileKeys("activities/profile", queryParams);
         }
 
+        /// <inheritdoc/>
         public async Task<ActivityProfileLRSResponse> RetrieveActivityProfile(string id, Activity activity)
         {
             Contract.Requires(!string.IsNullOrWhiteSpace(id));
@@ -399,7 +412,8 @@ namespace TinCan
                 : FailureResult<ActivityProfileLRSResponse>(response);
         }
 
-        public async Task<LRSResponse> SaveActivityProfile(ActivityProfileDocument profile)
+        /// <inheritdoc/>
+        public Task<LRSResponse> SaveActivityProfile(ActivityProfileDocument profile)
         {
             Contract.Requires(profile != null);
 
@@ -409,10 +423,11 @@ namespace TinCan
                 { "activityId", $"{profile.activity.id}" },
             };
 
-            return await SaveDocument("activities/profile", queryParams, profile).ConfigureAwait(false);
+            return SaveDocument("activities/profile", queryParams, profile);
         }
 
-        public async Task<LRSResponse> DeleteActivityProfile(ActivityProfileDocument profile)
+        /// <inheritdoc/>
+        public Task<LRSResponse> DeleteActivityProfile(ActivityProfileDocument profile)
         {
             Contract.Requires(profile != null);
 
@@ -422,10 +437,11 @@ namespace TinCan
                 { "activityId", $"{profile.activity.id}" },
             };
 
-            return await DeleteDocument("activities/profile", queryParams).ConfigureAwait(false);
+            return DeleteDocument("activities/profile", queryParams);
         }
 
-        public async Task<ProfileKeysLRSResponse> RetrieveAgentProfileIds(Agent agent)
+        /// <inheritdoc/>
+        public Task<ProfileKeysLRSResponse> RetrieveAgentProfileIds(Agent agent)
         {
             Contract.Requires(agent != null);
 
@@ -434,9 +450,10 @@ namespace TinCan
                 { "agent", agent.ToJSON(version) },
             };
 
-            return await GetProfileKeys("agents/profile", queryParams).ConfigureAwait(false);
+            return GetProfileKeys("agents/profile", queryParams);
         }
 
+        /// <inheritdoc/>
         public async Task<AgentProfileLRSResponse> RetrieveAgentProfile(string id, Agent agent)
         {
             Contract.Requires(!string.IsNullOrWhiteSpace(id));
@@ -476,21 +493,22 @@ namespace TinCan
             return result;
         }
 
-        public async Task<LRSResponse> SaveAgentProfile(AgentProfileDocument profile)
+        /// <inheritdoc/>
+        public Task<LRSResponse> SaveAgentProfile(AgentProfileDocument profile)
         {
             Contract.Requires(profile != null);
-
-            return await SaveAgentProfile(profile, RequestType.put).ConfigureAwait(false);
+            return SaveAgentProfile(profile, RequestType.put);
         }
 
-        public async Task<LRSResponse> ForceSaveAgentProfile(AgentProfileDocument profile)
+        /// <inheritdoc/>
+        public Task<LRSResponse> ForceSaveAgentProfile(AgentProfileDocument profile)
         {
             Contract.Requires(profile != null);
-
-            return await SaveAgentProfile(profile, RequestType.post).ConfigureAwait(false);
+            return SaveAgentProfile(profile, RequestType.post);
         }
 
-        public async Task<LRSResponse> DeleteAgentProfile(AgentProfileDocument profile)
+        /// <inheritdoc/>
+        public Task<LRSResponse> DeleteAgentProfile(AgentProfileDocument profile)
         {
             Contract.Requires(profile != null);
 
@@ -500,7 +518,7 @@ namespace TinCan
                 { "agent", profile.agent.ToJSON(version) },
             };
 
-            return await DeleteDocument("agents/profile", queryParams).ConfigureAwait(false);
+            return DeleteDocument("agents/profile", queryParams);
         }
 
         static TResponse SuccessResult<TResponse, TContent>(TContent content) where TResponse : ILRSContentResponse<TContent>, new()
@@ -766,7 +784,7 @@ namespace TinCan
                 : FailureResult<StatementLRSResponse>(response);
         }
 
-        async Task<LRSResponse> SaveAgentProfile(AgentProfileDocument profile, RequestType requestType)
+        Task<LRSResponse> SaveAgentProfile(AgentProfileDocument profile, RequestType requestType)
         {
             Contract.Requires(profile != null);
 
@@ -776,7 +794,7 @@ namespace TinCan
                 { "agent", profile.agent.ToJSON(version) },
             };
 
-            return await SaveDocument("agents/profile", queryParams, profile, requestType).ConfigureAwait(false);
+            return SaveDocument("agents/profile", queryParams, profile, requestType);
         }
     }
 }
