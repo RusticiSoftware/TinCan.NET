@@ -23,10 +23,6 @@ namespace TinCan
 {
     public class Verb : JsonModel
     {
-
-        public Verb()
-        {
-        }
         public static readonly Verb Completed = new (new ("http://adlnet.gov/expapi/verbs/completed"), "en-US", "completed");
         public static readonly Verb Terminated = new (new ("http://adlnet.gov/expapi/verbs/terminated"), "en-US", "terminated");
         public static readonly Verb Launched = new (new ("http://adlnet.gov/expapi/verbs/launched"), "en-US", "launched");
