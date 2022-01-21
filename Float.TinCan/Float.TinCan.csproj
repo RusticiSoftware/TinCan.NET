@@ -1,22 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackOnBuild>true</PackOnBuild>
-    <PackageId>Float.TinCan</PackageId>
-    <Authors>Float</Authors>
-    <Owners>Float</Owners>
-    <Summary>TinCan implementation for .NET runtimes</Summary>
-    <Title>Float.TinCan</Title>
-    <Description>TinCan implementation for .NET runtimes</Description>
+    <AssemblyName>Float.TinCan</AssemblyName>
+    <AssemblyAuthor>Float</AssemblyAuthor>
+    <AssemblyDescription>A C# implementation of the xAPI specification.</AssemblyDescription>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Title>$(AssemblyName)</Title>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="../stylecop.json" />
   </ItemGroup>
-  <PropertyGroup>
-    <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' " />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PackageDescription>$(AssemblyDescription)</PackageDescription>
+    <Summary>$(AssemblyDescription)</Summary>
+    <Description>$(AssemblyDescription)</Description>
+    <Authors>$(AssemblyAuthor)</Authors>
+    <Owners>$(AssemblyAuthor)</Owners>
+    <PackOnBuild>true</PackOnBuild>
+    <Deterministic>true</Deterministic>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
