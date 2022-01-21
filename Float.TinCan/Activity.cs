@@ -32,6 +32,13 @@ namespace TinCan
         {
         }
 
+        public Activity(Uri id)
+        {
+            Contract.Requires(id != null);
+            this.id = id;
+            this.definition = new ActivityDefinition();
+        }
+
         public Activity(StringOfJSON json) : this(json?.toJObject())
         {
         }
