@@ -32,6 +32,13 @@ namespace TinCan
         public static readonly Verb Initialized = new (new ("http://adlnet.gov/expapi/verbs/initialized"), "en-US", "initialized");
         internal static readonly Verb Voided = new (new ("http://adlnet.gov/expapi/verbs/voided"), "en-US", "voided");
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Verb"/> class.
+        /// </summary>
+        public Verb()
+        {
+        }
+
         public Verb(StringOfJSON json) : this(json?.toJObject())
         {
         }
@@ -70,9 +77,9 @@ namespace TinCan
             };
         }
 
-        public Uri id { get; }
+        public Uri id { get; init; }
 
-        public LanguageMap display { get; }
+        public LanguageMap display { get; init; } = new LanguageMap();
 
         public override JObject ToJObject(TCAPIVersion version)
         {

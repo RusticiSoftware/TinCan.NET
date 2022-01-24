@@ -25,18 +25,26 @@ namespace TinCan.Tests
         [Fact(Skip = "needs revised")]
         public void TestActivityIdTrailingSlash()
         {
-            var activity = new Activity();
             const string noTrailingSlash = "http://foo";
-            activity.id = new Uri(noTrailingSlash);
+
+            var activity = new Activity
+            {
+                id = new Uri(noTrailingSlash),
+            };
+
             Assert.Equal(noTrailingSlash, $"{activity.id}");
         }
 
         [Fact(Skip = "needs revised")]
         public void TestActivityIdCase()
         {
-            var activity = new Activity();
             const string mixedCase = "http://fOO";
-            activity.id = new Uri(mixedCase);
+
+            var activity = new Activity
+            {
+                id = new Uri(mixedCase),
+            };
+            
             Assert.Equal(mixedCase, $"{activity.id}");
         }
     }

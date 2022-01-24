@@ -36,7 +36,6 @@ namespace TinCan
         {
             Contract.Requires(id != null);
             this.id = id;
-            this.definition = new ActivityDefinition();
         }
 
         public Activity(StringOfJSON json) : this(json?.toJObject())
@@ -60,9 +59,9 @@ namespace TinCan
             }
         }
 
-        public ActivityDefinition definition { get; set; }
+        public ActivityDefinition definition { get; init; } = new ActivityDefinition();
 
-        public Uri id { get; set; }
+        public Uri id { get; init; }
 
         public string ObjectType => OBJECT_TYPE;
 

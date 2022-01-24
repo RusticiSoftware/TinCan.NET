@@ -39,8 +39,14 @@ namespace TinCan.Tests
                 mbox = "mailto:tincancsharp@tincanapi.com"
             };
 
-            verb = new Verb(new Uri("http://adlnet.gov/expapi/verbs/experienced"));
-            verb.display.Add("en-US", "experienced");
+            verb = new Verb
+            {
+                id = new Uri("http://adlnet.gov/expapi/verbs/experienced"),
+                display = new LanguageMap
+                {
+                    { "en-US", "experienced" },
+                },
+            };
 
             activity = new Activity
             {
@@ -84,11 +90,12 @@ namespace TinCan.Tests
                 statement = statementRef,
                 contextActivities = new ContextActivities
                 {
-                    parent = new List<Activity>(),
+                    parent = new List<Activity>
+                    {
+                        parent,
+                    },
                 },
             };
-
-            context.contextActivities.parent.Add(parent);
 
             score = new Score
             {
