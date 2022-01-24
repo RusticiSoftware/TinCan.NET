@@ -45,16 +45,18 @@ namespace TinCan.Tests
             activity = new Activity
             {
                 id = new Uri("http://tincanapi.com/TinCanCSharp/Test/Unit/0"),
-            };
-
-            activity.definition.type = new Uri("http://id.tincanapi.com/activitytype/unit-test");
-            activity.definition.name = new LanguageMap
-            {
-                { "en-US", "Tin Can C# Tests: Unit 0" },
-            };
-            activity.definition.description = new LanguageMap
-            {
-                { "en-US", "Unit test 0 in the test suite for the Tin Can C# library." },
+                definition = new ActivityDefinition
+                {
+                    type = new Uri("http://id.tincanapi.com/activitytype/unit-test"),
+                    name = new LanguageMap
+                    {
+                        { "en-US", "Tin Can C# Tests: Unit 0" },
+                    },
+                    description = new LanguageMap
+                    {
+                        { "en-US", "Unit test 0 in the test suite for the Tin Can C# library." },
+                    }
+                }
             };
 
             parent = new Activity
@@ -63,15 +65,15 @@ namespace TinCan.Tests
                 definition = new ActivityDefinition
                 {
                     type = new Uri("http://id.tincanapi.com/activitytype/unit-test-suite"),
-                    name = new LanguageMap(),
+                    name = new LanguageMap
+                    {
+                        { "en-US",  "Tin Can C# Tests" },
+                    },
+                    description = new LanguageMap
+                    {
+                        { "en-US", "Unit test suite for the Tin Can C# library." },
+                    }
                 },
-            };
-
-            parent.definition.name.Add("en-US", "Tin Can C# Tests");
-
-            parent.definition.description = new LanguageMap
-            {
-                { "en-US", "Unit test suite for the Tin Can C# library." },
             };
 
             statementRef = new StatementRef(Guid.NewGuid());
