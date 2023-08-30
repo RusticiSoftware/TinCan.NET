@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2;net6.0;net7.0</TargetFrameworks>
     <AssemblyName>Float.TinCan</AssemblyName>
     <AssemblyAuthor>Float</AssemblyAuthor>
     <AssemblyDescription>A C# implementation of the xAPI specification.</AssemblyDescription>
@@ -46,6 +46,6 @@
     <Folder Include="LRSResponses\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../readme.md" Pack="true" PackagePath="\"/>
+    <None Include="../readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>

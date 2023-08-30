@@ -1,7 +1,8 @@
 name: Deploy
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -13,10 +14,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            3.1.x
+            6.0.x
+            7.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build ./Float.TinCan/Float.TinCan.csproj -c Release /p:Version=${{ github.event.release.name }} /p:AssemblyVersion=${{ github.event.release.name }}      
+      - name: Pack and Upload
+        run: dotnet pack --configuration Release --no-restore
 
       # Runs a single command using the runners shell
       - name: Deploy to NuGet
         env:
           FLOAT_NUGET_TOKEN: ${{ secrets.FLOAT_NUGET_TOKEN }}
-        run: ./build.sh --task=Deploy --configuration=Release --nugetUrl="https://api.nuget.org/v3/index.json" --nugetToken="${FLOAT_NUGET_TOKEN}"
+        run: dotnet nuget push ./Float.TinCan/bin/Release/Float.TinCan.${{ github.event.release.name }}.nupkg --api-key "${FLOAT_NUGET_TOKEN}" --source https://api.nuget.org/v3/index.json
